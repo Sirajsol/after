@@ -1,0 +1,148 @@
+/* *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+} */
+.wholep{
+    display: flex;
+    width: 100%;
+    height: 700px;
+   top:0;
+   left: 0;
+    position: absolute;
+    display: flex;
+    background-color: black;
+    opacity: 0.5;
+}
+.maincontainer{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top:50px;
+    left: 400px;
+    width: 800px;
+    height: 600px;
+    background-color: rgb(74, 74, 135);
+    border: 2px gold solid;
+border-radius: 10px;
+opacity: 1;
+  
+}
+.lineElement{
+display: flex;
+justify-content: space-between;
+margin: 5px;
+border-bottom: 1px  whitesmoke solid;
+height: 80px;
+padding-bottom: 20px;
+
+}
+.songleelement{
+    display: flex;
+    flex-direction: column;
+    height: 80px;
+    margin: 5px;
+}
+.songleelement input:focus{
+    filter: drop-shadow(0 2px 5px white);
+    border: none;
+}
+.songleelement select:focus{
+    filter: drop-shadow(0 0 5px white);
+}
+.songleelement input   {
+    font-size: 15px;
+    width: 230px;
+    border-radius: 5px;
+    background-color: rgb(2, 17, 84);
+    color: white;
+    font-weight: 800;
+    /* border:none; */
+    height: auto;
+    height: 30px;
+    outline: none;
+    border-bottom: 1px whitesmoke solid;
+text-align: right;
+}
+.songleelement select   {
+  
+    width: 230px;
+    font-size: 15px;
+    background-color: rgb(2, 17, 84);
+    color: white;
+    font-weight: 800;
+    border:none;
+    height: auto;
+    border-bottom: 1px wheat;
+line-height: 50px;
+height: 30px;
+border-radius: 5px;
+padding: 5px;
+align-items: flex-end;
+text-align: right;
+}
+.optionn {
+    display:flex;
+    flex-direction: row;
+    width: 50%;
+    flex-direction: row;
+   text-align: right;
+  
+    color: yellow;
+    
+    font-size: 30px;
+    background-color: brown;
+  
+    
+  
+    
+}
+.collection{
+    width: 100%;
+    display: flex;
+    
+    justify-content: space-between;
+}
+.opt{
+    display: flex;
+    border:1px whitesmoke solid;
+    justify-content: center;
+    margin-top: 5px;
+    color: white;
+}
+.songleelement label{
+    display: flex;
+    font-size: 17px;
+    letter-spacing: 1px;
+    color: wheat;
+    justify-content: flex-end;
+}
+.send:disabled{
+    cursor: not-allowed;
+}
+.send{
+    position: absolute;
+    border: 1px whitesmoke solid;
+    color: forestgreen;
+    display: flex;
+    width: 80px;
+    border-radius: 3px;
+    left: 380px;
+    top:530px;
+    justify-content: center;
+    font-weight: 800;
+    font-size: large;
+    padding: 5px 0;
+    filter: drop-shadow(0 1px 2px black);
+    background-color: inherit;
+    cursor: pointer;
+}
+.send:hover{
+color: gold;
+
+}
+.send:active{
+    filter: drop-shadow(0 2px 5px gold);
+    transform: scale(0.9);
+    background-color: inherit;
+}
