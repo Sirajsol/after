@@ -53,7 +53,7 @@ const Register = ({eventid,setShow}) => {
    
     return <div className=" flex flex-col">
     <div onClick={()=>{setShow(false)}}
-    className=" flex w-screen h-full bg-black opacity-35 absolute  top-[0px] left-[0px] "></div>
+    className=" flex w-screen h-screen bg-black opacity-35 absolute  top-[-100px] left-[-150px] "></div>
     {wait&&(<div className="flex w-[30%]  mx-auto text-yellow-500 bg-blue-950 justify-center items-center absolute
      border-[1px] px-[20px]  top-[30%] "></div>)}
     <div className="flex w-[60%]  flex-col justify-end mr-30px border-[1px] px-[20px]

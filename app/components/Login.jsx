@@ -19,7 +19,9 @@ console.log('the user is ',user)
     
   
     useEffect(()=>{
+      
 if(loaded){
+    
   if(user && user?.role!="مدير"){
       router.push('/events')
         }
@@ -29,7 +31,7 @@ if(loaded){
             }
         }
 }
-    },[loaded])
+    },[loaded,user])
 
 
 const onSubmittt=async()=>{
@@ -60,7 +62,7 @@ const data={name:name,password:password}
 
 const log=async()=>{
 
-    toast('hi')
+  toast('الرجاء الانتظار')
    console.log("fuck  log")
     // const res=await fetch(`/api/user?name=${name}&password=${password}`,{
         
@@ -70,10 +72,11 @@ const log=async()=>{
             toast.error("خطأ")
         })
         if(ps.length>0){console.log("many users",ps)
-            toast.success("yeh")
+            // toast.success("yeh")
             setUser(ps[0])
             localStorage.setItem('user',JSON.stringify(ps[0]))
-            router.push('/add-users')
+if(ps[0]?.role=='مدير'){ router.push('/add-users')}
+           else if(ps[0]?.role=='موظف'){ router.push('/add-users')}
             console.log('done sitting ',ps[0].role)
         }
     if(ps.length==0){
@@ -95,9 +98,9 @@ const j=async()=>{
     w-full h-full bg-slate-500  ">
         <div className="flex justify-center items-start top-[0px] left-[0px]
     w-full h-screen bg-black opacity-35 absolute border-[2px] "
-    onClick={()=>{setShow(false)}}
+    // onClick={()=>{setShow(false)}}
     ></div>
-    <div className=" flex w-[40%] mx-auto flex-col top-[40px] border-[1px] left-[450px]
+    <div className="hidden sm:flex w-[40%] mx-auto flex-col top-[80px] border-[1px] left-[450px]
      bg-blue-950 border-yellow-500 p-[40px] rounded shadow-white shadow-lg 
      absolute z-40">
 <div className="flex justify-between my-[30px]">
@@ -109,7 +112,7 @@ const j=async()=>{
     />
     <label 
     htmlFor="name"
-    className=" text-right text-[20px] border-b-[1px] w-[170px] border-yellow-500 text-white ">user name</label>
+    className=" text-right text-[20px] border-b-[1px] w-[170px] border-yellow-500 text-white ">اسم المستخدم</label>
 </div>
 
 <div className="flex justify-between my-[30px]">
@@ -122,7 +125,7 @@ const j=async()=>{
     />
    <label 
    htmlFor="pass"
-   className=" text-right text-[20px] w-[170px] border-b-[1px] border-yellow-500 text-white ">enter password</label>
+   className=" text-right text-[20px] w-[170px] border-b-[1px] border-yellow-500 text-white ">كلمة المرور</label>
 </div>
 
 

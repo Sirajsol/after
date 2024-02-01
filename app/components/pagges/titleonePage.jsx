@@ -142,7 +142,7 @@ const[connectionError,setConnectionError]=useState(false)
 
         {show&&(<div className="absolute top-[0px]"><TitleN setShow={setShow}/></div> )} 
         {eShow&&(<div className="absolute top-[0px]"><TitleNEdit setEShow={setEShow} tit={selectedTitle} setMutate={setMutate}/></div> )} 
-        <table  className=" flex     flex-col  w-[94%] mx-auto  border-[1px] border-black overflow-scroll h-[400px] justify-start" align="ltr">
+        <table  className=" flex     flex-col mt-[20px] w-[94%] mx-auto  border-[1px] overflow-scroll  justify-start" align="ltr">
         <thead className="flex justify-evenly  h-[40px] bg-blue-950 text-white  ">
     
    
@@ -156,8 +156,8 @@ const[connectionError,setConnectionError]=useState(false)
     {titles&& titles.length>0&&titles.map(t=>{
         return <div key={t.id} className=" flex w-full justify-between flex-row-reverse h-[40px] border-b-[1px]">
             <div className="flex w-full justify-end items-end bg-blue-950 text-white">{t.id}</div>
-            <div className="flex w-full justify-end items-end bg-blue-950 text-white">{t.title}</div>
-            <div className="flex w-full justify-end items-end bg-blue-950 text-white">{t.lang}</div>
+            <div className="flex w-full justify-end items-end bg-blue-950 text-white "><div className=" flex mr-[20px]">{t.title}</div></div>
+            <div className="flex w-full justify-end items-end bg-blue-950 text-white"><div className=" flex mr-[20px]">{t.lang}</div></div>
             <div className=" flex w-full justify-evenly items-end border-[1px] bg-blue-950">
                <div className=" flex border-[1px] cursor-pointer"> <MdModeEditOutline size={20} color="white"
                onClick={()=>{setSelectedTitle(t)

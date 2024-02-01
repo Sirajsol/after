@@ -25,7 +25,7 @@ onClick={()=>{if(!onBox){setShow(false)}}}
     <div className='flex justify-between w-[80%] mx-auto'>    
     <input  className='flex w-[200px] h-[30px] rounded-sm bg-transparent border-b-[1px]
      border-yellow-400 text-[20px] text-white text-right' type='text' value={title} onChange={(e)=>{setTitle(e.target.value)}}></input>
-<label className='flex justify-end items-end w-[100px] h-[30px] text-white font-thin  text-[25px]  border-b-[1px]
+<label className='flex justify-end items-end w-[110px] h-[30px] text-white font-thin  text-[25px]  border-b-[1px]
      border-yellow-400 '>اللقب الأول</label>
 </div>
 <div className='flex justify-between w-[80%] mx-auto'>    
@@ -39,7 +39,7 @@ className={`${lang=='إنكليزي'?'bg-blue-600 text-white':'bg-white text-blu
 onClick={()=>{setLang('عربي')}}
 >عربي</button>
     </div>
-<label className='flex justify-end items-end w-[100px] h-[40px] text-white font-thin  text-[25px]  border-b-[1px]
+<label className='flex justify-end items-end w-[110px] h-[40px] text-white font-thin  text-[25px]  border-b-[1px]
      border-yellow-400 '>اللغة</label>
 </div>
 <div className='flex justify-center items-center w-full h-[40px]'>

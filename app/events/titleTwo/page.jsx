@@ -139,7 +139,7 @@ const deleteit=async()=>{
          {!connectionError &&auth&& titles&&titles.length>0&&( <div className='flex  w-screen h-screen flex-col  items-end relative mb-[70px]  '
 
     >
-        <label htmlFor="" className='flex mr-[50px] text-blue-800 font-[900] text-[25px]'>لوحة التحكم / اللقب {""+connectionError}2</label>
+        <label htmlFor="" className='flex mr-[50px] text-blue-800 font-[900] text-[25px]'>لوحة التحكم / اللقب 2</label>
         <div className='flex h-[30px]'></div>
         <button className='flex bg-orange-600 w-[80px] py-[5px] items-center justify-center rounded-md
          shadow-black shadow-sm hover:shadow-md hover:shadow-black hover:text-blue-400 text-white font-[700] text-[20px] mr-[50px]'

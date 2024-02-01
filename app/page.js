@@ -3,6 +3,7 @@ import Ht from './components/H'
 import InvitForm from './components/InviteFotm/InvitForn'
 import EmailSend from './components/email'
 import Login from './components/Login'
+import Welcome from './components/Welcome'
 // import Container from './components/Contaner'
 import  Container from '@/app/components/Contaner'
 import Link from "next/link"
@@ -11,27 +12,45 @@ import EventCard from './components/eventcard/EventCard'
 
 import { PrismaClient } from "@prisma/client";
 
-
-export const getm=async()=>{
-try{
- const pr=new PrismaClient()
-    const events=await prisma?.event.findMany({
-    //    const events=await pr.event.findMany({
-        // include:{
-        //     user:true
-        // },
-        // orderBy:{
-        //     createDate:'desc'
-        // }
+export const BASE_API_URL=process.env.NEXT_PUBLIC_BASE_API_URL
+const getm=async()=>{
+    //const {events:d,count}=await fetch('http://localhost:3000/api/event',{
+        const {events:d,count}=await fetch(`${BASE_API_URL}/api/event`,{
+        headers:{
+            'Content-Type'  : 'application/json'
+        },
+        cache:"no-store"
+    }
+    ).then(res=>{
+        if(!res.ok){
+            console.log('fuck')
+            throw Error('')
+        }
+       return res.json()}).catch(error=>{
+            console.log('fuck catch')
+        })
+    return d
+}
+// export const getm=async()=>{
+// try{
+//  const pr=new PrismaClient()
+//     const events=await prisma?.event.findMany({
+//     //    const events=await pr.event.findMany({
+//         // include:{
+//         //     user:true
+//         // },
+//         // orderBy:{
+//         //     createDate:'desc'
+//         // }
        
-    })
-    return events
-}
-catch(error){
-    return error
-}
+//     })
+//     return events
+// }
+// catch(error){
+//     return error
+// }
    
-}
+// }
 
 // const hh=async()=>{
 //   const d= await fetch("http://localhost:3000/api/event",
@@ -78,8 +97,9 @@ export default async function Home() {
 
 
   return <Container>
+    <Welcome/>
       {/* <Login /> */}
-  <div className=" flex justify-center items-center flex-wrap w-[80%] mx-auto">
+  <div className=" flex justify-center items-center flex-wrap w-[80%] mx-auto overflow-scroll">
       
       {data?.length>0&&(
           data.map(d=>{

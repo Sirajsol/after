@@ -47,7 +47,7 @@ const data=await getm()
 
 
     return <Container>
-        <div>{BASE_API_URL}</div>
+        {/* <div>{BASE_API_URL}</div> */}
     <div className=" flex justify-center items-center flex-wrap w-[80%] mx-auto">
         
         {data?.length>0&&(

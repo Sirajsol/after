@@ -10,6 +10,7 @@ import {Mcotext} from '../context/context'
 import Container from "../components/Contaner";
 import EditUser from "../components/EditUser"
 import {toast} from 'react-hot-toast'
+import NavBar from "../components/nav/Nav";
 
 const AddUsers = () => {
 
@@ -110,12 +111,12 @@ useEffect(()=>{
     useEffect(()=>{
 if(loaded){
   if(!user ||user?.role!="مدير"){
-    //   router.push('/')
+     router.push('/')
         }
         else{
             setAuth(true)
         }
-        setAuth(true)
+        // setAuth(true)
 }
     },[loaded])
     console.log('add users user is ',user)
@@ -138,6 +139,7 @@ if(loaded){
 
     return <div>
 <Container>
+   
 {deleting&&(<div className=" flex w-[400px] h-[80px] absolute z-20 left-[550px] top-[100px] bg-blue-950  shadow-black shadow-sm rounded-md text-white justify-center items-center
 ">...جاري الحذف</div>)}
 
@@ -166,6 +168,7 @@ if(loaded){
 
    
 {!connectionError &&auth&& ( <div className=" flex flex-col h-screen w-screen items-end relative">
+<div><NavBar/></div> 
     {user && auth&&(<div  className='flex flex-col mt-[30px] w-full  '>
     <div  className='flex flex-col mt-[30px] w-full items-end pb-[10px]  border-b-[1px] border-yellow-400 '>
             <label htmlFor="" className='flex mr-[50px] text-blue-800 font-[900] text-[25px]'>التحكم/ إضافة مستخدمين</label>

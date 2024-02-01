@@ -29,15 +29,15 @@ const Events = () => {
    
      useEffect(()=>{
  if(loaded){
-//    if(!user ||!user?.name){
-//        router.push('/')
-//          }
-//          else{
-//              setAuth(true)
-//          }
-         setAuth(true)
+   if(!user ||!user?.name){
+      router.push('/')
+         }
+         else{
+             setAuth(true)
+         }
+        //  setAuth(true)
  }
- setAuth(true)
+//  setAuth(true)
         
      },[loaded])
 
@@ -132,7 +132,7 @@ return<div className=" flex w-screen h-screen justify-center items-center">
 {wt &&(<div className='flex justify-center text-center items-center text-white border-[1px]
         border-yellow-400 shadow-md shadow-white bg-blue-800 z-20 w-[400px] h-[100px]  text-[35px] 
         absolute top-[150px] left-[600px]'>الرجاء الانتظار</div>)}
-      <div className='flex flex-col w-screen h-screen items-end relative mb-[70px]  '
+   {auth &&(   <div className='flex flex-col w-screen h-screen items-end relative mb-[70px]  '
     // onClick={()=>{if(!onButton)setShow(false)}}
     >
 
@@ -241,6 +241,7 @@ return<div className=" flex w-screen h-screen justify-center items-center">
 {/* <Use/> */}
 { show&&(<Eventt setShow={setShow} setMutate={setMutate}/>)}
     </div>
+    )}
     </div>
 }
  
