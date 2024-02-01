@@ -4,6 +4,9 @@ import EventCard from '../components/eventcard/EventCard'
 
 export const BASE_API_URL=process.env.NEXT_PUBLIC_BASE_API_URL
 const getm=async()=>{
+    if(!BASE_API_URL){
+        return null
+    }
     //const {events:d,count}=await fetch('http://localhost:3000/api/event',{
         const {events:d,count}=await fetch(`${BASE_API_URL}/api/event`,{
         headers:{
