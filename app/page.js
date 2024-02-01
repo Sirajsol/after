@@ -95,7 +95,9 @@ export default async function Home() {
 
   const data=await getm()
 
-
+  if(!BASE_API_URL){
+    return null
+}
   return <Container>
     <Welcome/>
       {/* <Login /> */}
