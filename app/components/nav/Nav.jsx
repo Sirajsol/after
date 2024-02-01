@@ -30,7 +30,7 @@ const NavBar = ({children}) => {
         {oncontrol &&( <div className="bg-yellow-600 w-[140px] h-[2px] absolute left-[-25px] top-[35px]"></div>)}
 
         {oncontrol &&(<div className="flex flex-col absolute   bg-gray-900  w-[200px] h-[300px] mt-[40px] ml-[-20px] justify-between rounded shadow-black shadow-md z-20">
-            <div onClick={()=>{setOnControl(false)}} className="flex h-[50px]  mx-[5px]  bg-gray-900 text-white text-center justify-center hover:bg-blue-950 cursor-pointer text-[25px] hover:border-b-[1px] border-yellow-600">ارسال دعوة</div>
+            <div onClick={()=>{setOnControl(false)}} className="flex h-[50px]  mx-[5px]  bg-gray-900 text-white text-center justify-center hover:bg-blue-950 cursor-pointer text-[25px] hover:border-b-[1px] border-yellow-600"> <Link href="/events/invitations">  ارسال دعوة </Link></div>
             <div  onClick={()=>{setOnControl(false)}} className="flex  h-[50px]  mx-[5px] bg-gray-900 text-white text-center justify-center hover:bg-blue-950 cursor-pointer text-[25px] hover:border-b-[1px] border-yellow-600"  ><Link href="/events/invitations">الدعوات  العامة </Link></div>
             <div  onClick={()=>{setOnControl(false)}} className="flex  h-[50px] mx-[5px]  bg-gray-900 text-white text-center justify-center hover:bg-blue-950  cursor-pointer text-[25px] hover:border-b-[1px] border-yellow-600"><Link href="/events/titleOne">الألقاب1</Link></div>
             <div  onClick={()=>{setOnControl(false)}} className="flex  h-[50px] mx-[5px]  bg-gray-900 text-white text-center justify-center hover:bg-blue-950  cursor-pointer text-[25px] hover:border-b-[1px] border-yellow-600"><Link href="/events/titleTwo">الألقاب2</Link></div>
@@ -47,7 +47,8 @@ const NavBar = ({children}) => {
             <div onClick={()=>{setOnEvent(false)}} className="flex  h-[50px]  mx-[5px] bg-gray-900 text-white text-center justify-center hover:bg-blue-950 cursor-pointer text-[25px] hover:border-b-[1px] border-yellow-600"><Link href="/events/places">أماكن الفعاليات</Link></div>
             <div onClick={()=>{setOnEvent(false)}} className="flex  h-[50px] mx-[5px]  bg-gray-900 text-white text-center justify-center hover:bg-blue-950  cursor-pointer text-[25px] hover:border-b-[1px] border-yellow-600"> <Link href="/events/chair-categories">فئات الكراسي </Link></div>
             <div onClick={()=>{setOnEvent(false)}} className="flex  h-[50px] mx-[5px]  bg-gray-900 text-white text-center justify-center hover:bg-blue-950  cursor-pointer text-[25px] hover:border-b-[1px] border-yellow-600"><Link href="/events/chairs">الكراسي</Link></div>
-            <div onClick={()=>{setOnEvent(false)}} className="flex  h-[50px] mx-[5px]  bg-gray-900 text-white text-center justify-center hover:bg-blue-950  cursor-pointer text-[25px] hover:border-b-[1px] border-yellow-600">جميع الدعوات</div>
+            <div onClick={()=>{setOnEvent(false)}} className="flex  h-[50px] mx-[5px]  bg-gray-900 text-white text-center justify-center hover:bg-blue-950  cursor-pointer text-[25px] hover:border-b-[1px] border-yellow-600"><Link href="/events/invitations-day">  جميع الدعوات </Link> </div>
+            <div onClick={()=>{setOnEvent(false)}} className="flex  h-[50px] mx-[5px]  bg-gray-900 text-white text-center justify-center hover:bg-blue-950  cursor-pointer text-[25px] hover:border-b-[1px] border-yellow-600"><Link href="/events/invitations-sent">   الدعوات المرسلة </Link> </div>
 
         </div>)}
         </div>
