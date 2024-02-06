@@ -31,7 +31,7 @@ const[wait,setWait]=useState(false)
     //     const inv=async()=>{
     //         console.log("id ",id)
     //         setWait(true)
-    //         const inve=await fetch(`http://localhost:3000/api/invetation/${id}`).then(res=>res.json())
+    //         const inve=await fetch(`/api/invetation/${id}`).then(res=>res.json())
     //         if(inve){setInvet(inve)
     //         setWait(false)
     //         }
@@ -73,7 +73,7 @@ const[wait,setWait]=useState(false)
     useEffect(()=>{
         const pls=async()=>{
             setWait(true)
-            const ctgrs=await fetch('http://localhost:3000/api/personcat').then(res=>res.json())
+            const ctgrs=await fetch('/api/personcat').then(res=>res.json())
             if(ctgrs){setCategories(ctgrs)}
             setWait(false)
         }
@@ -82,7 +82,7 @@ const[wait,setWait]=useState(false)
     useEffect(()=>{
         const pls=async()=>{
             setWait(true)
-            const ttls=await fetch('http://localhost:3000/api/titleone').then(res=>res.json())
+            const ttls=await fetch('/api/titleone').then(res=>res.json())
 
             if(ttls){setTitles(ttls)}
             setWait(false)
@@ -93,7 +93,7 @@ const[wait,setWait]=useState(false)
     useEffect(()=>{
         const pls=async()=>{
             setWait(true)
-            const {events:evs}=await fetch('http://localhost:3000/api/event').then(res=>res.json())
+            const {events:evs}=await fetch('/api/event').then(res=>res.json())
             if(evs){setEvents(evs)}
             setWait(false)
         }
@@ -104,7 +104,7 @@ const[wait,setWait]=useState(false)
 
     const posinvite=async()=>{
       
-        const ev=await fetch(`http://localhost:3000/api/invetation/${inv.id}`,{
+        const ev=await fetch(`/api/invetation/${inv.id}`,{
             method:'PUT',
             headers: { 
                 'Content-type': 'application/json'
@@ -151,7 +151,7 @@ const[wait,setWait]=useState(false)
                     let img=events.find(d=>d.title==event).img
                     console.log("evt id is ",d.id)
                     // alert(d.id)
-                 if(isEmail) {sendit(email,msg,`https://rs4itbysiraj.vercel.app/invitation-confirm/${d.id}`,name,title,img)}
+                 if(isEmail) {sendit(email,msg,`https://rs4it-by-siraj.vercel.app/invitation-confirm/${d.id}`,name,title,img)}
                 }
                    )
         .catch((error)=>{toast.error("لم يتم التعديل")

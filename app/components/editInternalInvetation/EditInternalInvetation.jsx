@@ -115,7 +115,7 @@ const[wait,setWait]=useState(false)
             let img=events.find(d=>d.title==event).img
             console.log("evt id is ",d.id)
             // alert(d.id)
-         if(isEmail) {sendit(email,msg,`https://rs4itbysiraj.vercel.app/invitation-confirm/${d.id}`,name,title,img)}
+         if(isEmail) {sendit(email,msg,`https://rs4it-by-siraj.vercel.app/invitation-confirm/${d.id}`,name,title,img)}
         //  if(isEmail) {sendit(email,msg,`/invitation-confirm/${id}`)}
         }
            )

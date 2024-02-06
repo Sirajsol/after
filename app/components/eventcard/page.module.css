@@ -9,6 +9,7 @@
     transition: all 200ms ease-in-out;
     cursor: pointer;
     margin: 30px;
+   
 }
 .mainContainer:hover{
     transform: scale(1.1);
