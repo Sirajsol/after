@@ -33,7 +33,7 @@ if(!user ||!user?.name){
     const[show,setShow]=useState(false)
     const[eShow,setEShow]=useState(false)
     const[IEShow,setIEShow]=useState(false)
-    const[book,setBook]=useState("false")
+    const[book,setBook]=useState(false)
 const[customer,setCustomer]=useState('')
     const[onButton,setOnButton]=useState(false)
     const[invetations,setInvetations]=useState([])
@@ -180,7 +180,7 @@ const search=()=>{
        
        >إضافة</button>
 <div className="flex w-full h-[3px] bg-yellow-500 mt-[10px]"></div>
-{invId.length>0 && eShow&&(<EditInvetation key={invId} id={invId} setShow={setEShow}  setMutate={setMutate}  inv={ invetations.filter(invi=>invi.id==invId)[0]}/>)}
+{invId.length>0 && eShow&&(<EditInvetation  key={invId} id={invId} setShow={setEShow}  setMutate={setMutate}  inv={ invetations.filter(invi=>invi.id==invId)[0]}/>)}
 {invId.length>0 && IEShow&&(<EditInternalInvetation key={invId} id={invId} setShow={setIEShow}  setMutate={setMutate} inv={ invetations.filter(invi=>invi.id==invId)[0]}/>)}
 
 {invId.length>0 && book&&(<ChairBook id={invId} chairs={chairs} setBook={setBook} setMutate={setMutate}/>)}
@@ -354,7 +354,7 @@ text-[25px] text-white bg-blue-800 shadow-black rounded-md shadow-md">الرجا
     {!wt &&  empty && invetations.length==0 && (
     <div className="flex justify-center items-center w-full h-[40px] bg-blue-950 text-yellow-500 text-[30px]">! لا توجد نتائج مطابقة</div>
 )}
-book is {book?"true":false}
+{/* book is {book?"true":"false"} */}
 </table>
 
     </div>)}

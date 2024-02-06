@@ -53,10 +53,12 @@ const InvitationsDayRow = ({inv,setInvId,setEShow,setIEShow,setBook,setChairs}) 
         {/* <Checkbox  checked={inv.affirm=="لا"} color="#fffff" disabled ></Checkbox></div> */}
    <input type="checkbox" checked={inv.affirm=="لا"} className=" bg-blue-950 text-yellow-500 w-[20px] h-[20px]"></input></div>
     </div>
-    <div className={`   justify-evenly z-30 ${expand?"flex":"hidden"}  bg-blue-950`}>
+    <div className={`   justify-evenly  ${expand?"flex":"hidden"}  bg-blue-950`}>{/** z-30 was there */}
         <div  onClick={()=>{setInvId(inv.id)
        if(inv.itype=="خارجي"){setEShow(true)}
-       else {setIEShow(true)}
+       else {setIEShow(true)
+  
+    }
         }}
         
         className=" flex border-[1px] border-white my-[5px] cursor-pointer"
