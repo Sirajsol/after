@@ -43,7 +43,7 @@ const evt=await getev(eventId)
     <Container>
     <div className="flex  w-full mx-auto sm:h-full justify-center items-center bg-black ">
     <div className=' flex absolute w-screen h-screen top-[0px] left-[0px] bg-blue-950'>
-    <div className='flex relative  w-[100%] mx-auto h-full  opacity-30'>
+    <div className='flex relative  w-screen mx-auto h-screen  opacity-30'>
         <Image src={evt.img} alt="image"  fill className=' object-fill ' />
     </div>
     </div>
