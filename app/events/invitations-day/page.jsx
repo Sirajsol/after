@@ -181,7 +181,7 @@ const search=()=>{
        >إضافة</button>
 <div className="flex w-full h-[3px] bg-yellow-500 mt-[10px]"></div>
 {invId.length>0 && eShow&&(<EditInvetation key={invId} id={invId} setShow={setEShow}  setMutate={setMutate}  inv={ invetations.filter(invi=>invi.id==invId)[0]}/>)}
-{invId.length>0 && IEShow&&(<EditInternalInvetation key={invId} id={invId} setShow={setIEShow}  setMutate={setMutate}/>)}
+{invId.length>0 && IEShow&&(<EditInternalInvetation key={invId} id={invId} setShow={setIEShow}  setMutate={setMutate} inv={ invetations.filter(invi=>invi.id==invId)[0]}/>)}
 
 {invId.length>0 && book&&(<ChairBook id={invId} chairs={chairs} setBook={setBook} setMutate={setMutate}/>)}
 
