@@ -87,7 +87,7 @@ const dd=()=>{
          setEndTime(evvt.time.substring(6))
             }
             setWait(false)
-        },[evvt])
+        },[evvt,img])
 
 
 useEffect(()=>{

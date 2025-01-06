@@ -23,12 +23,12 @@ catch(error){
 export const PUT =async(req,{params})=>{
     console.log("inside  event put ")
     // const {id}=params
-    const{title,placeId,date,description,time,enMessage,arMessage}=await req.json()
+    const{title,placeId,date,description,time,enMessage,arMessage,img}=await req.json()
     const {id}=params
     console.log("inside  event put id is ",id)
     try{
         const d=await prisma.event.update({
-            data: {title,placeId,date,description,time,enMessage,arMessage},
+            data: {title,placeId,date,description,time,enMessage,arMessage,img},
             where:{id:id}
         })
         console.log("vefore return ",d)
