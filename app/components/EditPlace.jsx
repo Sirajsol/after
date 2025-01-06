@@ -106,6 +106,7 @@ switch(snapshot.state){
       getDownloadURL(uploadTask.snapshot.ref).then((downloadURl)=>{
          setImgData(downloadURl)
           console.log('file available at ',downloadURl)
+          toast("تم تحميل الصورة")
           resolve()
       }).catch((error)=>{
           console.log('error gwtting the downloadable url ',error)
