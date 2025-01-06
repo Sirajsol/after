@@ -1,3 +1,4 @@
+import { error } from 'console'
 import prisma from '../../../../lib/prismadb'
 import { NextResponse } from "next/server"
 export const GET =async(req,{params})=>{
@@ -7,11 +8,13 @@ try{
     const inv=await prisma.event.findUnique({
         where:{id:id}
     })
+    if(!inv)throw error
     return new NextResponse(JSON.stringify(inv,{status:'200'}))
     // return new NextResponse(id)
 }
 catch(error){
-    return error
+    // return error
+    new NextResponse(JSON.stringify(inv,{status:'404'}))
 }
 
 

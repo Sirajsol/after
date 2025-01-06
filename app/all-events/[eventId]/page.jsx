@@ -2,6 +2,8 @@ import Register from '../../components/Register'
 import Container from '../../components/Contaner'
 import ShowRegister from '../../components/ShowRegister'
 import Image from 'next/image'
+import { toast } from 'react-hot-toast'
+import { error } from 'console'
 export const BASE_API_URL=process.env.NEXT_PUBLIC_BASE_API_URL
 export async function generateMetadata({ params, searchParams }, parent) {
     // read route params
@@ -10,11 +12,11 @@ export async function generateMetadata({ params, searchParams }, parent) {
     // fetch data
     const{eventId}=params
     const event = await fetch(`${BASE_API_URL}/api/event/${eventId}`).then((res) => res.json())
-   
+   .catch(error=>{console.log('connectuin error')})
     // optionally access and extend (rather than replace) parent metadata
     
    
-    return {
+   if(event) return {
       title: event.title,
       description:event.description
     }
@@ -29,8 +31,8 @@ const getev=async(ln)=>{
         },
         cache:"no-store"
     }
-    )
-    return d.json()
+    ).then(res=>res.json()).catch(error=>{return null})
+    if(d)return d
 }
 const SingleEvent = async({params}) => {
     if(!BASE_API_URL){
@@ -40,14 +42,17 @@ const SingleEvent = async({params}) => {
 const evt=await getev(eventId)
 
     return <div>
+       
     <Container>
-    <div className="flex  w-full mx-auto sm:h-full justify-center items-center bg-black ">
+    {evt&&(
+    <div className="flex  w-full mx-auto sm:h-full justify-center items-center ">
     <div className=' flex absolute w-screen h-screen top-[0px] left-[0px] bg-blue-950'>
     <div className='flex relative  w-screen mx-auto h-screen  opacity-30'>
         <Image src={evt.img} alt="image"  fill className=' object-fill ' />
     </div>
     </div>
-<div className=' flex flex-col  backdrop-blur-lg justify-start bg-transparent  my-[20px] sm:my-[50px] pb-[20px] w-[80%] mx-auto text-white rounded-md shadow-md shadow-yellow-400 '>
+<div className=' flex flex-col  backdrop-blur-lg justify-start bg-transparent
+  my-[20px] sm:my-[50px] pb-[20px] w-[80%] mx-auto text-white rounded-md shadow-md shadow-yellow-400 '>
     <div className='flex text-[25px]  w-full justify-center'>{evt.title}</div>
     <div className='flex text-[25px]  w-[96%] justify-center mt-[30px] mx-auto pb-[30px]
      border-[1px] rounded-md shadow-white shadow-md flex-col sm:flex-row bg-transparent'>
@@ -78,7 +83,13 @@ const evt=await getev(eventId)
 </div>
        
        </div>
-     
+       )}
+       {!evt&&(
+        <div className=" flex w-screen h-screen justify-center items-center">
+        <div className="flex justify-center items-center absolute top-[150px] bg-blue-900
+         text-red-600 text-[30px] px-[40px] shadow-black shadow-md rounded">ممم حدث خطأ ما . تأكد من جودة الاتصال بالانترنت</div>
+    </div>
+       )}
        </Container>
        </div>
 }

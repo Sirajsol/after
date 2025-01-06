@@ -6,7 +6,7 @@ import { TiDelete } from "react-icons/ti";
 import { Checkbox } from "@mui/material"
 import { toast } from "react-hot-toast";
 const InvitationsDayRow = ({inv,setInvId,setEShow,setIEShow,setBook,setChairs}) => {
-
+console.log("inv is",inv)
     const[confirm,setConfirm]=useState(false)
     const[showDelete,setShowDelete]=useState(false)
         const del=async()=>{

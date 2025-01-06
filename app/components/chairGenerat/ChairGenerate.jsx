@@ -131,13 +131,13 @@ body:JSON.stringify(y)
 </div>
 <div className="flex justify-end mx-[30px] mt-[20px]">
 <button 
-// disabled={(!start || !pre || !num)}
+disabled={(!start || !pre || !num ||!place || !category)}
 onClick={(e)=>{
     postcha()
     console.log(start,num,pre,category,place)
     generate(start,num,pre)
 }}
-className="flex bg-orange-600 text-white  py-[10px] px-[20px] rounded-sm shadow-sm shadow-white hover:text-yellow-300">توليد الكراسي</button>
+className="flex bg-orange-600 text-white  py-[10px] disabled:cursor-not-allowed px-[20px] rounded-sm shadow-sm shadow-white hover:text-yellow-300">توليد الكراسي</button>
 </div>
 
 </div>

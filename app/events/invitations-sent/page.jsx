@@ -52,7 +52,7 @@ if(!user ||!user?.name){
     const[invitations,setInvetations]=useState([])
     const[invId,setInvId]=useState('')
     
-
+const[empty,setEmpty]=useState(false)
     const[itype,setIType]=useState('')
 
 
@@ -81,6 +81,7 @@ if(!user ||!user?.name){
             if(ps){setInvetations(ps)
             setTotal(count)
             }
+            if(ps.length==0){setEmpty(true)}
            
         }
         pls()
@@ -92,6 +93,7 @@ if(!user ||!user?.name){
     },[page])
 
     const search=()=>{
+        console.log('searching...')
         let terms=[]
         let ter=""
         if(name.length>0){terms.push(`name=${name}`)}
@@ -116,6 +118,7 @@ if(!user ||!user?.name){
             ter="?"+ter+terms[terms.length-1]
           
         }
+        console.log('inside searchterm is',ter)
         setSearchTerm(ter)
     }
 
@@ -129,9 +132,13 @@ if(!user ||!user?.name){
      text-red-600 text-[30px] px-[40px] shadow-black shadow-md rounded">ممم حدث خطأ ما . تأكد من جودة الاتصال بالانترنت</div>
 </div>
         )} 
+          {!wt && empty && invitations.length==0 && (
+    <div className="flex absolute top-[300px] justify-center items-center w-full h-[40px]
+     bg-blue-950 text-yellow-500 text-[30px]">! لا توجد  دعوات</div>
+)}
         {wt&&(<div className="flex justify-center items-center absolute top-[150px] bg-blue-900 w-[400px] h-[80px] left-[500px] text-white
       text-[30px] px-[40px] shadow-black shadow-md rounded">الرجاء الإنتظار</div>)}
-           {!connectionError &&auth&& invitations&&invitations.length>0&&(  <div className='flex flex-col h-screen w-screen items-end relative mb-[70px]  '
+           {!connectionError &&auth&&(  <div className='flex flex-col h-screen w-screen items-end relative mb-[70px]  '
     // onClick={()=>{if(!onButton)setShow(false)}}
     >
         <label htmlFor="" className='flex  text-blue-800 font-[900] text-[25px] mr-[100px]'>لوحة التحكم / الدعوات العامة</label>
@@ -147,16 +154,16 @@ if(!user ||!user?.name){
 {invId.length>0 && eshow&&(<EditInvetation id={invId} setShow={setEShow}  setMutate={setMutate}  inv={invitations.filter(invi=>invi.id==invId)[0]}/>)}
 {invId.length>0 && iEShow&&(<EditInternalInvetation id={invId} setShow={setIEShow}  setMutate={setMutate} inv={invitations.filter(invi=>invi.id==invId)[0]}/>)}
  
- 
-
+<div className="flex w-[50%] justify-end mr-[90px]  cursor-pointer hover:text-yellow-400"
+    onClick={()=>{reset()}}
+    >تفريغ حقول التصفية</div>
+{invitations&&invitations.length>0&&(
 
        <div className='flex flex-col w-full justify-between  border-b-[1px] border-yellow-500 mt-[20px] py-[20px] ' >
 
 <div className="flex  justify-evenly">
     
-    <div className="flex w-[50%] justify-end mr-[90px]  cursor-pointer hover:text-yellow-400"
-    onClick={()=>{reset()}}
-    >تفريغ حقول التصفية</div>
+   
     <label className="flex w-[50%] justify-end mr-[100px]" htmlFor="">بحث</label>
 </div>
     <div className="flex justify-between mt-[30px]">
@@ -187,7 +194,7 @@ className="flex border-[1px] text-right"/>
 </div>
 <div className="flex flex-col mr-[100px]">
 <label className=" text-right">الاسم</label>
-<input className="flex border-[1px] text-right"/>
+<input value={name} onChange={(e)=>{setName(e.target.value)}} className="flex border-[1px] text-right"/>
 
 </div>
     </div>
@@ -201,8 +208,9 @@ className="flex border-[1px] text-right"/>
  shadow-black shadow-md
  "
  
- onClick={()=>{search()
-
+ onClick={()=>{
+    search()
+// alert('hah')
 }}
  >اذهب</button>
 
@@ -243,9 +251,9 @@ disabled={wt}
 </div>
 
 </div>
-
+)}
 {show && <InvitForm tog={setShow}/>}
-
+{ invitations&&invitations.length>0&&(
         <table  className=" flex flex-col w-full border-[1px] border-black" align="ltr">
         <thead className="flex justify-evenly w-full h-[40px] bg-blue-950 text-white ">
     
@@ -265,7 +273,7 @@ text-[25px] text-white bg-blue-800 shadow-black rounded-md shadow-md">الرجا
     <InvitationSentRow  inv={inv} setInvId={setInvId} setEShow={setEShow} setIEShow={setIEShow}/>
     </tr>})}
 </table>
-
+)}
     </div>)}
     </Container>
     </div>

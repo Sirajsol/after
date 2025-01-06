@@ -38,7 +38,7 @@ return resl
 const[total,setTotal]=useState(0)
 const[wt,setWt]=useState(false)
         const router=useRouter()
-        const {user,setUser,loaded}=useCntxt()
+        const {user,setUser,loaded,wait,setWait}=useCntxt()
          const[data,setData]=useState([])
          const[connectionError,setConnectionError]=useState(false)
 const[searchTerm,setSearchTerm]=useState('')
@@ -69,23 +69,42 @@ useEffect(()=>{
         // if(place.length>0){
         //     term=`?placeId=${place}`
         // }
-        const {chrs:rs,count}=await fetch(`/api/chair${searchTerm}`)
-        .then(res=>{
-            if(res.status=='200'){
-// toast.success('hi')
-setWt(false)
-return res.json()
-            }
-            else{
-                // toast.error('fuck')
-            }
-        }).catch(error=>{
-    setConnectionError(true)
+//         const x=await fetch(`/api/chair${searchTerm}`)
+//         .then(res=>{
+//             if(res.status=='200'){
 
-        })
+// setWt(false)
+// setWait(false)
+// MdSubdirectoryArrowRight(false)
+// return res.json()
+//             }
+//             else{
+//                 toast.error('fuck')
+//             }
+//         }).catch(error=>{
+//     setConnectionError(true)
+//     setWt(false)
+// setWait(false)
+
+//         })
+const x=await fetch(`/api/chair${searchTerm}`)
+.then(res=> res.json()
+   
+
+   
+).catch(error=>{
+    // alert('[ppppp')
+setConnectionError(true)
+
+
+})
+setWt(false)
+setWait(false)
+       if(x) {const {chrs:rs,count}=x
         setData(rs)
         // alert(count)
         setTotal(count)
+    }
     }
 
 chr()
@@ -104,10 +123,10 @@ return<div className=" flex w-screen h-screen justify-center items-center">
 }  
  return <div>
     <Container>
-    {wt&&(<div className="flex ">
+    {(wait||wt)&&(<div className="flex absolute ">
         <div className=" flex w-screen h-screen bg-black opacity-30 absolute"></div>
         <div className="flex w-[500px] h-[100px] justify-center items-center left-[550px] top-[150px] 
-         bg-blue-950 text-white absolute rounded-md shadow-md shadow-white">الرجاء الانتظار , جاري تحميل البيانات</div>
+         bg-blue-950 text-white absolute rounded-md shadow-md shadow-white z-10">الرجاء الانتظار , جاري تحميل البيانات</div>
     </div>)}
  {!connectionError&& auth&&(<div className="flex w-screen h-screen  mt-[80px] ">
         <div className="flex flex-col w-[70%] rounded h-[650px]">
@@ -126,7 +145,7 @@ return<div className=" flex w-screen h-screen justify-center items-center">
             <th className="flex-1 justify-end  text-right">مكان الفعالية</th>
             <th className="flex-1 "></th>
             </thead>
-            {data.length>0&&data.map(d=>{return(
+            {data&&data.length>0&&data.map(d=>{return(
             <tr key={d.id} className="flex flex-row-reverse h-[35px] text-[20px] border-b-[1px] text-yellow-600 bg-blue-950">
            
            <td className="  text-right w-[35%] text-yellow-600 bg-blue-950">{d.id}</td>

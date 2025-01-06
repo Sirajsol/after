@@ -173,8 +173,11 @@ useEffect(()=>{
         {wt&&(<div className="flex justify-center items-center absolute top-[150px] bg-blue-900 w-[400px] h-[80px] left-[500px] text-white
       text-[30px] px-[40px] shadow-black shadow-md rounded">الرجاء الإنتظار</div>)}
         
-
-        {!connectionError &&auth&& invetations&&invetations.length>0&&(      <div className='flex flex-col w-screen h-screen items-end relative mb-[70px]  '
+        {!wt && empty && invetations.length==0 && (
+    <div className="flex absolute top-[300px] justify-center items-center w-full h-[40px]
+     bg-blue-950 text-yellow-500 text-[30px]">! لا توجد  دعوات</div>
+)}
+        {!connectionError &&auth&&(      <div className='flex flex-col w-screen h-screen items-end relative mb-[70px]  '
     // onClick={()=>{if(!onButton)setShow(false)}}
     >
         <label htmlFor="" className='flex  text-blue-800 font-[900] text-[25px] mr-[100px]'>لوحة التحكم /إرسال الدعوات</label>
@@ -186,20 +189,24 @@ useEffect(()=>{
         onMouseLeave={()=>{setOnButton(false)}}
        
        >إضافة</button>
-<div className="flex w-full h-[3px] bg-yellow-500 mt-[10px]"></div>
+       
+      <div className="flex w-full h-[3px] bg-yellow-500 mt-[10px]"></div>
 {invId.length>0 && eShow&&(<EditInvetation id={invId} setShow={setEShow} setMutate={setMutate} inv={invetations.filter(invi=>invi.id==invId)[0]}/>)}
 {invId.length>0 && iEShow&&(<EditInternalInvetation id={invId} setShow={setIEShow} setMutate={setMutate}  inv={invetations.filter(invi=>invi.id==invId)[0]}/>)}
 {/* {invId.length>0 &&(<InvitForm />)} */}
+
    
         {/* <div className="flex w-full h-[3px] bg-yellow-500 mt-[10px]"></div> */}
-
+        <div className="flex w-[50%] justify-end mr-[90px] cursor-pointer hover:text-yellow-400"
+        
+            onClick={()=>{reset()}}
+            >تفريغ حقول التصفية</div>
+{invetations&&invetations.length>0&&(
         <div className='flex flex-col w-full justify-between  border-b-[1px] border-yellow-500 mt-[20px] py-[20px] ' >
 
         <div className="flex  justify-evenly">
             
-            <div className="flex w-[50%] justify-end mr-[90px] cursor-pointer hover:text-yellow-400"
-            onClick={()=>{reset()}}
-            >تفريغ حقول التصفية</div>
+           
             <label className="flex w-[50%] justify-end mr-[100px]" htmlFor="">بحث</label>
         </div>
         <div className="flex justify-end mt-[30px] mx-[20px]">
@@ -208,6 +215,7 @@ useEffect(()=>{
 <div className="flex flex-col w-[25%] ml-[80px] items-end">
 <label className=" text-right">الاسم</label>
 <input 
+
 value={name}
 onChange={(e)=>{setName(e.target.value)}}
 className="flex border-[1px] text-right w-[210px] h-[30px]"/>
@@ -336,8 +344,9 @@ disabled={wt}
 </div>
 </div>
 </div>
+)}
 {show && <InvitForm tog={setShow}/>}
-
+{invetations&&invetations.length>0&&(
         <table  className=" flex flex-col w-full border-[1px] border-black" align="ltr">
         <thead className="flex justify-evenly w-full h-[40px] bg-blue-950 text-white ">
     
@@ -365,7 +374,7 @@ text-[25px] text-white bg-blue-800 shadow-black rounded-md shadow-md">الرجا
 )}
 
 </table>
-
+       )}
     </div>)}
     </Container>
     </div>

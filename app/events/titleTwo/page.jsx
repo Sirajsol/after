@@ -12,7 +12,7 @@ import Container from "../../components/Contaner";
 const TitleTwo = () => {
 
     const router=useRouter()
-    const {user,setUser,loaded}=useCntxt()
+    const {user,setUser,loaded,wait,setWait}=useCntxt()
      const[auth,setAuth]=useState(false)
    
      useEffect(()=>{
@@ -95,6 +95,7 @@ const[connectionError,setConnectionError]=useState(false)
                     // setEmptyResult(true)
                 }
                 setWt(false)
+                setWait(false)
                 setMutate(false)
                 // setChairId('')
             }
@@ -113,6 +114,7 @@ const deleteit=async()=>{
         if(res.status=='200'){
             toast.success('تم حذف اللقب')
             setShowDelete(false)
+            setMutate(true)
         }
         else{
             toast.error('لم يتم الحذف')
@@ -134,9 +136,9 @@ const deleteit=async()=>{
      text-red-600 text-[30px] px-[40px] shadow-black shadow-md rounded">ممم حدث خطأ ما . تأكد من جودة الاتصال بالانترنت</div>
 </div>
         )} 
-        {wt&&(<div className="flex justify-center items-center absolute top-[150px] bg-blue-900 w-[400px] h-[80px] left-[500px] text-white
+        {(wt||wait)&&(<div className="flex justify-center items-center absolute top-[150px] bg-blue-900 w-[400px] h-[80px] left-[500px] text-white
       text-[30px] px-[40px] shadow-black shadow-md rounded">الرجاء الإنتظار</div>)}
-         {!connectionError &&auth&& titles&&titles.length>0&&( <div className='flex  w-screen h-screen flex-col  items-end relative mb-[70px]  '
+         {!connectionError &&auth&& ( <div className='flex  w-screen h-screen flex-col  items-end relative mb-[70px]  '
 
     >
         <label htmlFor="" className='flex mr-[50px] text-blue-800 font-[900] text-[25px]'>لوحة التحكم / اللقب 2</label>
@@ -176,8 +178,8 @@ const deleteit=async()=>{
       >لا</button>
   </div>
 </div>)}
-      {show&&(<div className="absolute top-[0px]"><TitleTw setShow={setShow}/></div> )} 
-      {eShow&&(<div className="absolute top-[0px]"><TitleTEdit setEShow={setEShow} tit={selectedTitle} setMutate={setMutate}/></div> )} 
+      {show&&(<div className="absolute top-[0px]"><TitleTw setShow={setShow} setWt={setWt} setMutate={setMutate}/></div> )} 
+      {eShow&&(<div className="absolute top-[0px]"><TitleTEdit setEShow={setEShow} tit={selectedTitle} setMutate={setMutate} /></div> )} 
 
       <table  className=" flex     flex-col  w-full border-[1px] border-black overflow-scroll h-[500px] justify-start" align="ltr">
         <thead className="flex justify-evenly  h-[40px] bg-blue-950 text-white  ">

@@ -32,7 +32,7 @@ export const GET =async(req)=>{
     const whatsapp=searchParams.get('whatsapp')
     const itype=searchParams.get('itype')
     const name=searchParams.get('name')
-    console.log("inside invitation pur name is     ",searchParams.get('name'))
+    console.log("inside invitation get name is     ",searchParams.get('name'))
     const eventId=searchParams.get('eventId')
     const email=searchParams.get('email')
     const affirm=searchParams.get('affirm')

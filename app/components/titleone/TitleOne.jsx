@@ -1,16 +1,21 @@
 "use client"
 import{ useState, useEffect} from 'react'
 import toast from 'react-hot-toast'
-const TitleN = ({setShow}) => {
+const TitleN = ({setShow, setMutate,setWt}) => {
     const[title,setTitle]=useState('')
     const[lang,setLang]=useState('عربي')
     const[onBox,setOnBox]=useState(false)
     const postTl =async()=>{
+        setWt(true)
 const tt=await fetch("/api/titleone",{
     method:'POST',
     body:JSON.stringify({title,lang})
-}).then(res=>{toast.success("تمت إضافة لقب أول")}).catch(error=>{alert("no")})
+}).then(res=>{toast.success("تمت إضافة لقب أول")
+setShow(false)
+setMutate(true)
+}).catch(error=>{alert("error in adding title on1")})
     }
+    setWt(false)
     return <div className="flex w-screen h-screen justify-center items-center">
 <div className=" flex w-full h-full opacity-40 bg-black absolute"
 onClick={()=>{if(!onBox){setShow(false)}}}

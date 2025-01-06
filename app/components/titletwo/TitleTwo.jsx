@@ -1,14 +1,21 @@
 "use client"
 import{ useState, useEffect} from 'react'
-const TitleTw = ({setShow}) => {
+const TitleTw = ({setShow,setWt,setMutate}) => {
     const[title,setTitle]=useState('')
     const[lang,setLang]=useState('عربي')
     const[onBox,setOnBox]=useState(false)
     const postTl =async()=>{
+        setWt(true)
+        setShow(false)
 const tt=await fetch("/api/titletwo",{
     method:'POST',
     body:JSON.stringify({title,lang})
-}).then(res=>{alert("go")}).catch(error=>{alert("no")})
+}).then(res=>{
+    setMutate(true)
+    return res.json()
+}).catch(error=>{alert("no")})
+setWt(false)
+// setMutate(true)
     }
     return <div className="flex w-screen h-screen justify-center items-center">
 <div className=" flex w-full h-full opacity-40 bg-black absolute"

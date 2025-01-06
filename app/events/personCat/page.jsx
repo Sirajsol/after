@@ -12,6 +12,7 @@ const PersonCat = () => {
     const[eShow,setEShow]=useState(false)
     const[cat,setCat]=useState(null)
     const[mutate,setMutate]=useState(false)
+    const[empty,setEmpty]=useState(false)
     const router=useRouter()
     const[connectionError,setConnectionError]=useState()
 // import {useCntxt} from '../../context/context'
@@ -27,7 +28,8 @@ useEffect(()=>{
         setConnectionError(true)    
         // toast.error("خطأ")
     })
-        if(ps){setCats(ps)}
+        if(ps&&ps.length>0){setCats(ps)}
+        else if(ps && ps.length==0){setEmpty(true)}
        setMutate(false) 
        setWt(false)
     }
@@ -59,9 +61,12 @@ if(loaded){
         )} 
         {wt&&(<div className="flex justify-center items-center absolute top-[150px] bg-blue-900 w-[400px] h-[80px] left-[500px] text-white
       text-[30px] px-[40px] shadow-black shadow-md rounded">الرجاء الإنتظار</div>)}
+  {!wt && empty && invetations.length==0 && (
+    <div className="flex absolute top-[300px] justify-center items-center w-full h-[40px]
+     bg-blue-950 text-yellow-500 text-[30px]">! لا توجد  فئات</div>
+)}
 
-
-{!connectionError &&auth&& cats&&cats.length>0&&( <div className='flex w-screen h-screen flex-col mt-[50px]'>
+{!connectionError &&auth&& ( <div className='flex w-screen h-screen flex-col mt-[50px]'>
     
     <div className='flex flex-col  items-end relative mb-[70px]  '
         onClick={()=>{if(!onButton)setShow(false)}}
@@ -91,6 +96,7 @@ if(loaded){
         </div>
   {show&&(<div className=' flex absolute '><AddPerspnCat Showit={setShow}/></div>)} 
   {eShow&&(<div className=' flex absolute '><EditPersonCat setEShow={setEShow} cat={cat} setMutate={setMutate}/></div>)} 
+  {cats&&cats.length>0&&(
     <table  className=" flex flex-col w-full border-[1px] border-black" align="ltr">
 <thead className="flex justify-evenly w-full h-[40px] bg-slate-500">
     
@@ -104,6 +110,7 @@ if(loaded){
     }))}
 
 </table>
+  )}
 </div>)}
 </div>
 }

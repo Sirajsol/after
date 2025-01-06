@@ -23,10 +23,10 @@ export default function RootLayout({ children }) {
       <body>
         <AuthProvider>
          <MProvider>
-          
+        
       <PNav />
       {children}
-     
+
       <Toaster />
         <Footer/>
         </MProvider>

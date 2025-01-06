@@ -13,7 +13,7 @@ const TitleOnePagr = () => {
     const router=useRouter()
     const {user,setUser,loaded}=useCntxt()
      const[auth,setAuth]=useState(false)
-   
+   const[emptyResult,setEmptyResult]=useState(true)
      useEffect(()=>{
  if(loaded){
    if(!user ||!user?.name){
@@ -95,10 +95,12 @@ const[connectionError,setConnectionError]=useState(false)
      text-red-600 text-[30px] px-[40px] shadow-black shadow-md rounded">ممم حدث خطأ ما . تأكد من جودة الاتصال بالانترنت</div>
 </div>
         )} 
+
         {wt&&(<div className="flex justify-center items-center absolute top-[150px] bg-blue-900 w-[400px] h-[80px] left-[500px] text-white
       text-[30px] px-[40px] shadow-black shadow-md rounded">الرجاء الإنتظار</div>)}
 
-             {!connectionError &&auth&& titles&&titles.length>0&&( <div className='flex flex-col w-full h-full  items-end relative mb-[70px]  '
+             {!connectionError &&auth&&( 
+             <div className='flex flex-col w-full h-full  items-end relative mb-[70px]  '
     // onClick={()=>{if(!onButton)setShow(false)}}
     >
         <label htmlFor="" className='flex mr-[50px] text-blue-800 font-[900] text-[25px]'>لوحة التحكم / اللقب 1</label>
@@ -123,6 +125,8 @@ const[connectionError,setConnectionError]=useState(false)
             </div>
             
         </div>
+        {/*  titles&&titles.length>0 &&(*/}
+
 
         {deleting&&(<div className=" flex w-[400px] h-[80px] absolute z-20 left-[550px] top-[100px] bg-blue-950  shadow-black shadow-sm rounded-md text-white justify-center items-center
 ">...جاري الحذف</div>)}
@@ -140,7 +144,7 @@ const[connectionError,setConnectionError]=useState(false)
   </div>
 </div>)}
 
-        {show&&(<div className="absolute top-[0px]"><TitleN setShow={setShow}/></div> )} 
+        {show&&(<div className="absolute top-[0px]"><TitleN setShow={setShow} setMutate={setMutate} setWt={setWt}/></div> )} 
         {eShow&&(<div className="absolute top-[0px]"><TitleNEdit setEShow={setEShow} tit={selectedTitle} setMutate={setMutate}/></div> )} 
         <table  className=" flex     flex-col mt-[20px] w-[94%] mx-auto  border-[1px] overflow-scroll  justify-start" align="ltr">
         <thead className="flex justify-evenly  h-[40px] bg-blue-950 text-white  ">

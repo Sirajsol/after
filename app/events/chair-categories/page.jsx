@@ -6,11 +6,12 @@ import { useRouter } from 'next/navigation';
 import EditChairCategory from '../../components/EditChairCategory'
 import ChairCategoryRow from '../../components/ChairCategoryRow'
 import Container from '../../components/Contaner';
-
+import { toast } from 'react-hot-toast';
 const ChairCategories = () => {
 
     // import{useCntxt} from '../../context/context'
     const {user,setUser,loaded}=useCntxt()
+    const {wait,setWait}=useCntxt()
     const[auth,setAuth]=useState(false)
     const[connectionError,setConnectionError]=useState(false)
 
@@ -51,9 +52,10 @@ const ChairCategories = () => {
                     setConnectionError(true)
                     toast.error("خطأ")})
                 
-                if(ps.length==0){setEmpty(true)}
+                if(ps&&ps.length==0){setEmpty(true)}
             if(ps){setCategories(ps)}
             setWt(false)
+            setWait(false)
             setMutate(false)
         }
         pls()
@@ -70,7 +72,7 @@ const ChairCategories = () => {
     }  
     return   <div className="  h-screen w-screen">
         <Container>
-        {wt&&(<div className="flex ">
+        {(wait||wt)&&(<div className="flex absolute z-10">
         <div className=" flex w-screen h-screen bg-black opacity-30"></div>
         <div className="flex w-[500px] h-[100px] justify-center items-center left-[550px] top-[150px]
          bg-blue-950 text-white absolute rounded-md shadow-md shadow-white">الرجاء الانتظار , جاري تحميل البيانات</div>

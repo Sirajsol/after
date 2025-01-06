@@ -8,6 +8,7 @@ export const Mcotext=createContext();
 export const MProvider=({children})=>{
     const[user,setUser]=useState(null)
     const [loaded,setLoaded]=useState(false)
+    const[wait,setWait]=useState(false)
 useEffect(()=>{
     const u=localStorage.getItem('user')
     if(u){
@@ -33,7 +34,7 @@ useEffect(()=>{
     
 },[user])
    
-    return <Mcotext.Provider value={{user,setUser,loaded}}>
+    return <Mcotext.Provider value={{user,setUser,loaded,wait,setWait}}>
       
 {children}
 

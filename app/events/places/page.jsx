@@ -18,9 +18,11 @@ const[mutate,setMutate]=useState(false)
     useEffect(()=>{
         setWait(true)
         const pls=async()=>{
-            const ps=await fetch('/api/place').then(res=>res.json()).catch((error)=>{toast.error("خطأ")}).finally(setWait(false))
-            if(ps){setPlaces(ps)}
             
+            const ps=await fetch('/api/place').then(res=>res.json())
+            .catch((error)=>{toast.error("خطأ")})
+            if(ps){setPlaces(ps)}
+            setWait(false)
         }
         pls()
     },[])
@@ -37,6 +39,8 @@ const[mutate,setMutate]=useState(false)
         
         >إضافة</button>
         <div className={`${show?"flex":"hidden"} w-full h-screen absolute`}> <AddPlace setShow={setShow}/></div>
+        {wait&&(<div className="flex justify-center items-center absolute top-[150px] bg-blue-900 w-[400px] h-[80px] left-[500px] text-white
+      text-[30px] px-[40px] shadow-black shadow-md rounded">الرجاء الإنتظار</div>)}
         {eShow &&(<EditPlace setEShow={setEShow} place={place} setMutate={setMutate}/>)}
         <table  className=" flex flex-col w-[94%] mx-auto border-[1px] border-black mt-[30px]" align="ltr">
 {/* <thead className="flex  w-full h-[40px] bg-slate-500">
@@ -71,7 +75,7 @@ const[mutate,setMutate]=useState(false)
     </tr>)
 
 })}
-{wait&& <div>wait</div>}
+{/* {wait&& <div>wait</div>} */}
     {/* <tr>
     
     <TableRow id={1} name={"data"} date={"12-2-2023"} time={"10:34"} sentNumer={5} generalNumber={8} />

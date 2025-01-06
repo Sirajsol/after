@@ -17,6 +17,7 @@ catch(error){
 }
 
 export const GET=async(req)=>{
+    console.log('ha ha ha')
     // const{name,password}=await req.json()
     const ur=new URL(req.url)
     // console.log(ur.searchParams)
@@ -24,13 +25,14 @@ export const GET=async(req)=>{
 // let{name}=searchPparams.get('name')
 const name=searchParams.get('name')
 const password=searchParams.get('password')
-//  console.log("search  params is    ",searchParams.get('placeId'))
+ console.log("search  params is    ",name,password)
     try{
        
         const us=await prisma.mUser.findMany({
             where:{
-                ...(name && {name:name}),
-                ...(password && {password:password}),
+                ...({name:name}),
+                ...( {password:password}),
+                // ...(password && {password:password}),
                 // password:password
                 
                 
@@ -39,13 +41,19 @@ const password=searchParams.get('password')
         // if(name=='siraj'){
         //     const us="hi"
         //     return new NextResponse(JSON.stringify(us,{status:'200'}))
+        console.log('fickin res in log fet routw')
         // }
-       if(us) {return new NextResponse(JSON.stringify(us,{status:'200'}))}
-       
+    //    if(us) {
+        
+    //     return new NextResponse(JSON.stringify(us,{status:'200'}))}
+        return new NextResponse(JSON.stringify(us,{status:'200'}))
 
     }
     catch(error){
-        return  new NextResponse(JSON.stringify({},{status:'404'}))
+        console.log('inside catch get user log fet routw')
+        // return  new NextResponse(JSON.stringify("fuckkkk",{status:'404'}))
+        // return new NextResponse(JSON.stringify(error,{status:'400'}))
+        
     }
    
 }

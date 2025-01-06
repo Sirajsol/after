@@ -81,7 +81,7 @@ pls()
         }).then(res=>{
             if(res.ok)
           {
-            toast.success("yeaaaaaa")
+            toast.success("تم ارسال الدعوة")
             return res.json()} 
         }
             ).then((d)=>{
@@ -101,8 +101,8 @@ pls()
         .catch((error)=>{toast.error("error")
         console.log("error------------------------",error)
     })
-   
-        if(ev){toast.success("success")
+    if(ev){
+        // toast.success("success")
         if(isEmail) {sendit(email,msg,`/invitation-confirm/${ev.id}`)}
         console.log(ev)}
     //   else  if(!ev){toast.error("error")

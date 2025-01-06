@@ -1,6 +1,7 @@
 
 import { NextResponse } from "next/server"
 import prisma from '../../../lib/prismadb'
+import { error } from "console"
 export  const GET=async(req)=>{
     console.log('find many events')
 // const title=await req.json()
@@ -37,7 +38,9 @@ export  const GET=async(req)=>{
         //     }
         // })
         console.log("events is",events)
+        if(events&& count)
     return new NextResponse(JSON.stringify({events,count},{status:'200'}))
+    throw error
     }
     catch(error){
         console.log("error is",error)

@@ -4,7 +4,7 @@ import { TiDelete } from "react-icons/ti";
 import { MdModeEditOutline } from "react-icons/md";
 import { Checkbox } from "@mui/material"
 import { toast } from "react-hot-toast";
-const InvitationSentRow = ({inv,setInvId,setEShow,setIEShow}) => {
+const InvitationSentRow = ({inv,setInvId,setEShow,setIEShow,setMutate}) => {
 
     const[confirm,setConfirm]=useState(false)
     const[showDelete,setShowDelete]=useState(false)

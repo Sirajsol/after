@@ -94,7 +94,7 @@ try{
 }
 catch(error){
     console.log("error is :",error)
-    return new NextResponse(JSON.stringify(error,{status:400}))
+    return new NextResponse(null)
 }
 }
 

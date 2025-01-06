@@ -6,15 +6,17 @@ import { useRouter } from 'next/navigation';
 import {getCurrentUser} from '../../actions/getUser'
 import {Mcotext} from '../context/context'
 import { useCntxt } from "../context/context";
-const Login = ({setShow}) => {
+
+const Login = () => {
     
 const[name,setName]=useState('')
 const[password,setPassword]=useState('')
-
+const[wt,setWt]=useState(false)
+const[badConnection,setBadConnection]=useState(false)
 const router=useRouter()
 // const {user}=useCntxt()
 // if(user){router.push("/add-users")}
-const {user,setUser,loaded}=useCntxt()
+const {user,setUser,loaded,setWait,wait}=useCntxt()
 console.log('the user is ',user)
     
   
@@ -54,6 +56,8 @@ const data={name:name,password:password}
                                 toast.error(callback.error) //will be the message from autorize function in [...nextauth]
                             }
 
+    }).catch(Error=>{
+        console.log('fuck')
     })
 }
 
@@ -61,17 +65,32 @@ const data={name:name,password:password}
 
 
 const log=async()=>{
-
+setWt(true)
+setBadConnection(false)
   toast('الرجاء الانتظار')
-   console.log("fuck  log")
+   console.log("try  log")
     // const res=await fetch(`/api/user?name=${name}&password=${password}`,{
         
     //     // body:JSON.stringify({name,password})
     // })
-    const ps=await fetch(`/api/user?name=${name}&password=${password}`).then(res=>res.json()).catch((error)=>{
-            toast.error("خطأ")
+    const ps=await fetch(`/api/user?name=${name}&password=${password}`).then(res=>{
+        if(!res.ok){  toast.error(" خطأ اتصال")}
+        setWt(false)
+        //if you say  console.log("res is ",res.json()) this will break the code cause res is not fullfill yet!!!
+    //  
+        return res.json()}).catch(Error=>{
+            setBadConnection(true)
+            setWt(false)
+            // alert('errrrrrrr')
+            toast.error(" خطأ اتصال")
         })
-        if(ps.length>0){console.log("many users",ps)
+            console.log("res is ",ps)
+        if(ps==""){
+            console.log("fuck  log")
+                toast.error("خطأ")
+            }
+        
+        if(ps&&ps.length>0){console.log("many users",ps)
             // toast.success("yeh")
             setUser(ps[0])
             localStorage.setItem('user',JSON.stringify(ps[0]))
@@ -79,7 +98,7 @@ if(ps[0]?.role=='مدير'){ router.push('/add-users')}
            else if(ps[0]?.role=='موظف'){ router.push('/add-users')}
             console.log('done sitting ',ps[0].role)
         }
-    if(ps.length==0){
+    if(ps&&ps.length==0){
         console.log("no users")
         toast.error('مستخدم عير موجود  ')
     }
@@ -95,12 +114,12 @@ const j=async()=>{
 }
 
     return <div className="flex justify-center items-start
-    w-full h-full bg-slate-500  ">
+  sm:w-full h-full bg-slate-500  ">
         <div className="flex justify-center items-start top-[0px] left-[0px]
-    w-full h-screen bg-black opacity-35 absolute border-[2px] "
+     w-full h-screen bg-black opacity-35 absolute border-[2px] "
     // onClick={()=>{setShow(false)}}
     ></div>
-    <div className="hidden sm:flex w-[40%] mx-auto flex-col top-[80px] border-[1px] left-[450px]
+    <div className=" flex   w-[46%] max-sm:min-w-[2740px] left-[10%]    sm:w-[45%] lg:w-[30%] mx-auto flex-col top-[80px] border-[1px] sm:left-[35%] 
      bg-blue-950 border-yellow-500 p-[40px] rounded shadow-white shadow-lg 
      absolute z-40">
 <div className="flex justify-between my-[30px]">
@@ -108,31 +127,34 @@ const j=async()=>{
     <input type="text" id="name"
     value={name}
     onChange={(e)=>{setName(e.target.value)}}
-    className="flex outline-none border-b-[1px] border-yellow-500 text-[20px] text-white rounded-sm bg-transparent text-right px-[5px] "
+    className="w-[55%] text-[10px] sm:text-[20px] flex outline-none border-b-[1px] border-yellow-500  text-white rounded-sm bg-transparent text-right px-[5px] "
     />
     <label 
     htmlFor="name"
-    className=" text-right text-[20px] border-b-[1px] w-[170px] border-yellow-500 text-white ">اسم المستخدم</label>
+    className="  text-[10px] w-[40%] text-right sm:text-[20px] border-b-[1px] sm:w-[170px] border-yellow-500 text-white ">اسم المستخدم</label>
 </div>
-
+{wt&&<div className="flex  justify-center items-center absolute top-[150px] bg-blue-900 w-[400px] h-[80px] left-[200px] text-white
+    text-[30px] px-[40px] shadow-black shadow-md rounded z-10">الرجاء الإنتظار</div>}
+{badConnection&&<div className=" flex absolute h-[50px] w-[300px] justify-center  bg-slate-600">bad connection...</div>}
 <div className="flex justify-between my-[30px]">
     
     <input type="password" id="pass"
-        className="flex outline-none border-b-[1px] border-yellow-500 text-[20px] text-white rounded-sm bg-transparent text-right px-[5px] "
+        className="text-[10px] sm:text-[20px] w-[55%] flex outline-none border-b-[1px] border-yellow-500  text-white rounded-sm bg-transparent text-right px-[5px] "
         value={password}
         onChange={(e)=>{setPassword(e.target.value)}}
     
     />
    <label 
    htmlFor="pass"
-   className=" text-right text-[20px] w-[170px] border-b-[1px] border-yellow-500 text-white ">كلمة المرور</label>
+   className="text-[10px] w-[40%] text-right sm:text-[20px] sm:w-[170px] border-b-[1px] border-yellow-500 text-white ">كلمة المرور</label>
 </div>
 
 
-<div className=" flex justify-end "><button className=" flex w-[80px] py-[5px] rounded-sm
+<div className=" flex justify-end "><button className="text-[10px] sm:text-[20px] flex w-[80px] py-[5px] rounded-sm
 shadow-sm shadow-white hover:shadow-md hover:shadow-white text-white bg-orange-600 justify-center items-center"
 onClick={()=>{
    log()
+   setWait(true)
 //    j()
     }}
 >دخول</button></div>
