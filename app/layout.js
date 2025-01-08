@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
 
       {/* <body className={inter.className}> */}
-      <body>
+      <body className='flex flex-col w-full items-center  '>
         <AuthProvider>
          <MProvider>
         

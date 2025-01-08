@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import EventCard from './eventcard/EventCard'
  import Link from "next/link"
  import { useCntxt } from '../context/context'
+import Container from './Contaner'
 // export const BASE_API_URL=process.env.NEXT_PUBLIC_BASE_API_URL
 const AllC=()=> {
     const [wt,setWt]=useState(false)
@@ -38,7 +39,8 @@ useEffect(()=>{
     },[])
     
   return (
-   <>
+    <Container>
+   <div className='flex w-full flex-wrap   '>
    {(wt||wait)&&(<div className="flex  justify-center items-center absolute top-[150px] bg-blue-900 w-[400px] h-[80px] left-[600px] text-white
     text-[30px] px-[40px] shadow-black shadow-md rounded z-10">الرجاء الإنتظار</div>)} 
          {evts&&evts.length>0&&evts.map(d=>{
@@ -55,7 +57,9 @@ useEffect(()=>{
         }
   {/* {evts[0].title} */}
 
-</>)  
+</div>
+</Container>
+)  
     }
 
   

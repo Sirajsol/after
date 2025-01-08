@@ -115,11 +115,11 @@ const j=async()=>{
 
     return <div className="flex justify-center items-start
   sm:w-full h-full bg-slate-500  ">
-        <div className="flex justify-center items-start top-[0px] left-[0px]
-     w-full h-screen bg-black opacity-35 absolute border-[2px] "
+        <div className="flex justify-center items-start top-[60px] left-[0px] h-screen 
+     w-full  bg-black opacity-35 absolute border-[2px] "
     // onClick={()=>{setShow(false)}}
     ></div>
-    <div className=" flex   w-[46%] max-sm:min-w-[2740px] left-[10%]    sm:w-[45%] lg:w-[30%] mx-auto flex-col top-[80px] border-[1px] sm:left-[35%] 
+    <div className=" flex   w-[46%] max-sm:min-w-[240px] left-[10%]    sm:w-[45%] lg:w-[30%] mx-auto flex-col top-[80px] border-[1px] sm:left-[35%] 
      bg-blue-950 border-yellow-500 p-[40px] rounded shadow-white shadow-lg 
      absolute z-40">
 <div className="flex justify-between my-[30px]">

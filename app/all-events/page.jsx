@@ -52,7 +52,7 @@ const data=await getm()
 
 
     return<div className="min-h-[700px]">
-     <Container>
+    
        <NavBar/>
         {/* <div>{BASE_API_URL}</div> */}
     {/* <div className=" flex absolute  mt-[40px] justify-center items-center flex-wrap w-[80%] mx-auto">
@@ -76,7 +76,7 @@ const data=await getm()
     <div className=" flex absolute  mt-[40px] justify-center items-center flex-wrap w-[80%] mx-auto">
     <AllCards/>
     </div>
-    </Container>
+  
     </div>
 }
  
