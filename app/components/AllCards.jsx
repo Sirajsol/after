@@ -4,6 +4,7 @@ import EventCard from './eventcard/EventCard'
  import Link from "next/link"
  import { useCntxt } from '../context/context'
 import Container from './Contaner'
+import Load from './load'
 // export const BASE_API_URL=process.env.NEXT_PUBLIC_BASE_API_URL
 const AllC=()=> {
     const [wt,setWt]=useState(false)
@@ -40,9 +41,10 @@ useEffect(()=>{
     
   return (
     <Container>
-   <div className='flex w-full flex-wrap   '>
-   {(wt||wait)&&(<div className="flex  justify-center items-center absolute top-[150px] bg-blue-900 w-[400px] h-[80px] left-[600px] text-white
-    text-[30px] px-[40px] shadow-black shadow-md rounded z-10">الرجاء الإنتظار</div>)} 
+   <div className='flex w-full flex-wrap  justify-center ml-[10%]  h-full overflow-scroll border-none outline-none bg-transparent'>
+   {/* {(wt||wait)&&(<div className="flex  justify-center items-center absolute top-[150px] bg-blue-900 w-[400px] h-[80px] left-[600px] text-white
+    text-[30px] px-[40px] shadow-black shadow-md rounded z-10">الرجاء الإنتظار</div>)}  */}
+    {(wt||wait)&&( <Load/> )}
          {evts&&evts.length>0&&evts.map(d=>{
             return <Link href={`/all-events/${d.id}`} key={d.id}
             onClick={()=>{setWt(true)}}
@@ -58,7 +60,7 @@ useEffect(()=>{
   {/* {evts[0].title} */}
 
 </div>
-</Container>
+ </Container>
 )  
     }
 

@@ -8,6 +8,7 @@ import AuthProvider from'../providers/AuthProvider'
 import { MProvider } from './context/context'
 import MYProvider from '../providers/mprovider'
 import Container from './components/Contaner'
+import Load from './components/load'
 
 
 export const metadata = {
@@ -20,15 +21,17 @@ export default function RootLayout({ children }) {
     <html lang="en">
 
       {/* <body className={inter.className}> */}
-      <body className='flex flex-col w-full items-center  '>
+      <body className=" w-screen h-screen flex flex-col  ">
         <AuthProvider>
          <MProvider>
-        
+         {/* <Container> */}
       <PNav />
+      
       {children}
-
+{/* <Load/> */}
       <Toaster />
         <Footer/>
+        {/* </Container> */}
         </MProvider>
         </AuthProvider>
         </body>

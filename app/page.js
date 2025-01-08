@@ -104,7 +104,7 @@ export default async function Home() {
   return <Container>
     <Welcome/>
       {/* <Login /> */}
-  <div className=" flex justify-center items-center flex-wrap w-[80%] mx-auto overflow-scroll">
+  <div className=" flex justify-center items-center flex-wrap w-[80%] left-[10%] mx-auto ">
       
       {data?.length>0&&(
           data.map(d=>{

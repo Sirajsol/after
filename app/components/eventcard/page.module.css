@@ -48,7 +48,7 @@
 @media screen and (max-width:520px) {
     .mainContainer{
       
-        width: 280px;
+        width: 200px;
         height: 300px;
        
     }
@@ -64,8 +64,8 @@
 @media screen and (max-width:780px) {
     .mainContainer{
       
-        width: 350px;
-        height: 330px;
+        width: 250px;
+        height: 300px;
        
     }
     .title{

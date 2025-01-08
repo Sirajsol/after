@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import {getCurrentUser} from '../../actions/getUser'
 import {Mcotext} from '../context/context'
 import { useCntxt } from "../context/context";
+import Load from "./load";
 
 const Login = () => {
     
@@ -133,8 +134,9 @@ const j=async()=>{
     htmlFor="name"
     className="  text-[10px] w-[40%] text-right sm:text-[20px] border-b-[1px] sm:w-[170px] border-yellow-500 text-white ">اسم المستخدم</label>
 </div>
-{wt&&<div className="flex  justify-center items-center absolute top-[150px] bg-blue-900 w-[400px] h-[80px] left-[200px] text-white
-    text-[30px] px-[40px] shadow-black shadow-md rounded z-10">الرجاء الإنتظار</div>}
+{/* {wt&&<div className="flex  justify-center items-center absolute top-[150px] bg-blue-900 w-[400px] h-[80px] left-[200px] text-white
+    text-[30px] px-[40px] shadow-black shadow-md rounded z-10">الرجاء الإنتظار</div>} */}
+    {wt&&<Load/>}
 {badConnection&&<div className=" flex absolute h-[50px] w-[300px] justify-center  bg-slate-600">bad connection...</div>}
 <div className="flex justify-between my-[30px]">
     
