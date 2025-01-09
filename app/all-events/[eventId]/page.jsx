@@ -12,7 +12,7 @@ export async function generateMetadata({ params, searchParams }, parent) {
     // fetch data
     const{eventId}=params
     const event = await fetch(`${BASE_API_URL}/api/event/${eventId}`).then((res) => res.json())
-   .catch(error=>{console.log('connectuin error')})
+   .catch(error=>{console.log('connectoin error in [eventid] page')})
     // optionally access and extend (rather than replace) parent metadata
     
    

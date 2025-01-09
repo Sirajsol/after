@@ -51,7 +51,7 @@ const AllEvents = async() => {
 const data=await getm()
 
 
-    return<div className="min-h-[700px]">
+    return<div className="min-h-[700px] w-screen">
     
        <NavBar/>
         {/* <div>{BASE_API_URL}</div> */}
@@ -73,7 +73,7 @@ const data=await getm()
     </div>
        )}
     </div> */}
-    <div className=" flex absolute  mt-[40px] justify-center items-center flex-wrap w-[80%] mx-auto">
+    <div className=" flex absolute  mt-[40px] justify-center items-center flex-wrap w-screen mx-auto">
     <AllCards/>
     </div>
   

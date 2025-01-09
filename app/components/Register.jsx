@@ -66,7 +66,7 @@ const Register = ({eventid,setShow}) => {
         onChange={(e)=>{setTitle(e.target.value)}}
         >
             <option>الرجاء اختيار اللقب</option>
-            {titles.map(tit=>{
+            {titles&& titles.length>0&& titles.map(tit=>{
                 return <option key={tit.id} value={tit.title}>{tit.title}</option>
             })}
         </select>
