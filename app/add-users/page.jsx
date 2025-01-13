@@ -194,7 +194,7 @@ if(loaded){
 
 
                 <div className=" flex justify-evenly sm:w-[40%] sm:mr-[160px]">
-<div className=" flex justify-between w-[200px] bg-blue-400 h-[30px] sm:mt-[40px] items-end flex-row-reverse sm:mr-[160px]">
+<div className=" flex justify-between w-[200px] h-[30px] sm:mt-[40px] items-end flex-row-reverse sm:mr-[160px]">
     <label>عرض</label>
     <input
     className="flex w-[60px] mx-[10px] justify-center h-[30px] items-center outline-none border-b-[1px] border-yellow-500 text-center"
