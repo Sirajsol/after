@@ -140,10 +140,10 @@ if(loaded){
     return <div>
 <Container>
    
-{deleting&&(<div className=" flex w-[400px] h-[80px] absolute z-20 left-[550px] top-[100px] bg-blue-950  shadow-black shadow-sm rounded-md text-white justify-center items-center
+{deleting&&(<div className=" flex w-[60%] left-[20%] sm:w-[400px] h-[80px] absolute z-20 sm:left-[550px] top-[100px] bg-blue-950  shadow-black shadow-sm rounded-md text-white justify-center items-center
 ">...جاري الحذف</div>)}
 
-{showDelete&&(<div className="flex justify-center flex-col absolute left-[600px] rounded-md p-[30px] top-[200px]  bg-blue-950 z-20 ">
+{showDelete&&(<div className="flex justify-center flex-col absolute left-[600px] rounded-md p-[30px]sm:top-[200px]  bg-blue-950 z-20 ">
   <div className=" flex text-white text-[25px] mb-[30px] justify-center items-center">هل أنت متأكد انك تريد الحذف؟</div>
   <div className="flex justify-between items-center">
       <button className="flex w-[70px] bg-red-700 text-white rounded-sm m-[10px] justify-center items-center  hover:shadow-white hover:shadow-md"
@@ -171,10 +171,10 @@ if(loaded){
 <div><NavBar/></div> 
     {user && auth&&(<div  className='flex flex-col mt-[30px] w-full  '>
     <div  className='flex flex-col mt-[30px] w-full items-end pb-[10px]  border-b-[1px] border-yellow-400 '>
-            <label htmlFor="" className='flex mr-[50px] text-blue-800 font-[900] text-[25px]'>التحكم/ إضافة مستخدمين</label>
+            <label htmlFor="" className='flex mr-[50px] text-blue-800 font-[900] text-[15px] sm:text-[25px]'>التحكم/ إضافة مستخدمين</label>
            <div className='flex h-[30px]'></div>
-           <button className='flex bg-orange-600 w-[80px] py-[5px] items-center justify-center rounded-md
-            shadow-black shadow-sm hover:shadow-md hover:shadow-black hover:text-blue-400 text-white font-[700] text-[20px] mr-[50px]'
+           <button className='flex bg-orange-600 w-[50px] text-[15px] sm:w-[80px] py-[5px]  items-center justify-center rounded-md
+            shadow-black shadow-sm hover:shadow-md hover:shadow-black hover:text-blue-400 text-white font-[700] sm:text-[20px] mr-[50px]'
            onClick={()=>{setShow(true)}}
           
            
@@ -189,15 +189,19 @@ if(loaded){
             {eShow && (<div><EditUser setShow={setEShow} userr={selectedUser} /></div> )} 
             </div>
 
-            <div className='flex flex-col'>
-                <div className=' flex justify-end w-full'>
 
 
-                <div className=" flex justify-evenly sm:w-[40%] sm:mr-[160px]">
-<div className=" flex justify-between w-[200px] h-[30px] sm:mt-[40px] items-end flex-row-reverse sm:mr-[160px]">
-    <label>عرض</label>
+
+
+            <div className='flex flex-col w-full'>
+                <div className=' flex flex-col sm:flex-row justify-end w-full '>
+
+
+                <div className=" flex  sm:justify-center ml-[5%] w-[95%] px-[20px] mr-[40px]  justify-end sm:w-[90%]  overflow-hidden  ">
+<div className=" flex justify-between w-[50%] mr-[50px] sm:w[80%]  h-[30px] mt-[20px] sm:mt-[40px] items-end flex-row-reverse  ">
+    <label className="flex w-[50px] ">عرض</label>
     <input
-    className="flex w-[60px] mx-[10px] justify-center h-[30px] items-center outline-none border-b-[1px] border-yellow-500 text-center"
+    className="flex w-[40px] sm:w-[60px] mx-[10px] justify-center h-[30px] items-center outline-none border-b-[1px]  text-center"
     type="number" value={entriesPerPage} onChange={(e)=>{
         setEntriesPerPage(e.target.value)
         setPage(1)
@@ -205,8 +209,8 @@ if(loaded){
     <label>سجلات</label>
 </div>
 
-<div className="flex justify-between items-center mt-[20px]">
-<button className="glex w-[70px] h-[30px] justify-center items-center bg-orange-700 text-white rounded-md shadow-black shadow-md"
+<div className="flex w-[40%] justify-between items-center mt-[20px] br-[5px] ">
+<button className="flex sm:w-[70px] h-[30px] justify-center items-center bg-orange-700 text-white rounded-md shadow-black shadow-md"
 onClick={()=>{
     if(page-1>0){
         setPage(prev=>prev-1)
@@ -215,8 +219,8 @@ onClick={()=>{
     }}
     disabled={wt}
 >السابق</button>
-<input type="text" disabled={true} value={page+"/"+Math.ceil(total/entriesPerPage)}  className="flex w-[60px] mx-[10px] justify-center h-[30px] items-center outline-none border-b-[1px] border-yellow-500 text-center"/>
-<button className="glex w-[70px]  h-[30px] justify-center items-center bg-orange-700 text-white rounded-md  shadow-black shadow-md"
+<input type="text" disabled={true} value={page+"/"+Math.ceil(total/entriesPerPage)}  className="flex w-[30px] sm:w-[60px] mx-[10px] justify-center h-[30px] items-center outline-none border-b-[1px] border-yellow-500 text-center"/>
+<button className="flex sm:w-[70px]  h-[30px] justify-center items-center bg-orange-700 text-white rounded-md  shadow-black shadow-md"
 onClick={()=>{
     if((entriesPerPage*page)+1<=total){
     setPage(prev=>prev+1)
@@ -230,13 +234,14 @@ disabled={wt}
 </div>
                     
                     
-                    <div className="flex flex-col w-[20%] items-center justify-evenly mt-[20px]">
-                    <div className=' flex justify-between sm:w-[25%] w-full items-center mt-[20px] flex-row-reverse sm:mr-[50px] '>
-                        <label className="flex ml-[20px] items-end text-blue-900 w-[100px] mt-[15px]">بحث عن</label>
+                    <div className="flex   items-center justify-end  sm:w-[30%] w-[70%] ml-[20%]
+                    mt-[20px]  border-[1px]">
+                    <div className=' flex  justify-evenly w-full  items-center mt-[20px] flex-row-reverse  '>
+                        <label className="flex text-[10px] sm:text-[20px]  items-end text-blue-900 w-[70px] mt-[5px] ">بحث عن</label>
                         <input type='text'
                         value={serchName}
                         onChange={(e)=>{setSearchName(e.target.value)}}
-                        className='flex justify-center items-center w-[100px] text-right py-[1px] text-[24px] pr-[5px] rounded-sm bg-blue-950 text-white '
+                        className='flex justify-center w-[40%] items-center sm:w-[100px] text-right py-[1px] text-[24px] pr-[5px] rounded-sm bg-blue-950 text-white '
                         ></input>
                     </div>
                     
@@ -251,7 +256,7 @@ disabled={wt}
                          bg-blue-950 text-yellow-500 rounded-md mr-[130px] mt-[30px]">ابحث</button>
                     </div>
                 <div className=' flex w-full mt-[50px]'>
-                <table  className=" flex flex-col w-full border-[1px] border-black" align="ltr">
+                <table  className=" flex flex-col w-full " align="ltr">
         <thead className="flex justify-evenly w-full h-[40px] bg-blue-950 text-white ">
     
    
