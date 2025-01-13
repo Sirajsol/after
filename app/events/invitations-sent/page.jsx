@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation"
 // import Container from "../../components/Contaner"
 import  Container from '@/app/components/Contaner'
 import {toast} from 'react-hot-toast'
+import Load from "@/app/components/load"
 const Invitations = () => {
 const[wt,setWt]=useState(false)
 
@@ -136,8 +137,11 @@ const[empty,setEmpty]=useState(false)
     <div className="flex absolute top-[300px] justify-center items-center w-full h-[40px]
      bg-blue-950 text-yellow-500 text-[30px]">! لا توجد  دعوات</div>
 )}
-        {wt&&(<div className="flex justify-center items-center absolute top-[150px] bg-blue-900 w-[400px] h-[80px] left-[500px] text-white
-      text-[30px] px-[40px] shadow-black shadow-md rounded">الرجاء الإنتظار</div>)}
+        {/* {wt&&(<div className="flex justify-center items-center absolute top-[150px] bg-blue-900 w-[400px] h-[80px] left-[500px] text-white
+      text-[30px] px-[40px] shadow-black shadow-md rounded">الرجاء الإنتظار</div>)} */}
+
+{wt&&(<Load/>)}
+
            {!connectionError &&auth&&(  <div className='flex flex-col h-screen w-screen items-end relative mb-[70px]  '
     // onClick={()=>{if(!onButton)setShow(false)}}
     >

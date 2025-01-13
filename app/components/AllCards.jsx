@@ -41,7 +41,7 @@ useEffect(()=>{
     
   return (
     <Container>
-   <div className='flex w-full flex-wrap  justify-center ml-[10%]  h-full overflow-scroll border-none outline-none bg-transparent'>
+   <div className='flex w-[90%] left-[5%] flex-wrap  justify-center ml-[10%]  h-full overflow-scroll border-none outline-none bg-transparent'>
    {/* {(wt||wait)&&(<div className="flex  justify-center items-center absolute top-[150px] bg-blue-900 w-[400px] h-[80px] left-[600px] text-white
     text-[30px] px-[40px] shadow-black shadow-md rounded z-10">الرجاء الإنتظار</div>)}  */}
     {(wt||wait)&&( <Load/> )}
@@ -57,9 +57,13 @@ useEffect(()=>{
        
         )
         }
+        {!wt&&!wait&&!evts&&(<div className='flex w-[60%] left-[20%] bg-blue-900 h-[80px]
+         rounded-[15px] text-center
+          text-blue-300 justify-center items-center text-[25px] shadow-black shadow-lg '>ممممم يبدو انا هنالك مشكلة بالاتصال</div>)}
   {/* {evts[0].title} */}
 
 </div>
+
  </Container>
 )  
     }

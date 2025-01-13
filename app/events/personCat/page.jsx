@@ -5,6 +5,7 @@ import {useCntxt} from '../../context/context'
 import EditPersonCat from '../../components/EditPersonCat';
 import PersonCatTableRow from '../../components/PersonCatTableRow';
 import { useRouter } from 'next/navigation';
+import Load from '@/app/components/load';
 const PersonCat = () => {
 
     const[wt,setWt]=useState(false)
@@ -59,8 +60,10 @@ if(loaded){
      text-red-600 text-[30px] px-[40px] shadow-black shadow-md rounded">ممم حدث خطأ ما . تأكد من جودة الاتصال بالانترنت</div>
 </div>
         )} 
-        {wt&&(<div className="flex justify-center items-center absolute top-[150px] bg-blue-900 w-[400px] h-[80px] left-[500px] text-white
-      text-[30px] px-[40px] shadow-black shadow-md rounded">الرجاء الإنتظار</div>)}
+        {/* {wt&&(<div className="flex justify-center items-center absolute top-[150px] bg-blue-900 w-[400px] h-[80px] left-[500px] text-white
+      text-[30px] px-[40px] shadow-black shadow-md rounded">الرجاء الإنتظار</div>)} */}
+ {wt&&(<Load/>)}
+
   {!wt && empty && invetations.length==0 && (
     <div className="flex absolute top-[300px] justify-center items-center w-full h-[40px]
      bg-blue-950 text-yellow-500 text-[30px]">! لا توجد  فئات</div>

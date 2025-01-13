@@ -137,7 +137,8 @@ const j=async()=>{
 {/* {wt&&<div className="flex  justify-center items-center absolute top-[150px] bg-blue-900 w-[400px] h-[80px] left-[200px] text-white
     text-[30px] px-[40px] shadow-black shadow-md rounded z-10">الرجاء الإنتظار</div>} */}
     {wt&&<Load/>}
-{badConnection&&<div className=" flex absolute h-[50px] w-[300px] justify-center  bg-slate-600">bad connection...</div>}
+{badConnection&&<div className=" flex absolute h-[50px] w-[100%] left-[20%]
+ justify-center  bg-blue-900 text-white text-[20px]">bad connection...</div>}
 <div className="flex justify-between my-[30px]">
     
     <input type="password" id="pass"

@@ -5,7 +5,7 @@ import { useCntxt } from "../context/context";
 const ShowRegister = ({id}) => {
     const [show,setShow]=useState(false)
 const{setWait}=useCntxt()
-    return <div className='flex w-[100%] justify-end'>
+    return <div className='flex w-[100%] justify-end py-[20px]'>
     <button 
     onClick={()=>{
         // alert('fuck')

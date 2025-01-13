@@ -167,7 +167,7 @@ if(loaded){
       text-[30px] px-[40px] shadow-black shadow-md rounded">الرجاء الإنتظار</div>)}
 
    
-{!connectionError &&auth&& ( <div className=" flex flex-col h-screen w-screen items-end relative">
+{!connectionError &&auth&& ( <div className=" flex flex-col h-screen w-screen mt-[150px] items-end relative">
 <div><NavBar/></div> 
     {user && auth&&(<div  className='flex flex-col mt-[30px] w-full  '>
     <div  className='flex flex-col mt-[30px] w-full items-end pb-[10px]  border-b-[1px] border-yellow-400 '>
@@ -193,8 +193,8 @@ if(loaded){
                 <div className=' flex justify-end w-full'>
 
 
-                <div className=" flex justify-evenly w-[40%] mr-[160px]">
-<div className=" flex justify-between   h-[30px] mt-[40px] items-end flex-row-reverse mr-[160px]">
+                <div className=" flex justify-evenly sm:w-[40%] sm:mr-[160px]">
+<div className=" flex justify-between w-[200px] bg-blue-400 h-[30px] sm:mt-[40px] items-end flex-row-reverse sm:mr-[160px]">
     <label>عرض</label>
     <input
     className="flex w-[60px] mx-[10px] justify-center h-[30px] items-center outline-none border-b-[1px] border-yellow-500 text-center"
@@ -230,13 +230,13 @@ disabled={wt}
 </div>
                     
                     
-                    <div className="flex flex-col w-[25%] items-center justify-evenly mt-[20px]">
-                    <div className=' flex justify-between w-full items-center mt-[20px] flex-row-reverse mr-[50px] '>
+                    <div className="flex flex-col w-[20%] items-center justify-evenly mt-[20px]">
+                    <div className=' flex justify-between sm:w-[25%] w-full items-center mt-[20px] flex-row-reverse sm:mr-[50px] '>
                         <label className="flex ml-[20px] items-end text-blue-900 w-[100px] mt-[15px]">بحث عن</label>
                         <input type='text'
                         value={serchName}
                         onChange={(e)=>{setSearchName(e.target.value)}}
-                        className='flex justify-center items-center text-right py-[1px] text-[24px] pr-[5px] rounded-sm bg-blue-950 text-white '
+                        className='flex justify-center items-center w-[100px] text-right py-[1px] text-[24px] pr-[5px] rounded-sm bg-blue-950 text-white '
                         ></input>
                     </div>
                     
