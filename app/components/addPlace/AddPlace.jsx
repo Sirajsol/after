@@ -116,10 +116,11 @@ switch(snapshot.state){
 
     return <div  className=" flex w-full h-full">
        
-        <div className=" flex w-full h-full bg-black opacity-35 absolute top-[0px] left-[0px]"
+        <div className=" flex w-full h-full bg-black opacity-35 absolute top-[0px] left-[0px] pb-[20px]"
         onClick={()=>{setShow(false)}}
         ></div>
-        <div className=" flex flex-col justify-evenly w-[500px] h-[500px] bg-blue-950 z-20 absolute top-[100px] left-[500px]  items-center
+        <div className=" flex flex-col justify-evenly w-full left-[0px] h-[400px] sm:w-[500px] sm:h-[500px] bg-blue-950 z-20 
+        absolute top-[100px] sm:left-[500px]  items-center
         border-[2px] border-yellow-600 rounded-[10px] shadow-white shadow-md"
         onMouseEnter={()=>{setInBox(true)}}
         onMouseLeave={()=>{setInBox(false)}}

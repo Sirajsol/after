@@ -6,12 +6,14 @@ import { toast } from "react-hot-toast";
 import EditPlace from "../../components/EditPlace";
 import PlaceTableRow from "../../components/PlaceTableRow";
 import Container from "../../components/Contaner";
+import Load from "@/app/components/load";
+import BadConnection from "@/app/components/badConnection";
 const Places = () => {
     const toggle=(s)=>{
         return !s
     }
     const[wait,setWait]=useState(false)
-const[places,setPlaces]=useState([])
+const[places,setPlaces]=useState(null)
 const[eShow,setEShow]=useState(false)
 const[place,setPlace]=useState(null)
 const[mutate,setMutate]=useState(false)
@@ -29,6 +31,7 @@ const[mutate,setMutate]=useState(false)
     
     const[show,setShow]=useState(false)
     return <Container>
+        {!wait &&(!places||places.length==0)&&(<BadConnection/>)}
     <div className=" flex w-full flex-col h-full items-end relative">
          <label htmlFor="" className='flex mr-[50px] text-blue-800 font-[900] text-[25px]'>الفعاليات/مكان الفعالية</label>
         <div className='flex h-[30px]'></div>
@@ -38,9 +41,15 @@ const[mutate,setMutate]=useState(false)
        
         
         >إضافة</button>
+
         <div className={`${show?"flex":"hidden"} w-full h-screen absolute`}> <AddPlace setShow={setShow}/></div>
-        {wait&&(<div className="flex justify-center items-center absolute top-[150px] bg-blue-900 w-[400px] h-[80px] left-[500px] text-white
-      text-[30px] px-[40px] shadow-black shadow-md rounded">الرجاء الإنتظار</div>)}
+
+        {/* {wait&&(<div className="flex justify-center items-center absolute top-[150px] bg-blue-900 w-[400px] h-[80px] left-[500px] text-white
+      text-[30px] px-[40px] shadow-black shadow-md rounded">الرجاء الإنتظار</div>)} */}
+
+{wait&&(<Load/>)}
+
+
         {eShow &&(<EditPlace setEShow={setEShow} place={place} setMutate={setMutate}/>)}
         <table  className=" flex flex-col w-[94%] mx-auto border-[1px] border-black mt-[30px]" align="ltr">
 {/* <thead className="flex  w-full h-[40px] bg-slate-500">
@@ -61,14 +70,14 @@ const[mutate,setMutate]=useState(false)
     {/* <th className="flex flex-1 border-b-[1px] "></th> */}
         {/* <th className="flex flex-1 justify-center  border-b-[1px] text-[18px] font-[800] text-blue-800">عددالدعوات العامة</th>
         <th className="flex flex-1 justify-center  border-b-[1px] text-[18px] font-[800] text-blue-800">عددالدعوات المرسلة</th> */}
-        <th className="flex flex-1 justify-center  border-b-[1px] text-[18px] font-[800] text-blue-800">خطة التجليس</th>
-        <th className="flex flex-1 justify-center  border-b-[1px] text-[18px] font-[800] text-blue-800">الاسم الأجنبي</th>
-        <th className="flex flex-1  flex-row justify-center border-b-[1px] text-[18px] font-[800] text-blue-800">الاسم</th>
-        <th className="flex flex-1  flex-row justify-center border-b-[1px] text-[18px]  font-[800] text-blue-800">المعرف</th>
+        <th className="flex flex-1 justify-center  border-b-[1px] text-[14px] sm:text-[18px] font-[800] text-blue-800">خطة التجليس</th>
+        <th className="flex flex-1 justify-center  border-b-[1px] text-[14px] sm:text-[18px] font-[800] text-blue-800">الاسم الأجنبي</th>
+        <th className="flex flex-1  flex-row justify-center border-b-[1px] text-[14px] sm:text-[18px] font-[800] text-blue-800">الاسم</th>
+        <th className="flex flex-1  flex-row justify-center border-b-[1px] text-[14px] sm:text-[18px]  font-[800] text-blue-800">المعرف</th>
         {/* </div> */}
 
 </thead>
-{!wait && places.length>0&& places.map(pls=>{
+{!wait && places&& places.length>0&& places.map(pls=>{
     return     (<tr key={pls.id}>
 <PlaceTableRow place={pls} setEShow={setEShow} setPlace={setPlace} setMutate={setMutate}/>
 {/* <TableRow id={1} name={"data"} date={"12-2-2023"} time={"10:34"} sentNumer={5} generalNumber={8} /> */}

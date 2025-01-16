@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
 
       {/* <body className={inter.className}> */}
-      <body className=" w-screen h-screen flex flex-col  ">
+      <body className=" w-screen h-screen flex flex-col justify-between  ">
         <AuthProvider>
          <MProvider>
          {/* <Container> */}

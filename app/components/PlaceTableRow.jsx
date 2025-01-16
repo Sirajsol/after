@@ -37,7 +37,7 @@ const PlaceTableRow = ({place,setPlace,setEShow,setMutate}) => {
 
 { (<div className={`flex flex-col justify-between bg-red-700 `}>
   {showDelete&&(<div className="flex justify-center flex-col absolute z-20
-   left-[600px] rounded-md p-[30px] top-[200px]  bg-blue-950 ">
+   left-[20%] sm:left-[30%] lg:left-[600px] rounded-md p-[30px] top-[200px]  bg-blue-950 ">
   <div className=" flex text-white text-[25px] mb-[30px] justify-center items-center">هل أنت متأكد انك تريد الحذف؟</div>
   <div className="flex justify-between items-center">
       <button className="flex w-[70px] bg-red-700 text-white rounded-sm m-[10px] justify-center items-center  hover:shadow-white hover:shadow-md"
@@ -53,16 +53,16 @@ const PlaceTableRow = ({place,setPlace,setEShow,setMutate}) => {
 <div className="flex justify-between flex-row-reverse h-[50px] border-b-[1px]">
 
 
-<div className=" flex flex-1 border-[1px] justify-end items-center bg-blue-950 text-yellow-500  text-[20px]  whitespace-nowrap  overflow-hidden "><div className=" mr-[5px]  justify-end  hover:overflow-scroll">{place.id}</div></div>
-<div className=" flex flex-1 border-[1px] justify-end items-center bg-blue-950 text-yellow-500  text-[20px]  whitespace-nowrap overflow-hidden"><div className="flex mr-[5px] justify-end  overflow-hidden">
-<div className=" flex flex-1  justify-end items-center bg-blue-950 text-yellow-500  text-[20px]  whitespace-nowrap  overflow-hidden "><div className={` justify-end   hover:overflow-scroll`}>{place?.name}</div></div>
+<div className=" flex flex-1 border-[1px] justify-end items-center bg-blue-950 text-yellow-500  text-[13px] sm:text-[20px]  whitespace-nowrap  overflow-hidden "><div className=" mr-[5px]  justify-end  hover:overflow-scroll">{place.id}</div></div>
+<div className=" flex flex-1 border-[1px] justify-end items-center bg-blue-950 text-yellow-500  text-[13px] sm:text-[20px]  whitespace-nowrap overflow-hidden"><div className="flex mr-[5px] justify-end  overflow-hidden">
+<div className=" flex flex-1  justify-end items-center bg-blue-950 text-yellow-500  text-[13px] sm:text-[20px]  whitespace-nowrap  overflow-hidden "><div className={` justify-end   hover:overflow-scroll`}>{place?.name}</div></div>
 {/* <div className=" flex flex-1 border-[1px] justify-end items-center bg-blue-950 text-yellow-500  text-[20px]  whitespace-nowrap  overflow-hidden "><div className=" mr-[5px]  justify-end  hover:overflow-scroll">{chair?.category?.title}</div></div> */}
 <div className="flex w-[30px] h-[30px] rounded-full border-[1px] border-white justify-center items-center">
   <label htmlFor="" className=" cursor-pointer" onClick={()=>{setExpand(prev=>!prev)}}>{`${expand?"-":"+"}`}</label></div>
 </div></div>
-<div className=" flex flex-1 border-[1px] justify-end items-center bg-blue-950 text-yellow-500  text-[20px]  whitespace-nowrap  overflow-hidden "><div className=" mr-[5px]  justify-end  hover:overflow-scroll">{place.enName}</div></div>
+<div className=" flex flex-1 border-[1px] justify-end items-center bg-blue-950 text-yellow-500 text-[13px] sm:text-[20px]  whitespace-nowrap  overflow-hidden "><div className=" mr-[5px]  justify-end  hover:overflow-scroll">{place.enName}</div></div>
 
-<div className=" flex flex-1 border-[1px] justify-end items-center bg-blue-950 text-yellow-500  text-[20px]  whitespace-nowrap  overflow-hidden "><div className=" mr-[5px]  justify-end  hover:overflow-scroll">{place.seatPlan}</div></div>
+<div className=" flex flex-1 border-[1px] justify-end items-center bg-blue-950 text-yellow-500 text-[13px] sm:text-[20px]  whitespace-nowrap  overflow-hidden "><div className=" mr-[5px]  justify-end  hover:overflow-scroll">{place.seatPlan}</div></div>
 
 
 </div>

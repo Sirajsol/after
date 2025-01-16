@@ -57,9 +57,9 @@ useEffect(()=>{
        
         )
         }
-        {!wt&&!wait&&!evts&&(<div className='flex w-[60%] left-[20%] bg-blue-900 h-[80px]
+        {!wt&&!wait&&!evts&&(<div className='flex text-[10px] w-[60%] left-[20%] bg-blue-900 h-[80px]
          rounded-[15px] text-center
-          text-blue-300 justify-center items-center text-[25px] shadow-black shadow-lg '>ممممم يبدو انا هنالك مشكلة بالاتصال</div>)}
+          text-blue-300 justify-center items-center sm:text-[25px] shadow-black shadow-lg '>ممممم يبدو انا هنالك مشكلة بالاتصال</div>)}
   {/* {evts[0].title} */}
 
 </div>
