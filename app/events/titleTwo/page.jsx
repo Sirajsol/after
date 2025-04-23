@@ -14,7 +14,7 @@ const TitleTwo = () => {
     const router=useRouter()
     const {user,setUser,loaded,wait,setWait}=useCntxt()
      const[auth,setAuth]=useState(false)
-   
+   const[title,setTitle]=useState('')
      useEffect(()=>{
  if(loaded){
    if(!user ||!user?.name){
@@ -129,7 +129,7 @@ const deleteit=async()=>{
 // </div>
 // } 
     return <div>
-        <Container>
+      
         {connectionError && auth&&(
 <div className=" flex w-screen h-screen justify-center items-center">
     <div className="flex justify-center items-center absolute top-[150px] bg-blue-900
@@ -142,27 +142,34 @@ const deleteit=async()=>{
 
     >
         <label htmlFor="" className='flex mr-[50px] text-blue-800 font-[900] text-[25px]'>لوحة التحكم / اللقب 2</label>
-        <div className='flex h-[30px]'></div>
+        <div className='flex h-[30px]'>
         <button className='flex bg-orange-600 w-[80px] py-[5px] items-center justify-center rounded-md
-         shadow-black shadow-sm hover:shadow-md hover:shadow-black hover:text-blue-400 text-white font-[700] text-[20px] mr-[50px]'
-        onClick={()=>{setShow(true)}}
+         shadow-black shadow-sm hover:shadow-md hover:shadow-black hover:text-blue-400
+          text-white font-[700] text-[13px] sm:text-[20px] mr-[50px]'   onClick={()=>{setShow(true)}}
         onMouseEnter={()=>{setOnButton(true)}}
         onMouseLeave={()=>{setOnButton(false)}}
-        >إضافة</button>
-        <div className='flex w-full justify-between  border-b-[1px] border-yellow-500 mt-[20px] py-[20px] ' >
+        >إضافة</button></div>
+       <div className='flex w-full justify-between  border-b-[1px] border-yellow-500 mt-[20px] py-[20px] ' >
 
-        <div className='flex ml-[70px] py-[10px]  shadow-black shadow-md px-[20px]'>
-                <input className='bg-blue-950 text-white rounded-md border-b-[1px] text-right px-[5px] h-[30px] border-yellow-300'/>
-                <label htmlFor="" className='flex font-[700] text-[25px] ml-[50px]'>search</label>
-            </div>
+<div className='flex ml-[70px] py-[10px]  shadow-black shadow-md px-[20px] w-[25%]'>
+        <input 
+        type="text"
+        value={title}
+        onChange={(e)=>{setTitle(e.target.value)}}
+        className='bg-blue-950 text-white rounded-md border-b-[1px] text-right px-[5px] 
+        h-[30px] border-yellow-300 w-[80%] '/>
+        <label htmlFor="" className='flex font-[700] md:text-[25px] lg:ml-[50px] w-[10%] text-[10px] sm:text-[15px]  lg:text-[25px]  '>بحث</label>
+    </div>
 
-            <div className='flex justify-start mr-[50px] py-[10px] shadow-black shadow-md px-[20px]'>
-                <label htmlFor="" className='flex font-[700] text-[25px] mr-[50px]'>entries</label>
-                <input  min={1} type='number' className='bg-blue-950 w-[90px] text-white rounded-md border-b-[1px] px-[10px] text-[25px] mt-[5px] text-right  h-[30px] border-yellow-300'/>
-                <label className='flex font-[700] text-[25px] ml-[50px]'>show</label>
-            </div>
-            
-        </div>
+    <div className='flex justify-between mr-[50px] py-[10px] w-[40%] sm:w-[35%]
+     shadow-black shadow-md px-[20px]'>
+        <label htmlFor="" className='flex font-[700] sm:text-[15px] lg:text-[25px] lg:mr-[50px] w-[20%] text-[10px]'>سجلات</label>
+        <input  min={1} type='number' className='bg-blue-950 w-[50%] sm:w-[90px] text-white rounded-md
+         border-b-[1px] px-[10px] text-[25px] mt-[5px] text-right  h-[30px] border-yellow-300'/>
+        <label className='flex font-[700] text-[10px] sm:text-[15px]  lg:text-[25px] lg:ml-[50px] w-[20%]'>عرض</label>
+    </div>
+    
+</div>
         {deleting&&(<div className=" flex w-[400px] h-[80px] absolute z-20 left-[550px] top-[100px] bg-blue-950  shadow-black shadow-sm rounded-md text-white justify-center items-center
 ">...جاري الحذف</div>)}
         {!deleting&& showDelete&&(<div className="flex justify-center flex-col absolute left-[600px] rounded-md p-[30px] top-[200px]  bg-blue-950 ">
@@ -215,7 +222,7 @@ const deleteit=async()=>{
     })}
     </table>
     </div>)} 
-    </Container>
+   
     </div>
 }
 export default TitleTwo;

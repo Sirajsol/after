@@ -67,7 +67,7 @@ const ChairCategories = () => {
     if(connectionError && auth){console.log("noooooooooooooooooo dataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
     return<div className=" flex w-screen h-screen justify-center items-center">
         <div className="flex justify-center items-center absolute top-[150px] bg-blue-900
-         text-red-600 text-[30px] px-[40px] shadow-black shadow-md rounded">ممم حدث خطأ ما . تأكد من جودة الاتصال بالانترنت</div>
+         text-red-300 text-[15px] sm:text-[20px] md:text-[30px] px-[40px] shadow-black shadow-md rounded">ممم حدث خطأ ما . تأكد من جودة الاتصال بالانترنت</div>
     </div>
     }  
     return   <div className="  h-screen w-screen">
@@ -77,7 +77,8 @@ const ChairCategories = () => {
         <div className="flex w-[500px] h-[100px] justify-center items-center left-[550px] top-[150px]
          bg-blue-950 text-white absolute rounded-md shadow-md shadow-white">الرجاء الانتظار , جاري تحميل البيانات</div>
     </div>)}
-        {!connectionError && auth &&(<div className=" flex flex-col  w-screen h-screen items-end relative">
+        {/* {!connectionError && auth &&( */}
+      {(  <div className=" flex flex-col  w-screen h-screen items-end relative mt-[150px]">
     <label htmlFor="" className='flex mr-[50px] text-blue-800 font-[900] text-[25px]'>الفعاليات/فئات الكراسي </label>
    <div className='flex h-[30px]'></div>
    <button className='flex bg-orange-600 w-[80px] py-[5px] items-center justify-center rounded-md

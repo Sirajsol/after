@@ -7,6 +7,7 @@ import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 
 import Container from "../../components/Contaner";
+import Load from "@/app/components/load";
 const getd=async(qu)=>{
     
     // const res=await fetch(qu,
@@ -42,6 +43,7 @@ const[wt,setWt]=useState(false)
          const[data,setData]=useState([])
          const[connectionError,setConnectionError]=useState(false)
 const[searchTerm,setSearchTerm]=useState('')
+const[show,setShow]=useState(false)
          useEffect(()=>{
      if(loaded){
        if(!user){// ||!user?.role!='مدير'){
@@ -115,34 +117,55 @@ chr()
 
 
     // const data=await getd(qu)
-  if(connectionError && auth){console.log("noooooooooooooooooo dataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-return<div className=" flex w-screen h-screen justify-center items-center">
-    <div className="flex justify-center items-center absolute top-[150px] bg-blue-900
-     text-red-600 text-[30px] px-[40px] shadow-black shadow-md rounded">ممم حدث خطأ ما . تأكد من جودة الاتصال بالانترنت</div>
-</div>
-}  
- return <div>
+//   if(connectionError && auth){console.log("noooooooooooooooooo dataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+// return<div className=" flex w-screen h-screen justify-center items-center">
+//     <div className="flex justify-center items-center absolute top-[150px] bg-blue-900
+//      text-red-600 text-[30px] px-[40px] shadow-black shadow-md rounded">ممم حدث خطأ ما . تأكد من جودة الاتصال بالانترنت</div>
+// </div>
+// }  
+ return <div className=" flex w-screen ">
     <Container>
-    {(wait||wt)&&(<div className="flex absolute ">
+    {/* {(wait||wt)&&(<div className="flex absolute left-0 top-0 w-screen">
         <div className=" flex w-screen h-screen bg-black opacity-30 absolute"></div>
-        <div className="flex w-[500px] h-[100px] justify-center items-center left-[550px] top-[150px] 
+        <div className="flex w-[70%] h-[100px] justify-center items-center left-[15%] top-[150px] text-[12px] sm:text-[16px]
          bg-blue-950 text-white absolute rounded-md shadow-md shadow-white z-10">الرجاء الانتظار , جاري تحميل البيانات</div>
-    </div>)}
- {!connectionError&& auth&&(<div className="flex w-screen h-screen  mt-[80px] ">
-        <div className="flex flex-col w-[70%] rounded h-[650px]">
-       <SearchChair setSearchTerm={setSearchTerm} count={total} />
-       <div className="flex mb-[50px] justify-center flex-col items-center border-[1px] mx-[10px] overflow-scroll h-[300px]">
+    </div>)} */}
+    {(wait||wt)&&(<Load/>)}
+ {/* {!connectionError&& auth&&( */}
+ {(<div className="flex flex-col items-center justify-between gap-1 sm:flex-row w-screen   mt-[100px] sm:mt-[80px] " >
+        <div className="flex flex-col justify-end w-[100%] rounded h-[600px]  ">
+       
+        {/* <div className="flex  w-full justify-between items-center bg-slate-800">
+            <div className=" flex w-90%"> </div>
+            <div className=" flex w-10%">
+                 <div className="flex h-[40px] ">
+        <button className="flex bg-red-600 text-white rounded-md p-[10px]">gebe</button>
+        </div></div>
+        </div> */}
+        <div className="flex h-[40px] justify-end mt-[10px] px-[20%]">
+        <button className="flex bg-red-600 text-white rounded-md p-[10px] text-[10px] sm:text-[15px] "
+        onClick={()=>{setShow(true)}}
+        >إضافة كراسي</button>
+        </div>
+      <div className="flex items-center">
+      <div className="flex  w-[90%] justify-between items-start "><SearchChair  setSearchTerm={setSearchTerm} count={total} /></div>  
+      
+      
+        </div>
+       <div className="flex  justify-center flex-col items-center
+        border-[1px] mx-[10px] overflow-scroll h-[300px]">
     
     <table  className=" flex flex-col w-full  overflow-scroll" align="rtl">
-        <thead className="flex flex-row-reverse justify-evenly w-full py-[10px] bg-blue-950 text-white border-b-[1px] border-white">
+        <thead className="flex flex-row-reverse justify-evenly w-full py-[10px]
+         bg-blue-950 text-white border-b-[1px] border-white">
             
             
            
-            <th className="flex w-[35%] justify-end">المعرف</th>
-            <th className="flex-1 justify-end text-right ">الرمز</th>
+            <th className="flex w-[35%] justify-end text-[10px] md:text-[15px]">المعرف</th>
+            <th className="flex-1 justify-end text-right text-[10px]  md:text-[15px]">الرمز</th>
     
-            <th className="flex-1 justify-end text-right">اللون</th>
-            <th className="flex-1 justify-end  text-right">مكان الفعالية</th>
+            <th className="flex-1 justify-end text-right text-[10px] md:text-[15px]">اللون</th>
+            <th className="flex-1 justify-end  text-right text-[10px] md:text-[15px]">مكان الفعالية</th>
             <th className="flex-1 "></th>
             </thead>
             {data&&data.length>0&&data.map(d=>{return(
@@ -161,10 +184,15 @@ return<div className=" flex w-screen h-screen justify-center items-center">
     </table>
     </div>
     </div>
-        <div className=" flex">
-            <ChairGenerate/>
-        </div>
 
+        <div className="flex">
+           {show&& <ChairGenerate setShow={setShow}/>} 
+           
+        </div>
+        {/* <div className="hidden md:flex">
+        <button className="flex bg-red-600 text-white rounded-md p-[10px]">gebe</button>
+        </div> */}
+        
     </div>)}
     </Container>
     </div>

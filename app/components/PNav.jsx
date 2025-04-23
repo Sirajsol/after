@@ -9,7 +9,7 @@ const PNave = ({children}) => {
     return <div className=" flex bg-blue-900 w-full h-[60px]   justify-between">
         <div className="flex w-[60%] sm:w-[30%] justify-evenly ">
        {user&&( <div className="flex w-[100%] justify-between">
-            <div className="flex w-full  relative ml-[50px]  cursor-pointer font-[800] text-[18px] sm:text-[25px] text-white "
+            <div className="flex w-full  relative ml-[50px]  cursor-pointer font-[800] text-[18px] md:text-[25px] text-white "
             onClick={()=>{localStorage.removeItem('user')
             setUser(null)
             router.push('/')
@@ -17,7 +17,7 @@ const PNave = ({children}) => {
             }}
             >تسجيل خروج</div>
             
-            <div className="flex justify-center  text-yellow-400 font-[800] text-[18px] sm:text-[25px]">
+            <div className="flex justify-center  text-yellow-400 font-[800] text-[18px] md:text-[25px]">
                 {user?.name}</div></div>)}
 
 {!user&&( <div className="flex w-full justify-evenly">

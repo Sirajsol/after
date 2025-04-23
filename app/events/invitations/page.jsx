@@ -90,7 +90,7 @@ const[name,setName]=useState('')
              )
              .catch((error)=>{toast.error("خطأ")})
                 
-                if(ps.length==0){setEmpty(true)}
+                if(ps&&ps.length==0){setEmpty(true)}
             if(ps){setInvetations(ps)
             setTotal(count)
             }
@@ -183,14 +183,15 @@ useEffect(()=>{
     // onClick={()=>{if(!onButton)setShow(false)}}
     >
         <label htmlFor="" className='flex  text-blue-800 font-[900] text-[25px] mr-[100px]'>لوحة التحكم /إرسال الدعوات</label>
-        <div className='flex h-[30px]'></div>
+        <div className='flex h-[100px] mb-[30px]'>
         <button className='flex bg-orange-600 w-[80px] py-[5px] items-center justify-center rounded-md
-         shadow-black shadow-sm hover:shadow-md hover:shadow-black hover:text-blue-400 text-white font-[700] text-[20px] mr-[100px]'
+         shadow-black shadow-sm hover:shadow-md hover:shadow-black hover:text-blue-400 text-white font-[700] text-[20px] mr-[100px] mt-[60px]'
         onClick={()=>{setShow((prev=>{return !prev}))}}
         onMouseEnter={()=>{setOnButton(true)}}
         onMouseLeave={()=>{setOnButton(false)}}
        
        >إضافة</button>
+       </div>
        
       <div className="flex w-full h-[3px] bg-yellow-500 mt-[10px]"></div>
 {invId.length>0 && eShow&&(<EditInvetation id={invId} setShow={setEShow} setMutate={setMutate} inv={invetations.filter(invi=>invi.id==invId)[0]}/>)}
@@ -203,7 +204,8 @@ useEffect(()=>{
         
             onClick={()=>{reset()}}
             >تفريغ حقول التصفية</div>
-{invetations&&invetations.length>0&&(
+{/* {invetations&&invetations.length>0&&( */}
+{(
         <div className='flex flex-col w-full justify-between  border-b-[1px] border-yellow-500 mt-[20px] py-[20px] ' >
 
         <div className="flex  justify-evenly">
@@ -211,32 +213,32 @@ useEffect(()=>{
            
             <label className="flex w-[50%] justify-end mr-[100px]" htmlFor="">بحث</label>
         </div>
-        <div className="flex justify-end mt-[30px] mx-[20px]">
+        <div className="flex w-[100%]  justify-end mt-[30px]  mx-[10px]">
 
 
-<div className="flex flex-col w-[25%] ml-[80px] items-end">
-<label className=" text-right">الاسم</label>
+<div className="flex flex-col w-[100px]  sm:w-[24%] ml-[80px] items-end">
+<label className=" text-right text-[11px] md:text-[20px]">الاسم</label>
 <input 
 
 value={name}
 onChange={(e)=>{setName(e.target.value)}}
-className="flex border-[1px] text-right w-[210px] h-[30px]"/>
+className="flex border-[1px] text-right w-[100px] sm:w-[90%] h-[30px]"/>
 
 </div>
 <div className="flex flex-col w-[25%] items-end">
-<label className=" text-right">البريد الالكتروني</label>
+<label className=" text-right text-[11px] md:text-[20px] ">البريد الالكتروني</label>
 <input
 value={email}
 onChange={(e)=>{setEmail(e.target.value)}}
-className="flex border-[1px] text-right w-[210px] h-[30px]"/>
+className="flex border-[1px] text-right w-[100px] sm:w-[90%] h-[30px]"/>
 
 </div>
-<div className="flex flex-col w-[25%] items-end mr-[100px]">
-<label className=" text-right">فئة الكرسي</label>
+<div className="flex flex-col w-[25%] items-end  ">
+<label className=" text-right text-[11px] md:text-[20px]">فئة الكرسي</label>
 <select 
 value={selectedCategory} onChange={(e)=>{setSelectedCatedgory(e.target.value)}}
-className="flex border-[1px] w-[210px] h-[30px] text-right">
-    <option value="">اختر فئة الكرسي</option>
+className="flex border-[1px] w-[100px] sm:w-[90%] h-[30px] text-right text-[11px] md:text-[20px]">
+    <option value="" className="text-[11px] md:text-[20px]">اختر فئة الكرسي</option>
 {categories.length>0 && categories.map(ctg=>{
 return<option key={ctg.id} value={ctg.title}>{ctg.title}</option>
 })}
@@ -244,65 +246,131 @@ return<option key={ctg.id} value={ctg.title}>{ctg.title}</option>
 
 </div>
 
-<div className="flex flex-col mr-[80px]">
-<label className=" text-right">نوع الدعوة</label>
-<select className="flex border-[1px] w-[210px] h-[30px] text-right"></select>
+<div className="flex flex-col mr-[30px] sm:mr-[80px] w-[25%] items-end ">
+<label className=" text-right text-[11px] md:text-[20px]">نوع الدعوة</label>
+<select className="flex border-[1px] w-[100px] sm:w-[90%] h-[30px] text-right"></select>
 
 </div>
 </div>
 
 
-<div className="flex  mt-[10px] justify-end">
-<div className="flex flex-col w-[25%] ml-[100px] items-end">
-<label className=" text-right">الفعالية</label>
+<div className="flex w-[100%]  justify-end mt-[30px]  mx-[10px]">
+
+
+<div className="flex flex-col w-[100px]  sm:w-[24%] ml-[80px] items-end">
+<label className=" text-right text-[11px] md:text-[20px]">الفعالية</label>
 <select
 value={selectedEvent} onChange={(e)=>{setSelectedEvent(e.target.value)}}
-className="flex border-[1px] w-[210px] h-[30px] text-right">
-<option value="">اختر فعالية</option>
+className="flex border-[1px] w-[100px] sm:w-[90%] h-[30px] text-right text-[11px] md:text-[20px]">
+    <option value="" className="text-[11px] md:text-[20px]"
+
+>اختر فعالية</option>
+{events.length>0 && events.map(ctg=>{
+return<option key={ctg.id} value={ctg.title}>{ctg.title}</option>
+})}
+</select>
+{/* onChange={(e)=>{setName(e.target.value)}}
+className="flex border-[1px] text-right w-[100px] sm:w-[90%] h-[30px]"/> */}
+
+</div>
+<div className="flex flex-col w-[25%] items-end  ">
+<label className=" text-right text-[11px] md:text-[20px]">داخلي/خارجي</label>
+<select
+value={itype}
+onChange={(e)=>{setIType(e.target.value)}}
+className="flex border-[1px] w-[100px]  sm:w-[90%] h-[30px] text-right text-[11px] md:text-[20px]">
+    
+<option value=""  className="text-[11px] md:text-[20px]">مصدر الدعوة</option>
+<option value="داخلي">داخلي</option>
+<option value="خارجي">خارجي</option>
+</select>
+{/* onChange={(e)=>{setName(e.target.value)}}
+className="flex border-[1px] text-right w-[100px] sm:w-[90%] h-[30px]"/> */}
+
+</div>
+
+<div className="flex flex-col w-[25%] items-end  ">
+<label className=" text-right text-[11px] md:text-[20px]">الفئة</label>
+<select 
+value={selectedPersonCat} onChange={(e)=>{setSelectedPersonCat(e.target.value)}}
+className="flex border-[1px] w-[100px] sm:w-[90%] h-[30px] text-right text-[11px] md:text-[20px]">
+    <option value="" className="text-[11px] md:text-[20px]">اختر فئة المدعو</option>
+    {personCats.length>0 && personCats.map(ctg=>{
+return<option key={ctg.id} value={ctg.title}>{ctg.title}</option>
+})}
+</select>
+
+</div>
+
+<div className="flex flex-col mr-[30px] sm:mr-[80px] w-[25%] items-end">
+<label className="  text-right text-[11px] md:text-[20px]">رقم الجوال</label>
+<input 
+value={whatsapp} onChange={(e)=>{setWhatsapp(e.target.value)}}
+className="flex border-[1px] text-right w-[100px] sm:w-[90%] h-[30px]"/>
+
+</div>
+</div>
+
+
+
+{/* <div className="flex w-[100%]  justify-end mt-[30px] mx-[10px]  ">
+<div className="flex flex-col mr-[30px] sm:mr-[80px] w-[25%] items-end" >
+<label className=" text-right text-[11px] md:text-[20px]">الفعالية</label>
+<select
+value={selectedEvent} onChange={(e)=>{setSelectedEvent(e.target.value)}}
+className="flex border-[1px] w-[100px] sm:w-[90%] h-[30px] text-right text-[11px] md:text-[20px]">
+<option value="" className="text-[11px] md:text-[20px]">اختر فعالية</option>
 {events.length>0 && events.map(ctg=>{
 return<option key={ctg.id} value={ctg.title}>{ctg.title}</option>
 })}
 </select>
 
 </div>
-<div className="flex flex-col w-[25%] items-end">
-<label className=" text-right">داخلي/خارجي</label>
-<select className="flex border-[1px] w-[210px] h-[30px] text-right text-black"
+<div className="flex flex-col mr-[30px] sm:mr-[80px] w-[25%] items-end">
+<label className=" text-right text-[11px] md:text-[20px]">داخلي/خارجي</label>
+<select className="flex border-[1px] w-[100px] sm:w-[90%] h-[30px] text-right text-[11px] md:text-[20px]"
 value={itype}
 onChange={(e)=>{setIType(e.target.value)}}
 >
-<option value="">مصدر الدعوة</option>
+
+
+   
+
+<option value=""  className="text-[11px] md:text-[20px]">مصدر الدعوة</option>
 <option value="داخلي">داخلي</option>
 <option value="خارجي">خارجي</option>
 
 </select>
 
 </div>
-<div className="flex flex-col w-[25%] items-end mr-[100px]">
-<label className=" text-right">الفئة</label>
+<div className="flex flex-col mr-[30px] sm:mr-[80px] w-[25%] items-end">
+<label className=" text-right text-[11px] md:text-[20px] ">الفئة</label>
 <select 
 value={selectedPersonCat} onChange={(e)=>{setSelectedPersonCat(e.target.value)}}
 
-className="flex border-[1px] w-[210px] h-[30px] text-right">
-<option value={""}>اختر فئة المدعو</option>
+className="flex border-[1px] w-[100px] sm:w-[90%] h-[30px] text-right text-[11px] md:text-[20px]">
+    <option value="" className="text-[11px] md:text-[20px]">اختر فئة المدعو</option>
 {personCats.length>0 && personCats.map(ctg=>{
 return<option key={ctg.id} value={ctg.title}>{ctg.title}</option>
 })}
 </select>
 
 </div>
-<div className="flex flex-col mr-[100px]">
-<label className=" text-right">رقم الجوال</label>
+<div className="flex flex-col mr-[30px] sm:mr-[80px] w-[25%] items-end">
+<label className="  text-right text-[11px] md:text-[20px]">رقم الجوال</label>
 <input 
 value={whatsapp} onChange={(e)=>{setWhatsapp(e.target.value)}}
-className="flex border-[1px] text-right w-[210px] h-[30px]"/>
+className="flex border-[1px] text-right w-[100px] sm:w-[90%] h-[30px]"/>
 
 </div>
-</div>
+</div> */}
+
+
+
 <div className="flex justify-between w-full flex-row-reverse">
-<div className="flex justify-end mt-[20px] w-[30%]">
-<button className="flex w-[70px] py-[5px] bg-orange-700
- text-white font-[700] mr-[100px] justify-center rounded
+<div className="flex justify-end w-[15%] mt-[20px] sm:w-[30%]  ">
+<button className="flex sm:w-[70px] py-[5px] bg-orange-700 text-[12px] sm:text-[16px]
+ text-white sm:font-[700] mr-[20px] sm:mr-[100px] justify-center rounded px-[3px]
  shadow-black shadow-md
  "
  
@@ -313,8 +381,8 @@ className="flex border-[1px] text-right w-[210px] h-[30px]"/>
 
 </div>
 
-<div className=" flex justify-between w-[60%]">
-<div className=" flex justify-between items-end flex-row-reverse ml-[60px]">
+<div className=" flex justify-between  w-[80%] sm:w-[60%] ">
+<div className=" flex justify-between items-end flex-row-reverse text-[12px] sm:text-[16px] sm:ml-[60px]">
     <label>عرض</label>
     <input
     className="flex w-[60px] mx-[10px] justify-center h-[30px] items-center outline-none border-b-[1px] border-yellow-500 text-center"
@@ -323,7 +391,7 @@ className="flex border-[1px] text-right w-[210px] h-[30px]"/>
 </div>
 
 <div className="flex justify-between items-center mt-[20px]">
-<button className="glex w-[70px] h-[30px] justify-center items-center bg-orange-700 text-white rounded-md shadow-black shadow-md"
+<button className="glex text-[12px] sm:text-[16px] px-[12px] sm:w-[70px]  h-[30px] justify-center items-center bg-orange-700 text-white rounded-md shadow-black shadow-md"
 onClick={()=>{
     if(page-1>0){
         setPage(prev=>prev-1)
@@ -332,7 +400,7 @@ onClick={()=>{
     }}
     disabled={wt}>السابق</button>
 <input type="text" disabled={true} value={page+"/"+Math.ceil(total/entriesPerPage)} className="flex w-[60px] mx-[10px] justify-center h-[30px] items-center outline-none border-b-[1px] border-yellow-500 text-center"/>
-<button className="glex w-[70px]  h-[30px] justify-center items-center bg-orange-700 text-white rounded-md  shadow-black shadow-md"
+<button className="glex text-[12px] sm:text-[16px] px-[12px] sm:w-[70px]  h-[30px] justify-center items-center bg-orange-700 text-white rounded-md  shadow-black shadow-md"
 onClick={()=>{
     if((entriesPerPage*page)+1<=total){
     setPage(prev=>prev+1)
@@ -377,6 +445,11 @@ text-[25px] text-white bg-blue-800 shadow-black rounded-md shadow-md">الرجا
 
 </table>
        )}
+
+
+
+
+       
     </div>)}
     </Container>
     </div>

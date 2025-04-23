@@ -29,6 +29,7 @@ const getm=async()=>{
             console.log('fuck')
             throw Error('')
         }
+        if(res.ok){console.log('result is ok')}
        return res.json()}).catch(error=>{
             console.log('fuck catch')
         })

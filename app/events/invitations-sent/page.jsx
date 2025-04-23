@@ -146,14 +146,15 @@ const[empty,setEmpty]=useState(false)
     // onClick={()=>{if(!onButton)setShow(false)}}
     >
         <label htmlFor="" className='flex  text-blue-800 font-[900] text-[25px] mr-[100px]'>لوحة التحكم / الدعوات العامة</label>
-        <div className='flex h-[30px]'></div>
-        <button className='flex bg-orange-600 w-[80px] py-[5px] items-center justify-center rounded-md
-         shadow-black shadow-sm hover:shadow-md hover:shadow-black hover:text-blue-400 text-white font-[700] text-[20px] mr-[100px]'
-        onClick={()=>{setShow((prev=>{return !prev}))}}
+        <div className='flex h-[100px] mb-[30px]'>
+        <button className='flex bg-orange-600 sm:w-[80px] w-[60px] py-[5px] items-center justify-center rounded-md
+         shadow-black shadow-sm hover:shadow-md hover:shadow-black hover:text-blue-400 text-white font-[700]
+         text-[14px] sm:text-[20px] mr-[100px] mt-[60px]'
+         onClick={()=>{setShow((prev=>{return !prev}))}}
         onMouseEnter={()=>{setOnButton(true)}}
         onMouseLeave={()=>{setOnButton(false)}}
        
-       >إضافة</button>
+       >إضافة</button></div>
 <div className="flex w-full h-[3px] bg-yellow-500 mt-[10px]"></div>
 {invId.length>0 && eshow&&(<EditInvetation id={invId} setShow={setEShow}  setMutate={setMutate}  inv={invitations.filter(invi=>invi.id==invId)[0]}/>)}
 {invId.length>0 && iEShow&&(<EditInternalInvetation id={invId} setShow={setIEShow}  setMutate={setMutate} inv={invitations.filter(invi=>invi.id==invId)[0]}/>)}
@@ -161,8 +162,8 @@ const[empty,setEmpty]=useState(false)
 <div className="flex w-[50%] justify-end mr-[90px]  cursor-pointer hover:text-yellow-400"
     onClick={()=>{reset()}}
     >تفريغ حقول التصفية</div>
-{invitations&&invitations.length>0&&(
-
+{/* {invitations&&invitations.length>0&&( */}
+{(
        <div className='flex flex-col w-full justify-between  border-b-[1px] border-yellow-500 mt-[20px] py-[20px] ' >
 
 <div className="flex  justify-evenly">
@@ -170,42 +171,44 @@ const[empty,setEmpty]=useState(false)
    
     <label className="flex w-[50%] justify-end mr-[100px]" htmlFor="">بحث</label>
 </div>
-    <div className="flex justify-between mt-[30px]">
-<div className="flex flex-col ml-[100px]">
-<label className=" text-right">تأكيد الحضور</label>
+    <div className="flex w-[100%]  justify-end mt-[30px]  mx-[10px]">
+<div className="flex flex-col w-[100px]  sm:w-[20%] ml-[80px] md:mr-[20px] items-end  ">
+<label className=" text-right text-[11px] md:text-[20px] ">تأكيد الحضور</label>
 <select 
 value={confirmed} onChange={(e)=>{setConfirmed(e.target.value)}}
-className="flex border-[1px] w-[180px] text-right">
-<option value="">اختر حالة</option>
+
+className="flex border-[1px] w-[100px]  sm:w-[90%] h-[30px] text-right text-[11px] md:text-[20px]">
+<option value="" className="text-[11px] md:text-[18px]">اختر حالة</option>
 <option value="نعم">نعم</option>
 <option value="لا">لا</option>
 </select>
 
 </div>
-<div className="flex flex-col">
-<label className=" text-right">رقم الواتس</label>
+<div className="flex flex-col  w-[100px]  sm:w-[20%]">
+<label className=" text-right text-[11px] md:text-[18px] w-[100px] sm:w-[90%]">رقم الواتس</label>
 <input 
 value={whatsapp} onChange={(e)=>{setWhatsapp(e.target.value)}}
-className="flex border-[1px] text-right"/>
+className="flex border-[1px] text-right w-[100px] sm:w-[90%] h-[30px]"/>
 
 </div>
-<div className="flex flex-col">
-<label className=" text-right">البريد الالكتروني</label>
+<div className="flex flex-col w-[100px]  sm:w-[20%]">
+<label className=" text-right text-[11px] md:text-[18px] w-[100px] sm:w-[90%]">البريد الالكتروني</label>
 <input 
 value={email} onChange={(e)=>{setEmail(e.target.value)}}
-className="flex border-[1px] text-right"/>
+className="flex border-[1px] text-right w-[100px] sm:w-[90%] h-[30px]"/>
 
 </div>
-<div className="flex flex-col mr-[100px]">
-<label className=" text-right">الاسم</label>
-<input value={name} onChange={(e)=>{setName(e.target.value)}} className="flex border-[1px] text-right"/>
+<div className="flex flex-col mr-[20px] md:mr-[100px] w-[100px]  sm:w-[20%]">
+<label className=" text-right text-[11px] md:text-[18px] w-[100px] sm:w-[90%]">الاسم</label>
+<input value={name} onChange={(e)=>{setName(e.target.value)}} 
+className="flex border-[1px] text-right w-[100px] sm:w-[90%] h-[30px]"/>
 
 </div>
     </div>
 
 
 
-    <div className="flex justify-between w-full flex-row-reverse">
+    {/* <div className="flex justify-between w-full flex-row-reverse">
 <div className="flex justify-end mt-[20px] w-[30%]">
 <button className="flex w-[70px] py-[5px] bg-orange-700
  text-white font-[700] mr-[100px] justify-center rounded
@@ -214,7 +217,7 @@ className="flex border-[1px] text-right"/>
  
  onClick={()=>{
     search()
-// alert('hah')
+ 
 }}
  >اذهب</button>
 
@@ -252,7 +255,56 @@ disabled={wt}
 >التالي</button>
 </div>
 </div>
+</div> */}
+
+
+<div className="flex justify-between w-full flex-row-reverse">
+<div className="flex justify-end w-[15%] mt-[20px] sm:w-[30%]  ">
+<button className="flex sm:w-[70px] py-[5px] bg-orange-700 text-[12px] sm:text-[16px]
+text-white sm:font-[700] mr-[20px] sm:mr-[100px] justify-center rounded px-[3px]
+shadow-black shadow-md
+"
+
+onClick={()=>{search()
+
+}}
+>اذهب</button>
+
 </div>
+
+<div className=" flex justify-between  w-[80%] sm:w-[60%] ">
+<div className=" flex justify-between items-end flex-row-reverse text-[12px] sm:text-[16px] ml-[60px]">
+<label>عرض</label>
+<input
+className="flex w-[60px] mx-[10px] justify-center h-[30px] items-center outline-none border-b-[1px] border-yellow-500 text-center"
+type="number" value={entriesPerPage} onChange={(e)=>{setEntriesPerPage(e.target.value)}}></input>
+<label>سجلات</label>
+</div>
+
+<div className="flex justify-between items-center mt-[20px]">
+<button className="glex text-[12px] sm:text-[16px] px-[12px] sm:w-[70px]  h-[30px] justify-center items-center bg-orange-700 text-white rounded-md shadow-black shadow-md"
+onClick={()=>{
+if(page-1>0){
+setPage(prev=>prev-1)
+// search()
+}
+}}
+disabled={wt}>السابق</button>
+<input type="text" disabled={true} value={page+"/"+Math.ceil(total/entriesPerPage)} className="flex w-[60px] mx-[10px] justify-center h-[30px] items-center outline-none border-b-[1px] border-yellow-500 text-center"/>
+<button className="glex text-[12px] sm:text-[16px] px-[12px] sm:w-[70px]  h-[30px] justify-center items-center bg-orange-700 text-white rounded-md  shadow-black shadow-md"
+onClick={()=>{
+if((entriesPerPage*page)+1<=total){
+setPage(prev=>prev+1)
+// search()
+}
+}}
+disabled={wt}
+
+>التالي</button>
+</div>
+</div>
+</div>
+
 
 </div>
 )}

@@ -43,23 +43,27 @@ const SerchChair = ({setSearchTerm,count}) => {
         }
         pls()
     },[])
-    return   <div className="flex flex-col ">
-    <div className="flex my-[50px] justify-evenly border-b-[1px]  bg-blue-950 mx-[20px]">
+    return   <div className="flex flex-col   w-full justify-start border-b-[1px]">
+    <div className="flex flex-col md:flex-row my-[10px] justify-evenly border-b-[1px] sm:border-none
+     bg-blue-950 mx-auto w-[90%] px-[10px] border-[1px] border-orange-500 shadow-md shadow-white rounded-md">
    
     
-        <div className="flex flex-row h-[100px] items-end border-[1px] mt-[50px]">
+        <div className="flex flex-col px-[20px] h-[100px] items-end justify-end border-b-[1px] sm:border-none mt-[50px] w-[100%] md:w-[40%]">
            
+        <label htmlFor="" className="flex  justify-end w-[40%] md:w-[70px] items-center
+             mb-[5px] h-[30px] text-right rounded-sm  sm:text-[12px] md:text-[14px]  text-yellow-200 ">ابحث عن</label>
+    
+
             <input type="text" 
             value={title}
             onChange={(e)=>{setTitle(e.target.value)}}
-            className="m-[10px]" />
-            <label htmlFor="" className="flex justify-end items-center mb-[5px] h-[30px] text-right rounded-sm mr-[40px]  text-white ">ابحث عن</label>
-        </div>
+            className="ml-[10px] mb-[10px] w-[50%]" />
+                </div>
         
-    <div className="flex flex-col border-[1px] h-[150px] justify-evenly items-end px-[20px] my-[10px] ">
-        <label className=" flex  mr-[30px]  text-white text-[25px]">مكان الفعالية</label>
+    <div className="flex flex-col border-b-[1px] sm:border-none h-[150px] justify-evenly items-end px-[20px] my-[10px] w-full md:w-[40%] ">
+        <label className=" flex  lg:mr-[30px]  text-yellow-200 sm:text-[15px] md:text-[20px] lg:text-[25px]">مكان الفعالية</label>
         <select value={place}
-         className="flex w-[180px] bg-blue-950 h-[30px] text-white text-right rounded-sm mr-[40px] border-[1px]"
+         className="flex  w-[90%] lg:w-[180px] bg-blue-950 h-[30px] text-yellow-200 text-right rounded-sm lg:mr-[10px] border-[1px]"
         onChange={(e)=>{
             // router.push(`?placeId=${e.target.value}`)
         setPlace(e.target.value)
@@ -71,22 +75,24 @@ const SerchChair = ({setSearchTerm,count}) => {
                 })}
         </select>
         <div className="flex">
-        <label htmlFor="" className="flex justify-end items-end w-[40px] h-[30px] text-right rounded-sm  text-[20px] text-white ">سجلات</label>
+        <label htmlFor="" className="flex justify-end items-end w-[40px] h-[30px] text-right rounded-sm text-[14] md:text-[17px] text-yellow-200 ">سجلات</label>
             <input  type="number" value={entriesPerPage}
             onChange={(e)=>setEntriesPerPage(e.target.value)}
-            min={2} className="flex w-[50px] bg-blue-950 h-[30px] text-white text-right rounded-sm mx-[10px]"/>
+            min={2} className="flex w-[50px] bg-blue-950 h-[30px] text-yellow-200 text-right rounded-sm mx-[2px] lg:mx-[10px]"/>
       
-            <label htmlFor="" className="flex justify-end items-end w-[40px] h-[30px] text-right rounded-sm mr-[40px]  text-white ">اعرض</label>
+            <label htmlFor="" className="flex justify-end items-end w-[40px] h-[30px] text-right text-[14] md:text-[17px] rounded-sm lg:mr-[40px]  text-yellow-200 ">اعرض</label>
         </div>
-        <div className=" flex justify-between w-[90%] mx-auto">
-            <button className=" flex border-[1px] text-white justify-center items-center px-[20px] py-[5px] rounded-md "
+        <div className=" flex justify-around w-full  mx-auto ">
+            <button className=" flex border-[1px] text-yellow-200 justify-center items-center
+             lg:px-[20px] py-[5px] rounded-md text-[12px] md:text-[15px]"
              onClick={()=>{
                 if(entriesPerPage*(page)<count)
                 setPage(prev=>prev+1)
             }}
             >التالي</button>
-            <label className="flex w-[50px] text-white justify-center items-center">{page}</label>
-            <button className=" flex border-[1px] text-white justify-center items-center px-[15px] py-[5px] rounded-md mr-[25px]"
+            <label className="flex w-[50px] text-yellow-200 justify-center items-center">{page}</label>
+            <button className=" flex border-[1px] text-yellow-200 justify-center items-center text-[12px]
+             md:text-[15px] lg:px-[15px] py-[5px] rounded-md lg:mr-[25px]"
             onClick={()=>{
                 if(page-1>0)
                 setPage(prev=>prev-1)
@@ -96,10 +102,11 @@ const SerchChair = ({setSearchTerm,count}) => {
     </div>
    
     </div>
-    <div className="flex w-full justify-end">
+    <div className="flex w-full justify-end px-[10%]">
         <button 
         onClick={()=>{search()}}
-        className="flex mr-[40px] w-[80px] py-[5px] justify-center items-center bg-orange-600 text-white rounded-md mb-[10px] shadow-black shadow-md ">ابحث</button>
+        className="flex lg:mr-[40px] w-[80px] py-[5px] justify-center items-center 
+         bg-orange-600 text-white rounded-md mb-[10px] shadow-black shadow-md ">ابحث</button>
     </div>
     </div>
         

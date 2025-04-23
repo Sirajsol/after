@@ -158,8 +158,8 @@ const AddChairCategory = ({Showit,setMutate}) => {
         <div className=" flex w-full h-full bg-black opacity-35 absolute top-[0px] left-[0px]"
         onClick={()=>{Showit(false)}}
         ></div>
-        <div className="flex flex-col w-[500px] h-[400px] border-[1px] bg-blue-950 rounded-[10px] shadow-fuchsia-50 shadow-md
-        left-[600px] top-[100px]  justify-between items-center absolute "
+        <div className="flex flex-col sm:w-[400px] sm:left-[20%] w-[90%] left-[5%] md:w-[450px] md:left-[25%] lg:w-[500px] lg:left-[35%] h-[400px] border-[1px] bg-blue-950 rounded-[10px] shadow-fuchsia-50 shadow-md
+         top-[100px]  justify-between items-center absolute "
         onClick={()=>{if(!mouseIn){setShow(false)}
         if(!TmouseIn){setTShow(false)}
     }}

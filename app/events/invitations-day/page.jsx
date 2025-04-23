@@ -39,7 +39,7 @@ const[customer,setCustomer]=useState('')
     const[onButton,setOnButton]=useState(false)
     const[invetations,setInvetations]=useState([])
     const[wt,setWt]=useState(true)
-
+const[whatsapp,setWhatsapp]=useState('')
     const[invId,setInvId]=useState('')
     const[chairs,setChairs]=useState([])
     const[expand,setExpand]=useState(false)
@@ -179,14 +179,14 @@ const search=()=>{
     // onClick={()=>{if(!onButton)setShow(false)}}
     >
         <label htmlFor="" className='flex  text-blue-800 font-[900] text-[25px] mr-[100px]'>لوحة التحكم /إرسال الدعوات</label>
-        <div className='flex h-[30px]'></div>
+        <div className='flex h-[100px] mb-[30px]'>
         <button className='flex bg-orange-600 w-[80px] py-[5px] items-center justify-center rounded-md
-         shadow-black shadow-sm hover:shadow-md hover:shadow-black hover:text-blue-400 text-white font-[700] text-[20px] mr-[100px]'
-        onClick={()=>{setShow((prev=>{return !prev}))}}
+         shadow-black shadow-sm hover:shadow-md hover:shadow-black hover:text-blue-400 text-white font-[700] text-[20px] mr-[100px] mt-[60px]'
+         onClick={()=>{setShow((prev=>{return !prev}))}}
         onMouseEnter={()=>{setOnButton(true)}}
         onMouseLeave={()=>{setOnButton(false)}}
        
-       >إضافة</button>
+       >إضافة</button></div>
 <div className="flex w-full h-[3px] bg-yellow-500 mt-[10px]"></div>
 {invId.length>0 && eShow&&(<EditInvetation  key={invId} id={invId} setShow={setEShow}  setMutate={setMutate}  inv={ invetations.filter(invi=>invi.id==invId)[0]}/>)}
 {invId.length>0 && IEShow&&(<EditInternalInvetation key={invId} id={invId} setShow={setIEShow}  setMutate={setMutate} inv={ invetations.filter(invi=>invi.id==invId)[0]}/>)}
@@ -198,15 +198,276 @@ const search=()=>{
             onClick={()=>{reset()}}
             >تفريغ حقول التصفية</div>
         {/* <div className="flex w-full h-[3px] bg-yellow-500 mt-[10px]"></div> */}
-        {invetations&&invetations.length>0&&(
+        {/* {invetations&&invetations.length>0&&( */}
+            {(
         <div className='flex flex-col w-full justify-between  border-b-[1px] border-yellow-500 mt-[20px] py-[20px] ' >
 
-        <div className="flex  justify-evenly">
+        {/* <div className="flex  justify-evenly">
             
            
             <label className="flex w-[50%] justify-end mr-[100px]" htmlFor="">بحث</label>
+        </div> */}
+
+
+
+
+        <div className='flex flex-col w-full justify-between  border-b-[1px] border-yellow-500 mt-[20px] py-[20px] ' >
+
+<div className="flex  justify-evenly">
+    
+   
+    <label className="flex w-[50%] justify-end mr-[100px]" htmlFor="">بحث</label>
+</div>
+<div className="flex w-[100%]  justify-end mt-[30px]  mx-[10px]">
+
+
+<div className="flex flex-col w-[100px]  sm:w-[24%] ml-[80px] items-end">
+<label className=" text-right text-[11px] md:text-[20px]">الاسم</label>
+<input 
+
+value={name}
+onChange={(e)=>{setName(e.target.value)}}
+className="flex border-[1px] text-right w-[100px] sm:w-[90%] h-[30px]"/>
+
+</div>
+<div className="flex flex-col w-[25%] items-end">
+<label className=" text-right text-[11px] md:text-[20px] ">البريد الالكتروني</label>
+<input
+value={email}
+onChange={(e)=>{setEmail(e.target.value)}}
+className="flex border-[1px] text-right w-[100px] sm:w-[90%] h-[30px]"/>
+
+</div>
+<div className="flex flex-col w-[25%] items-end  ">
+<label className=" text-right text-[11px] md:text-[20px]">فئة الكرسي</label>
+<select 
+value={selectedCategory} onChange={(e)=>{setSelectedCatedgory(e.target.value)}}
+className="flex border-[1px] w-[100px] sm:w-[90%] h-[30px] text-right text-[11px] md:text-[20px]">
+<option value="" className="text-[11px] md:text-[20px]">اختر فئة الكرسي</option>
+{categories.length>0 && categories.map(ctg=>{
+return<option key={ctg.id} value={ctg.title}>{ctg.title}</option>
+})}
+</select>
+
+</div>
+
+<div className="flex flex-col mr-[30px] sm:mr-[80px] w-[25%] items-end ">
+<label className=" text-right text-[11px] md:text-[20px]">نوع الدعوة</label>
+<select className="flex border-[1px] w-[100px] sm:w-[90%] h-[30px] text-right"></select>
+
+</div>
+</div>
+
+
+<div className="flex w-[100%]  justify-end mt-[30px]  mx-[10px]">
+
+
+<div className="flex flex-col w-[100px]  sm:w-[24%] ml-[80px] items-end">
+<label className=" text-right text-[11px] md:text-[20px]">الفعالية</label>
+<select
+value={selectedEvent} onChange={(e)=>{setSelectedEvent(e.target.value)}}
+className="flex border-[1px] w-[100px] sm:w-[90%] h-[30px] text-right text-[11px] md:text-[20px]">
+<option value="" className="text-[11px] md:text-[20px]"
+
+>اختر فعالية</option>
+{events.length>0 && events.map(ctg=>{
+return<option key={ctg.id} value={ctg.title}>{ctg.title}</option>
+})}
+</select>
+{/* onChange={(e)=>{setName(e.target.value)}}
+className="flex border-[1px] text-right w-[100px] sm:w-[90%] h-[30px]"/> */}
+
+</div>
+<div className="flex flex-col w-[25%] items-end  ">
+<label className=" text-right text-[11px] md:text-[20px]">داخلي/خارجي</label>
+<select
+value={itype}
+onChange={(e)=>{setIType(e.target.value)}}
+className="flex border-[1px] w-[100px]  sm:w-[90%] h-[30px] text-right text-[11px] md:text-[20px]">
+
+<option value=""  className="text-[11px] md:text-[20px]">مصدر الدعوة</option>
+<option value="داخلي">داخلي</option>
+<option value="خارجي">خارجي</option>
+</select>
+{/* onChange={(e)=>{setName(e.target.value)}}
+className="flex border-[1px] text-right w-[100px] sm:w-[90%] h-[30px]"/> */}
+
+</div>
+
+<div className="flex flex-col w-[25%] items-end  ">
+<label className=" text-right text-[11px] md:text-[20px]">الفئة</label>
+<select 
+value={selectedPersonCat} onChange={(e)=>{setSelectedPersonCat(e.target.value)}}
+className="flex border-[1px] w-[100px] sm:w-[90%] h-[30px] text-right text-[11px] md:text-[20px]">
+<option value="" className="text-[11px] md:text-[20px]">اختر فئة المدعو</option>
+{personCats.length>0 && personCats.map(ctg=>{
+return<option key={ctg.id} value={ctg.title}>{ctg.title}</option>
+})}
+</select>
+
+</div>
+
+<div className="flex flex-col mr-[30px] sm:mr-[80px] w-[25%] items-end">
+<label className="  text-right text-[11px] md:text-[20px]">رقم الجوال</label>
+<input 
+value={whatsapp} onChange={(e)=>{setWhatsapp(e.target.value)}}
+className="flex border-[1px] text-right w-[100px] sm:w-[90%] h-[30px]"/>
+
+</div>
+</div>
+
+
+
+{/* <div className="flex w-[100%]  justify-end mt-[30px] mx-[10px]  ">
+<div className="flex flex-col mr-[30px] sm:mr-[80px] w-[25%] items-end" >
+<label className=" text-right text-[11px] md:text-[20px]">الفعالية</label>
+<select
+value={selectedEvent} onChange={(e)=>{setSelectedEvent(e.target.value)}}
+className="flex border-[1px] w-[100px] sm:w-[90%] h-[30px] text-right text-[11px] md:text-[20px]">
+<option value="" className="text-[11px] md:text-[20px]">اختر فعالية</option>
+{events.length>0 && events.map(ctg=>{
+return<option key={ctg.id} value={ctg.title}>{ctg.title}</option>
+})}
+</select>
+
+</div>
+<div className="flex flex-col mr-[30px] sm:mr-[80px] w-[25%] items-end">
+<label className=" text-right text-[11px] md:text-[20px]">داخلي/خارجي</label>
+<select className="flex border-[1px] w-[100px] sm:w-[90%] h-[30px] text-right text-[11px] md:text-[20px]"
+value={itype}
+onChange={(e)=>{setIType(e.target.value)}}
+>
+
+
+
+
+<option value=""  className="text-[11px] md:text-[20px]">مصدر الدعوة</option>
+<option value="داخلي">داخلي</option>
+<option value="خارجي">خارجي</option>
+
+</select>
+
+</div>
+<div className="flex flex-col mr-[30px] sm:mr-[80px] w-[25%] items-end">
+<label className=" text-right text-[11px] md:text-[20px] ">الفئة</label>
+<select 
+value={selectedPersonCat} onChange={(e)=>{setSelectedPersonCat(e.target.value)}}
+
+className="flex border-[1px] w-[100px] sm:w-[90%] h-[30px] text-right text-[11px] md:text-[20px]">
+<option value="" className="text-[11px] md:text-[20px]">اختر فئة المدعو</option>
+{personCats.length>0 && personCats.map(ctg=>{
+return<option key={ctg.id} value={ctg.title}>{ctg.title}</option>
+})}
+</select>
+
+</div>
+<div className="flex flex-col mr-[30px] sm:mr-[80px] w-[25%] items-end">
+<label className="  text-right text-[11px] md:text-[20px]">رقم الجوال</label>
+<input 
+value={whatsapp} onChange={(e)=>{setWhatsapp(e.target.value)}}
+className="flex border-[1px] text-right w-[100px] sm:w-[90%] h-[30px]"/>
+
+</div>
+</div> */}
+
+
+
+<div className="flex justify-between w-full flex-row-reverse">
+<div className="flex justify-end w-[15%] mt-[20px] sm:w-[30%]  ">
+<button className="flex sm:w-[70px] py-[5px] bg-orange-700 text-[12px] sm:text-[16px]
+text-white sm:font-[700] mr-[20px] sm:mr-[100px] justify-center rounded px-[3px]
+shadow-black shadow-md
+"
+
+onClick={()=>{search()
+
+}}
+>اذهب</button>
+
+</div>
+
+<div className=" flex justify-between  w-[80%] sm:w-[60%] ">
+<div className=" flex justify-between items-end flex-row-reverse text-[12px] sm:text-[16px] ml-[60px]">
+<label>عرض</label>
+<input
+className="flex w-[60px] mx-[10px] justify-center h-[30px] items-center outline-none border-b-[1px] border-yellow-500 text-center"
+type="number" value={entriesPerPage} onChange={(e)=>{setEntriesPerPage(e.target.value)}}></input>
+<label>سجلات</label>
+</div>
+
+<div className="flex justify-between items-center mt-[20px]">
+<button className="glex text-[12px] sm:text-[16px] px-[12px] sm:w-[70px]  h-[30px] justify-center items-center bg-orange-700 text-white rounded-md shadow-black shadow-md"
+onClick={()=>{
+if(page-1>0){
+setPage(prev=>prev-1)
+// search()
+}
+}}
+disabled={wt}>السابق</button>
+<input type="text" disabled={true} value={page+"/"+Math.ceil(total/entriesPerPage)} className="flex w-[60px] mx-[10px] justify-center h-[30px] items-center outline-none border-b-[1px] border-yellow-500 text-center"/>
+<button className="glex text-[12px] sm:text-[16px] px-[12px] sm:w-[70px]  h-[30px] justify-center items-center bg-orange-700 text-white rounded-md  shadow-black shadow-md"
+onClick={()=>{
+if((entriesPerPage*page)+1<=total){
+setPage(prev=>prev+1)
+// search()
+}
+}}
+disabled={wt}
+
+>التالي</button>
+</div>
+</div>
+</div>
+</div>
+
+
+
+ 
+
         </div>
-            <div className="flex justify-end mt-[30px] mx-[20px]">
+        )}
+{show && <InvitForm tog={setShow}/>}
+
+        <table  className=" flex flex-col w-full border-[1px] border-black" align="ltr">
+        <thead className="flex justify-evenly w-full h-[40px] bg-blue-950 text-white ">
+    
+   
+    <th className="border-[1px]  flex-1 text-[9px] sm:text-[13px] lg:text-[16px]">هل حضر  الفعالية</th>
+    <th className="border-[1px]  flex-1 text-[9px] sm:text-[13px] lg:text-[16px]">الفئة</th>
+    <th className="border-[1px]  flex-1 text-[9px] sm:text-[13px] lg:text-[16px]">رمز المقعد</th>
+    <th className="border-[1px]  flex-1 text-[9px] sm:text-[13px] lg:text-[16px]">نوع الدعوة</th>
+    <th className="border-[1px]  flex-1 text-[9px] sm:text-[13px] lg:text-[16px]">البريد الالكتروني</th>
+    <th className="border-[1px]  flex-1 text-[9px] sm:text-[13px] lg:text-[16px]">رقم الجوال</th>
+    <th className="border-[1px]  flex-1 text-[9px] sm:text-[13px] lg:text-[16px]">الاسم</th>
+
+    <th className="border-[1px]  flex-1 text-[9px] sm:text-[13px] lg:text-[16px]">المعرف</th>
+    </thead>
+
+    {/* {wt &&(<div className="flex absolute w-[500px] h-[100px] left-[500px] top-[100px] justify-center items-center 
+text-[25px] text-white bg-blue-800 shadow-black rounded-md shadow-md">الرجاء الإنتظار</div>)} */}
+
+{invetations.length>0 && invetations.map(inv=>{
+    
+    return<tr key={inv.id}>
+   
+    <InvitationsDayRow inv={inv} setInvId={setInvId} setEShow={setEShow} setIEShow={setIEShow} setBook={setBook} setChairs={setChairs} />
+    </tr>})}
+    {!wt &&  empty && invetations.length==0 && (
+    <div className="flex justify-center items-center w-full h-[40px] bg-blue-950 text-yellow-500 text-[30px]">! لا توجد نتائج مطابقة</div>
+)}
+{/* book is {book?"true":"false"} */}
+</table>
+
+    </div>)}
+    </Container>
+    </div>
+}
+ 
+export default InvitationsDay;
+
+/*
+
+           <div className="flex justify-end mt-[30px] mx-[20px]">
 
 
             <div className="flex flex-col w-[25%] ml-[80px] items-end">
@@ -331,44 +592,4 @@ disabled={wt}
 </div>
 </div>
 </div>
-
-        </div>
-        )}
-{show && <InvitForm tog={setShow}/>}
-
-        <table  className=" flex flex-col w-full border-[1px] border-black" align="ltr">
-        <thead className="flex justify-evenly w-full h-[40px] bg-blue-950 text-white ">
-    
-   
-    <th className="border-[1px]  flex-1">هل حضر  الفعالية</th>
-    <th className="border-[1px]  flex-1">الفئة</th>
-    <th className="border-[1px]  flex-1">رمز المقعد</th>
-    <th className="border-[1px]  flex-1">نوع الدعوة</th>
-    <th className="border-[1px]  flex-1">البريد الالكتروني</th>
-    <th className="border-[1px]  flex-1">رقم الجوال</th>
-    <th className="border-[1px]  flex-1">الاسم</th>
-
-    <th className="border-[1px]  flex-1">المعرف</th>
-    </thead>
-
-    {/* {wt &&(<div className="flex absolute w-[500px] h-[100px] left-[500px] top-[100px] justify-center items-center 
-text-[25px] text-white bg-blue-800 shadow-black rounded-md shadow-md">الرجاء الإنتظار</div>)} */}
-
-{invetations.length>0 && invetations.map(inv=>{
-    
-    return<tr key={inv.id}>
-   
-    <InvitationsDayRow inv={inv} setInvId={setInvId} setEShow={setEShow} setIEShow={setIEShow} setBook={setBook} setChairs={setChairs} />
-    </tr>})}
-    {!wt &&  empty && invetations.length==0 && (
-    <div className="flex justify-center items-center w-full h-[40px] bg-blue-950 text-yellow-500 text-[30px]">! لا توجد نتائج مطابقة</div>
-)}
-{/* book is {book?"true":"false"} */}
-</table>
-
-    </div>)}
-    </Container>
-    </div>
-}
- 
-export default InvitationsDay;
+*/

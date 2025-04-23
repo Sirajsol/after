@@ -11,6 +11,7 @@ import Container from "../components/Contaner";
 import EditUser from "../components/EditUser"
 import {toast} from 'react-hot-toast'
 import NavBar from "../components/nav/Nav";
+import Load from "../components/load";
 
 const AddUsers = () => {
 
@@ -163,8 +164,7 @@ if(loaded){
      text-red-600 text-[30px] px-[40px] shadow-black shadow-md rounded">ممم حدث خطأ ما . تأكد من جودة الاتصال بالانترنت</div>
 </div>
         )} 
-        {wt&&(<div className="flex justify-center items-center absolute top-[150px] bg-blue-900 w-[400px] h-[80px] left-[500px] text-white
-      text-[30px] px-[40px] shadow-black shadow-md rounded">الرجاء الإنتظار</div>)}
+        {wt&&<Load/>}
 
    
 {!connectionError &&auth&& ( <div className=" flex flex-col h-screen w-screen mt-[150px] items-end relative">

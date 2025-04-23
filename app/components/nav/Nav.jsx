@@ -35,7 +35,7 @@ const NavBar = ({children}) => {
             <div  onClick={()=>{setOnControl(false)
               setWait(true)}} className="flex  h-[50px]  mx-[5px] bg-gray-900 text-white text-center justify-center hover:bg-blue-950 cursor-pointer text-[10px] sm:text-[25px] hover:border-b-[1px] border-yellow-600"  ><Link href="/events/invitations">الدعوات  العامة </Link></div>
             <div  onClick={()=>{setOnControl(false)
-              setWait(true)}} className="flex  h-[50px] mx-[5px]  bg-gray-900 text-white text-center justify-center hover:bg-blue-950  cursor-pointer text-[10px] sm:text-[25px] hover:border-b-[1px] border-yellow-600"><Link href="all-events">كل الفعاليات</Link></div>
+              setWait(true)}} className="flex  h-[50px] mx-[5px]  bg-gray-900 text-white text-center justify-center hover:bg-blue-950  cursor-pointer text-[10px] sm:text-[25px] hover:border-b-[1px] border-yellow-600"><Link href="/all-events">كل الفعاليات</Link></div>
                <div  onClick={()=>{setOnControl(false)
               setWait(true)}} className="flex  h-[50px] mx-[5px]  bg-gray-900 text-white text-center justify-center hover:bg-blue-950  cursor-pointer text-[10px] sm:text-[25px] hover:border-b-[1px] border-yellow-600"><Link href="/events/titleOne">الألقاب1</Link></div>
             <div  onClick={()=>{setOnControl(false)

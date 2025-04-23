@@ -156,7 +156,7 @@ switch(snapshot.state){
     top-[200px] w-[600px] rounded-sm justify-center items-center
     ">الرجاء الانتظار</div>)}
   */}
-        <div className='flex absolute w-full h-screen top-[-80px] bg-white opacity-50 '
+        <div className='flex absolute w-full h-[900px]  top-[-80px] bg-black opacity-50 '
         onClick={()=>{setShow(false)}}
         ></div>
 <div className={Style.actContainer}>
@@ -175,33 +175,36 @@ switch(snapshot.state){
     </select>
         {/* <label htmlFor="" className='text-black'>المكان</label> */}
         
-        <label htmlFor="">المكان</label>
+        <label className={Style.llb} htmlFor="">المكان</label>
     </div>
 
     <div className={Style.element}>
         
         <input type='text' value={name}  onChange={(e)=>{setName(e.target.value)}} className={Style.innput}/>
-        <label htmlFor="">الاسم</label>
+        <label  className={Style.llb}  htmlFor="">الاسم</label>
     </div>
     </div>
 
     <div className={Style.deualElement}>
     <div className={Style.element}>
     {/* <input type='text' className={Style.innput}/ > */}
-    <div className='flex'>
+    {/* <div 
+    className='flex w-[70%]'
+    > */}
    <input
     type='date'
     onChange={(e)=>{
         // e.preventDefault()
         setSelectedDate(e.target.value)}}
-    className='flex w-[200px] bg-blue-950 text-white'
+    // className='flex w-[200px] bg-blue-950 text-white'
+    className={Style.innput}
     id='date'
     aria-activedescendant='true'
     />
        
-    </div>
+    {/* </div> */}
  
-        <label htmlFor="date">التاريخ</label>
+        <label htmlFor="date" className={Style.llb}>التاريخ</label>
     </div>
 
     <div className={`${Style.element} `}>
@@ -269,14 +272,15 @@ switch(snapshot.state){
     
     </div>
     </div> */}
-    <div className=' flex justify-center'>
-        <input type='time'  value={startTime} onChange={(e)=>{setStartTime(e.target.value)}} className='flex w-[75px]  bg-blue-950 text-white'/>
+    <div className=' flex justify-center w-[80%]'>
+        <input type='time'  value={startTime} onChange={(e)=>{setStartTime(e.target.value)}} 
+        className='flex w-[30%] sm:w-[75px]  bg-blue-950 text-white'/>
     <label htmlFor="" >إلى</label>
     <input type='time' value={endTime} onChange={(e)=>{setEndTime(e.target.value)}}  className='flex w-[75px]  bg-blue-950 text-white'/>
     {/* <label htmlFor="">من</label> */}
     </div>
     
-        <label htmlFor="">الوقت</label>
+        <label htmlFor="" className={Style.llb}>الوقت</label>
     </div>
     </div>
     <div className={Style.deualElement}>
@@ -284,21 +288,29 @@ switch(snapshot.state){
         <input type='text' 
         value={description}
         onChange={(e)=>{setDescription(e.target.value)}}
-        className='flex bg-blue-950 text-white text-[20px]
-            rounded w-[200px] text-right'/>
-        <label htmlFor="pic" className='flex ml-[100px]'>وصف</label>
+        // className='flex bg-blue-950 text-white text-[20px]
+        //     rounded w-[200px] text-right'
+            className={Style.innput}
+            />
+        <label htmlFor="pic" className={Style.llb} >وصف</label>
         </div>
-    <input type='file' 
+ 
+    <div className={Style.element}>
+    
+
+
+
+        <div className={Style.fl}>      
+
+
+        <input type='file' 
      onChange={(e)=>{setImg(e.target.files[0])}}
     //  onChange={(e)=>{setImgData(e.target.files[0].name)}}
       id='pic' className=' hidden'/  >
-    <div className={Style.element}>
-    
-        
-        <div className={Style.fl}>       
+
          <label htmlFor="pic" className='flex bg-blue-950 text-white w-[200px] justify-center rounded border-b-[2px] border-yellow-400 cursor-pointer h-[30px]' >اختر صورة</label>
 </div>
-        <label htmlFor="pic" >صورة</label>
+        <label htmlFor="pic" className={Style.llb} >صورة</label>
     </div>
     </div>
 
@@ -314,7 +326,7 @@ switch(snapshot.state){
 
     </textarea>
         {/* <label htmlFor="" className='text-black'>المكان</label> */}
-        <label htmlFor="">الرسالة الإنكليزية</label>
+        <label htmlFor="" className={Style.llb}>الرسالة الإنكليزية</label>
         
     </div>
 
@@ -326,7 +338,7 @@ switch(snapshot.state){
     className='flex bg-blue-950 text-white text-right rounded-sm w-[200px] px-[5px] ml-[10px]'>
 
 </textarea>
-<label htmlFor="">الرسالة العربية</label>
+<label htmlFor="" className={Style.llb}>الرسالة العربية</label>
     </div>
     </div>
 

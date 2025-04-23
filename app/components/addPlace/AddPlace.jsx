@@ -42,6 +42,7 @@ const AddPlace = ({setShow}) => {
       method:'POST',
       body:JSON.stringify({name,enName,seatPlan,imgData})
     }).then(rs =>console.log("yes")).catch(error=>console.log(error))
+    // if(dat.ok){console.log("it is ok from inside add place")}
     if(dat){
       return dat.json()
     }
@@ -120,7 +121,7 @@ switch(snapshot.state){
         onClick={()=>{setShow(false)}}
         ></div>
         <div className=" flex flex-col justify-evenly w-full left-[0px] h-[400px] sm:w-[500px] sm:h-[500px] bg-blue-950 z-20 
-        absolute top-[100px] sm:left-[500px]  items-center
+        absolute top-[100px] sm:left-[15%] md:left-[30%]  items-center
         border-[2px] border-yellow-600 rounded-[10px] shadow-white shadow-md"
         onMouseEnter={()=>{setInBox(true)}}
         onMouseLeave={()=>{setInBox(false)}}

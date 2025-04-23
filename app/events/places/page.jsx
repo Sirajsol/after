@@ -21,9 +21,13 @@ const[mutate,setMutate]=useState(false)
         setWait(true)
         const pls=async()=>{
             
-            const ps=await fetch('/api/place').then(res=>res.json())
+            const {plss}=await fetch('/api/place').then(res=>res.json())// differ from   const {plss}=await...
             .catch((error)=>{toast.error("خطأ")})
-            if(ps){setPlaces(ps)}
+            if(plss){
+                alert("ps is",plss)
+                setPlaces(plss)
+            console.log("ps is",plss)
+            }
             setWait(false)
         }
         pls()
@@ -31,8 +35,15 @@ const[mutate,setMutate]=useState(false)
     
     const[show,setShow]=useState(false)
     return <Container>
-        {!wait &&(!places||places.length==0)&&(<BadConnection/>)}
+
+        
+        
     <div className=" flex w-full flex-col h-full items-end relative">
+    {!wait &&(!places|| (places==null)|| places.length==0)&&(  <div className='flex text-[10px] w-[60%] mr-[20%] bg-blue-900 h-[80px]
+         rounded-[15px] text-center
+          text-blue-300 justify-center items-center sm:text-[25px] shadow-black shadow-lg '>
+           {places} ممممم يبدو انا هنالك مشكلة بالاتصال</div>)}
+ 
          <label htmlFor="" className='flex mr-[50px] text-blue-800 font-[900] text-[25px]'>الفعاليات/مكان الفعالية</label>
         <div className='flex h-[30px]'></div>
         <button className='flex bg-orange-600 w-[80px] py-[5px] items-center justify-center rounded-md

@@ -4,16 +4,20 @@ import { NextResponse } from "next/server"
 
 export const GET=async(req)=>{
     try{
-        const pls=await prisma.place.findMany({
+        const plss=await prisma.place.findMany({
             include:{
                 event:true
             }
         })
-        if(pls){return new NextResponse(JSON.stringify(pls),{status:'200'})}
+        if(plss){
+            console.log("inside place api plass is ",plss)
+            return new NextResponse(JSON.stringify(plss),{status:'200'})}
         // return new NextResponse("hi")
     }
     catch(error){
+        console.log("inside place api plass not fuckin found ")
         return new NextResponse(JSON.stringify(error,{status:400}))
+        // return new NextResponse(null)
     }
 }
 

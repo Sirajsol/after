@@ -13,6 +13,7 @@ const TitleOnePagr = () => {
     const router=useRouter()
     const {user,setUser,loaded}=useCntxt()
      const[auth,setAuth]=useState(false)
+     const[title,setTitle]=useState('')
    const[emptyResult,setEmptyResult]=useState(true)
      useEffect(()=>{
  if(loaded){
@@ -90,41 +91,48 @@ const[connectionError,setConnectionError]=useState(false)
     return <div>
         <Container>
         {connectionError && auth&&(
-<div className=" flex w-screen h-screen justify-center items-center">
-    <div className="flex justify-center items-center absolute top-[150px] bg-blue-900
-     text-red-600 text-[30px] px-[40px] shadow-black shadow-md rounded">ممم حدث خطأ ما . تأكد من جودة الاتصال بالانترنت</div>
+<div className=" flex w-screen h-[60px] z-10 absolute justify-center items-center">
+    <div className="flex  h-[50px] justify-center items-center absolute top-[-200px] bg-blue-900
+     text-red-400 text-[15px] md:text-[30px] px-[40px] shadow-black shadow-md rounded">ممم حدث خطأ ما . تأكد من جودة الاتصال بالانترنت</div>
 </div>
         )} 
 
         {wt&&(<div className="flex justify-center items-center absolute top-[150px] bg-blue-900 w-[400px] h-[80px] left-[500px] text-white
       text-[30px] px-[40px] shadow-black shadow-md rounded">الرجاء الإنتظار</div>)}
 
-             {!connectionError &&auth&&( 
-             <div className='flex flex-col w-full h-full  items-end relative mb-[70px]  '
+             {/* {!connectionError &&auth&&(  */}
+           {(  <div className='flex flex-col w-full h-full  items-end relative mb-[70px]  '
     // onClick={()=>{if(!onButton)setShow(false)}}
     >
         <label htmlFor="" className='flex mr-[50px] text-blue-800 font-[900] text-[25px]'>لوحة التحكم / اللقب 1</label>
-        <div className='flex h-[30px]'></div>
+        <div className='flex h-[30px]'>
         <button className='flex bg-orange-600 w-[80px] py-[5px] items-center justify-center rounded-md
-         shadow-black shadow-sm hover:shadow-md hover:shadow-black hover:text-blue-400 text-white font-[700] text-[20px] mr-[50px]'
-        onClick={()=>{setShow((prev=>{return !prev}))}}
+         shadow-black shadow-sm hover:shadow-md hover:shadow-black hover:text-blue-400
+          text-white font-[700] text-[13px] sm:text-[20px] mr-[50px]'   onClick={()=>{setShow(true)}}
         onMouseEnter={()=>{setOnButton(true)}}
         onMouseLeave={()=>{setOnButton(false)}}
-        >إضافة</button>
-        <div className='flex w-full justify-between  border-b-[1px] border-yellow-500 mt-[20px] py-[20px] ' >
+        >إضافة</button></div>
+       <div className='flex w-full justify-between  border-b-[1px] border-yellow-500 mt-[20px] py-[20px] ' >
 
-        <div className='flex ml-[70px] py-[10px]  shadow-black shadow-md px-[20px]'>
-                <input className='bg-blue-950 text-white rounded-md border-b-[1px] text-right px-[5px] h-[30px] border-yellow-300'/>
-                <label htmlFor="" className='flex font-[700] text-[25px] ml-[50px]'>search</label>
-            </div>
+<div className='flex ml-[70px] py-[10px]  shadow-black shadow-md px-[20px] w-[25%]'>
+        <input 
+        type="text"
+        value={title}
+        onChange={(e)=>{setTitle(e.target.value)}}
+        className='bg-blue-950 text-white rounded-md border-b-[1px] text-right px-[5px] 
+        h-[30px] border-yellow-300 w-[80%] '/>
+        <label htmlFor="" className='flex font-[700] md:text-[25px] lg:ml-[50px] w-[10%] text-[10px] sm:text-[15px]  lg:text-[25px]  '>بحث</label>
+    </div>
 
-            <div className='flex justify-start mr-[50px] py-[10px] shadow-black shadow-md px-[20px]'>
-                <label htmlFor="" className='flex font-[700] text-[25px] mr-[50px]'>entries</label>
-                <input  min={1} type='number' className='bg-blue-950 w-[90px] text-white rounded-md border-b-[1px] px-[10px] text-[25px] mt-[5px] text-right  h-[30px] border-yellow-300'/>
-                <label className='flex font-[700] text-[25px] ml-[50px]'>show</label>
-            </div>
-            
-        </div>
+    <div className='flex justify-between mr-[50px] py-[10px] w-[40%] sm:w-[35%]
+     shadow-black shadow-md px-[20px]'>
+        <label htmlFor="" className='flex font-[700] sm:text-[15px] lg:text-[25px] lg:mr-[50px] w-[20%] text-[10px]'>سجلات</label>
+        <input  min={1} type='number' className='bg-blue-950 w-[50%] sm:w-[90px] text-white rounded-md
+         border-b-[1px] px-[10px] text-[25px] mt-[5px] text-right  h-[30px] border-yellow-300'/>
+        <label className='flex font-[700] text-[10px] sm:text-[15px]  lg:text-[25px] lg:ml-[50px] w-[20%]'>عرض</label>
+    </div>
+    
+</div>
         {/*  titles&&titles.length>0 &&(*/}
 
 

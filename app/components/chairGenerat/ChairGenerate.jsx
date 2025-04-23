@@ -2,7 +2,7 @@
 import { useState ,useEffect} from "react";
 import { useRouter } from "next/dist/client/components/navigation";
 
-const ChairGenerate = () => {
+const ChairGenerate = ({setShow}) => {
     // const g=JSON.parse(localStorage.getItem("gg"))
     // const router=useRouter()
     
@@ -14,6 +14,7 @@ const ChairGenerate = () => {
     const[category,setCategory]=useState("")
     const[places,setPlaces]=useState([])
     const[categories,setCategories]=useState([])
+    
     
 useEffect(()=>{
     const pls=async()=>{
@@ -56,7 +57,14 @@ body:JSON.stringify(y)
         //     return<div className="flex w-[500px] absolute bg-blue-950 text-white left-[400px]">redirecting, please wait...</div>
         // }
    
-   return<div className="flex w-[300px] pt-[10px] h-[400px] border-[1px] bg-blue-950 top-[200px] absolute ml-[20px] rounded-md shadow-md shadow-black">
+   return <div className="flex w-screen h-screen   absolute z-10 left-0 top-0">
+   
+   <div className="flex  flex-col w-[70%] mx-auto sm:w-[300px]  lg:w-[30%] lg:left-[35%] md:w-[40%] md:left-[30%] pt-[10px] h-[400px] border-[1px] absolute z-20 left-[20%]
+    bg-blue-950 top-[200px]  ml-[20px] rounded-md shadow-md shadow-black ">
+        <button className=" flex  w-[25px] h-[25px] justify-center bg-red-600 font-[700] shadow-white shadow-sm
+        ml-[20px] hover:text-yellow-400 text-white rounded-full"
+        onClick={()=>{setShow(false)}}
+        >X</button>
 <div className="flex flex-col w-full ">
 <div className="flex flex-col  mx-[30px] ">
     <label htmlFor="" className="flex justify-end text-[20px] font-[700] text-white">مكان الفعالية</label>
@@ -142,7 +150,10 @@ className="flex bg-orange-600 text-white  py-[10px] disabled:cursor-not-allowed 
 
 </div>
     </div>
-  
+    <div className="flex bg-black w-screen h-screen  opacity-30 absolute z-10 left-0 top-0"
+    onClick={()=>{setShow(false)}}
+    ></div>
+    </div>
 }
  
 export default ChairGenerate;
