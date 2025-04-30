@@ -43,8 +43,8 @@ export  const GET=async(req)=>{
     throw error
     }
     catch(error){
-        console.log("error is",error)
-        return  new NextResponse(JSON.stringify(error,{status:400}))
+        console.log("error in event api get mrthod  is",error)
+    //    return  new NextResponse(JSON.stringify(error,{status:400}))
    
 } 
 }

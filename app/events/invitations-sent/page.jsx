@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation"
 import  Container from '@/app/components/Contaner'
 import {toast} from 'react-hot-toast'
 import Load from "@/app/components/load"
+import BadConnection from "@/app/components/badConnection"
 const Invitations = () => {
 const[wt,setWt]=useState(false)
 
@@ -72,7 +73,9 @@ const[empty,setEmpty]=useState(false)
         setWt(true)
         const pls=async()=>{
             const {inv:ps,count}=await fetch(`/api/invetation${searchTerm}`).then(res=>{
-                if(!res.ok) {throw Error("no connection")}
+                if(!res.ok) {
+                    setWt(false)
+                    throw Error("no connection")}
               return  res.json()
            })
             .catch((error)=>{
@@ -129,8 +132,9 @@ const[empty,setEmpty]=useState(false)
         <Container>
          {connectionError && auth&&(
 <div className=" flex w-screen h-screen justify-center items-center">
-    <div className="flex justify-center items-center absolute top-[150px] bg-blue-900
-     text-red-600 text-[30px] px-[40px] shadow-black shadow-md rounded">ممم حدث خطأ ما . تأكد من جودة الاتصال بالانترنت</div>
+    {/* <div className="flex justify-center items-center absolute top-[150px] bg-blue-900
+     text-red-600 text-[30px] px-[40px] shadow-black shadow-md rounded">ممم حدث خطأ ما . تأكد من جودة الاتصال بالانترنت</div> */}
+<BadConnection/>
 </div>
         )} 
           {!wt && empty && invitations.length==0 && (

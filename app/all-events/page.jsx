@@ -5,27 +5,60 @@ import EventCard from '../components/eventcard/EventCard'
 import PNave from "../components/PNav"
 import NavBar from "../components/nav/Nav"
 import AllCards from "../components/AllCards"
+import BadConnection from "../components/badConnection"
+import Loadd from "./lod"
 
 export const BASE_API_URL=process.env.NEXT_PUBLIC_BASE_API_URL
+// const getm=async()=>{
+    
+   
+        
+//         const {events:d,count}=await fetch(`${BASE_API_URL}/api/event`,{
+//         headers:{
+//             'Content-Type'  : 'application/json'
+//         },
+//         cache:"no-store"
+//     }
+//     ).then(res=>{
+//         if(!res.ok){
+//             console.log('fuck')
+//             throw Error('')
+//         }
+//        return res.json()}).catch(error=>{
+//             console.log('fuck catch')
+//         })
+//     return d
+// }
+let events;
+let badconnection=false;
 const getm=async()=>{
     
-    //const {events:d,count}=await fetch('http://localhost:3000/api/event',{
-        const {events:d,count}=await fetch(`${BASE_API_URL}/api/event`,{
-        headers:{
-            'Content-Type'  : 'application/json'
-        },
-        cache:"no-store"
-    }
-    ).then(res=>{
-        if(!res.ok){
-            console.log('fuck')
-            throw Error('')
-        }
-       return res.json()}).catch(error=>{
-            console.log('fuck catch')
-        })
-    return d
+   
+        
+    await fetch(`${BASE_API_URL}/api/event`,{
+    headers:{
+        'Content-Type'  : 'application/json'
+    },
+    cache:"no-store"
 }
+).then(res=>{
+    if(!res.ok){
+        console.log('fuck')
+        badconnection=true
+        throw Error('')
+    }
+   events= res.json()
+   badconnection=false
+return
+}
+   
+   ).catch(error=>{
+        console.log('fuck catch')
+    })
+return 
+}
+
+
 // export const getm=async()=>{
 //     try{
        
@@ -73,8 +106,13 @@ const data=await getm()
     </div>
        )}
     </div> */}
-    <div className=" flex absolute  mt-[40px] justify-center items-center flex-wrap w-screen mx-auto">
-    <AllCards/>
+    <div className=" flex flex-col absolute  mt-[40px] justify-center items-center flex-wrap w-screen mx-auto">
+    {!badconnection&&<AllCards/>}
+    {!badconnection&&<Loadd/>}
+    {badconnection&& <div className='flex text-[10px] w-[60%] left-[20%] bg-blue-900 h-[80px]
+         rounded-[15px] text-center
+          text-blue-300 justify-center items-center sm:text-[25px] shadow-black shadow-lg '>ممممم يبدو انا هنالك مشكلة بالاتصال</div>
+    }
     </div>
   
     </div>

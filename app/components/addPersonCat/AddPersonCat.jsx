@@ -46,13 +46,13 @@ const AddPersonCat = ({Showit}) => {
         width:"40px",
         height:"40px"
     }
-    return  <div  className=" flex w-screen h-screen ">
+    return  <div  className=" flex w-screen h-[1000px] absolute left-[-10px] top-[-250px] z-40">
        
     <div className=" flex w-full h-full bg-black opacity-35 absolute top-[0px] left-[0px]"
     onClick={()=>{Showit(false)}}
     ></div>
-    <div className="flex flex-col w-[500px] h-[300px] border-[1px] bg-blue-950 rounded-[10px] shadow-fuchsia-50 shadow-md
-    left-[600px] top-[100px]  justify-between items-center absolute "
+    <div className="flex flex-col w-[90%] h-[300px] border-[1px] bg-blue-950 rounded-[10px] shadow-fuchsia-50 shadow-md
+    left-[5%] top-[100px]  justify-between items-center absolute "
     onClick={()=>{if(!mouseIn){setShow(false)}
    
 }}

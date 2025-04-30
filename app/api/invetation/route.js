@@ -166,7 +166,8 @@ try{
 //     return new NextResponse(id)
 // }
 catch(error){
-    return new NextResponse(JSON.stringify(error,{status:400}))
+    // return new NextResponse(JSON.stringify(error,{status:400}))
+    return null
 }
 
 

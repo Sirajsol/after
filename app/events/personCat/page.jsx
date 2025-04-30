@@ -82,17 +82,18 @@ if(loaded){
             onMouseEnter={()=>{setOnButton(true)}}
             onMouseLeave={()=>{setOnButton(false)}}
             >إضافة</button>
-            <div className='flex w-full justify-between  border-b-[1px] border-yellow-500 mt-[20px] py-[20px] ' >
+            <div className='flex flex-col sm:flex-row  w-full justify-between 
+             border-b-[1px] border-yellow-500 mt-[20px] py-[20px] ' >
 
-            <div className='flex ml-[70px] py-[10px]  shadow-black shadow-md px-[20px]'>
+            <div className='flex  justify-evenly md:ml-[70px] py-[10px]  shadow-black shadow-md px-[20px] left-[10%] mx-auto w-[80%] sm:w-[45%]'>
                     <input className='bg-blue-950 text-white rounded-md border-b-[1px] text-right px-[5px] h-[30px] border-yellow-300'/>
-                    <label htmlFor="" className='flex font-[700] text-[25px] ml-[50px]'>search</label>
+                    <label htmlFor="" className='flex font-[700] text-[15px] sm:text-[20px] md:text-[25px] md:ml-[50px]'>بحث</label>
                 </div>
 
-                <div className='flex justify-start mr-[50px] py-[10px] shadow-black shadow-md px-[20px]'>
-                    <label htmlFor="" className='flex font-[700] text-[25px] mr-[50px]'>entries</label>
+                <div className='flex  justify-evenly mx-auto w-[80%] sm:w-[45%]   py-[10px] shadow-black shadow-md px-[20px]'>
+                    <label htmlFor="" className='flex font-[700] text-[15px] sm:text-[20px] md:text-[25px] md:mr-[50px]'>سجلات</label>
                     <input  min={1} type='number' className='bg-blue-950 w-[90px] text-white rounded-md border-b-[1px] px-[10px] text-[25px] mt-[5px] text-right  h-[30px] border-yellow-300'/>
-                    <label className='flex font-[700] text-[25px] ml-[50px]'>show</label>
+                    <label className='flex font-[700] text-[15px] sm:text-[20px] md:text-[25px] md:ml-[50px]'>عرض</label>
                 </div>
                 
             </div>

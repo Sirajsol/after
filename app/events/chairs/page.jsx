@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 
 import Container from "../../components/Contaner";
 import Load from "@/app/components/load";
+import BadConnection from "@/app/components/badConnection";
 const getd=async(qu)=>{
     
     // const res=await fetch(qu,
@@ -117,12 +118,15 @@ chr()
 
 
     // const data=await getd(qu)
-//   if(connectionError && auth){console.log("noooooooooooooooooo dataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-// return<div className=" flex w-screen h-screen justify-center items-center">
-//     <div className="flex justify-center items-center absolute top-[150px] bg-blue-900
-//      text-red-600 text-[30px] px-[40px] shadow-black shadow-md rounded">ممم حدث خطأ ما . تأكد من جودة الاتصال بالانترنت</div>
-// </div>
-// }  
+  if(connectionError && auth){console.log("noooooooooooooooooo dataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+return <div className=" flex w-screen h-screen justify-center items-center">
+
+    {/* <div className="flex justify-center items-center absolute top-[150px] bg-blue-900
+     text-red-600 text-[30px] px-[40px] shadow-black shadow-md rounded">ممم حدث خطأ ما . تأكد من جودة الاتصال بالانترنت</div> */}
+<BadConnection/>
+</div>
+
+}  
  return <div className=" flex w-screen ">
     <Container>
     {/* {(wait||wt)&&(<div className="flex absolute left-0 top-0 w-screen">

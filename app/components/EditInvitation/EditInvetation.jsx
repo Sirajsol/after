@@ -185,7 +185,8 @@ const[wait,setWait]=useState(false)
     > 
     </div>
     {wait &&(<div className='flex justify-center text-center items-center text-white border-[1px]
-        border-yellow-400 shadow-md shadow-white bg-blue-800 z-20 w-[400px] h-[100px]  text-[35px] absolute top-[150px] left-[600px]'>الرجاء الانتظار</div>)}
+        border-yellow-400 shadow-md shadow-white bg-blue-800 z-20
+        w-[40%] h-[50px] md:h-[100px] text-[20px] md:text-[35px] absolute top-[150px] left-[25%]'>الرجاء الانتظار</div>)}
    
    {!hidden && !wait&& inv&&( <div className={Style.maincontainer}>
 

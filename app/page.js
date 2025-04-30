@@ -11,14 +11,42 @@ import Link from "next/link"
 import EventCard from './components/eventcard/EventCard'
 
 import { PrismaClient } from "@prisma/client";
+import BadConnection from './components/badConnection'
 
 export const BASE_API_URL=process.env.NEXT_PUBLIC_BASE_API_URL
+// const getm=async()=>{
+//     if(!BASE_API_URL){
+//         return null
+//     }
+    
+//         const {events:d,count}=await fetch(`${BASE_API_URL}/api/event`,{
+//         headers:{
+//             'Content-Type'  : 'application/json'
+//         },
+//         cache:"no-store"
+//     }
+//     ).then(res=>{
+//         if(!res.ok){
+//             console.log('fuck')
+//             throw Error('')
+//         }
+//         if(res.ok){console.log('result is ok')
+//     return d
+//     }
+//        return res.json()}).catch(error=>{
+//             console.log('fuck catch'+error)
+//         })
+
+// }
+let events=null;
+let badconnection=false;
 const getm=async()=>{
     if(!BASE_API_URL){
         return null
     }
     //const {events:d,count}=await fetch('http://localhost:3000/api/event',{
-        const {events:d,count}=await fetch(`${BASE_API_URL}/api/event`,{
+      
+         await fetch(`${BASE_API_URL}/api/event`,{
         headers:{
             'Content-Type'  : 'application/json'
         },
@@ -27,14 +55,23 @@ const getm=async()=>{
     ).then(res=>{
         if(!res.ok){
             console.log('fuck')
+            badconnection=true
             throw Error('')
+           
         }
-        if(res.ok){console.log('result is ok')}
-       return res.json()}).catch(error=>{
-            console.log('fuck catch')
+        if(res.ok){console.log('result is ok')
+        events=res.json()
+        badconnection=false
+    // return res.json()
+    }
+    //    return res.json()
+    }).catch(error=>{
+            console.log('fuck catch'+error)
         })
-    return d
+
 }
+
+
 // export const getm=async()=>{
 // try{
 //  const pr=new PrismaClient()
@@ -97,7 +134,7 @@ export default async function Home() {
   // )
 
 
-  const data=await getm()
+//   const data=await getm()
 
   if(!BASE_API_URL){
     return null
@@ -107,7 +144,7 @@ export default async function Home() {
       {/* <Login /> */}
   <div className=" flex justify-center items-center flex-wrap w-[80%] left-[10%] mx-auto ">
       
-      {data?.length>0&&(
+      {events?.length>0&&(
           data.map(d=>{
               return <Link href={`/all-events/${d.id}`} key={d.id}>
               <EventCard ev={d} />
@@ -116,6 +153,8 @@ export default async function Home() {
             
           })
       )}
+      
+      {badconnection&&(<BadConnection/>)}
   </div>
   </Container>
 

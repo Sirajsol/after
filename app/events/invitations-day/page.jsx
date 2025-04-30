@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation"
 import Container from "../../components/Contaner"
 import {toast} from 'react-hot-toast'
 import Load from "@/app/components/load"
+import BadConnection from "@/app/components/badConnection"
 const InvitationsDay = () => {
     const[entriesPerPage,setEntriesPerPage]=useState(5)
     const[page,setPage]=useState(1)
@@ -66,6 +67,8 @@ const[whatsapp,setWhatsapp]=useState('')
            })
             .catch((error)=>{
                 setConnectionError(true)
+                setWt(false)
+                
                 toast.error("خطأ")})
             if(ps){setInvetations(ps)
             setTotal(count)
@@ -160,9 +163,11 @@ const search=()=>{
     return <div>
         <Container>
         {connectionError && auth&&(
+           
 <div className=" flex w-screen h-screen justify-center items-center">
-    <div className="flex justify-center items-center absolute top-[150px] bg-blue-900
-     text-red-600 text-[30px] px-[40px] shadow-black shadow-md rounded">ممم حدث خطأ ما . تأكد من جودة الاتصال بالانترنت</div>
+    {/* <div className="flex justify-center items-center absolute top-[150px] bg-blue-900
+     text-red-600 text-[30px] px-[40px] shadow-black shadow-md rounded">ممم حدث خطأ ما . تأكد من جودة الاتصال بالانترنت</div> */}
+ <BadConnection/>
 </div>
         )} 
       
@@ -181,7 +186,8 @@ const search=()=>{
         <label htmlFor="" className='flex  text-blue-800 font-[900] text-[25px] mr-[100px]'>لوحة التحكم /إرسال الدعوات</label>
         <div className='flex h-[100px] mb-[30px]'>
         <button className='flex bg-orange-600 w-[80px] py-[5px] items-center justify-center rounded-md
-         shadow-black shadow-sm hover:shadow-md hover:shadow-black hover:text-blue-400 text-white font-[700] text-[20px] mr-[100px] mt-[60px]'
+         shadow-black shadow-sm hover:shadow-md hover:shadow-black hover:text-blue-400 text-white z-10
+         font-[700] text-[20px] mr-[100px] mt-[60px]'
          onClick={()=>{setShow((prev=>{return !prev}))}}
         onMouseEnter={()=>{setOnButton(true)}}
         onMouseLeave={()=>{setOnButton(false)}}

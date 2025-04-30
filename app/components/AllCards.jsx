@@ -33,6 +33,8 @@ useEffect(()=>{
         catch(error){
             console.log('what the fuck!!!',error)
         }
+        setWait(false)
+        setWt(false)
     }
     useEffect(()=>{
        

@@ -115,9 +115,9 @@ pls()
 
 
 
-    return <div className='flex w-full h-full'>
+    return <div className='flex w-full h-screen absolute z-40 pb-[20px]'>
         {wait &&(<div className='flex justify-center text-center items-center text-white border-[1px]
-        border-yellow-400 shadow-md shadow-white bg-blue-800 z-20 w-[400px] h-[100px]  text-[35px] absolute top-[150px] left-[600px]'>الرجاء الانتظار</div>)}
+        border-yellow-400 shadow-md shadow-white bg-blue-800 z-20 w-[40%] h-[50px] md:h-[100px] text-[20px] md:text-[35px] absolute top-[150px] left-[30%]'>الرجاء الانتظار</div>)}
         {/* <div className='flex w-screen bg-slate-600 h-screen top-[-100px] left-[0px] absolute  opacity-35' */}
     <div className={`${!hidden? Style.wholep : "hidden"} `}
     
@@ -227,30 +227,44 @@ pls()
        <div className={Style.collection}>
         <div className={Style.songleelement}>
         <label>ارسال بريد الكتروني</label>
-          
-            <div className={`${isEmail?"bg-red-700 text-white":"bg-white text-black"} cursor-pointer my-[5px] w-[70px] h-[50px] rounded text-center`}
+
+       <div className='flex w-[80%] justify-end '>
+
+        <div className='flex w-[70%] ml-[0%]  md:ml-[10%] justify-evenly  sm:w-[100%] sm:justify-start'>
+            <div className={`${isEmail?"bg-red-700 text-white":"bg-white text-black"} cursor-pointer my-[5px] w-[70px] h-[30px] sm:h-[50px] rounded text-center`}
             onClick={()=>{setIsEmail(true)}}
             > نعم </div>
-            <div className={`${isEmail?"bg-white text-black":"bg-red-600 text-white"}  cursor-pointer  my-[5px] w-[70px] h-[50px] rounded text-center`}
+            <div className={`${isEmail?"bg-white text-black":"bg-red-600 text-white"}  cursor-pointer  my-[5px] w-[70px] h-[30px] sm:h-[50px] rounded text-center`}
             onClick={()=>{setIsEmail(false)}}
             > لا</div>
             </div>
+            </div>
+            </div>
             <div className={Style.songleelement}>
         <label>ارسال واتساب</label>
-        <div className={`${isWhatsapp?"bg-red-700 text-white":"bg-white text-black"} cursor-pointer my-[5px] w-[70px] h-[50px] rounded text-center`}
+        <div className='flex w-[80%] justify-end '>
+
+        <div className='flex w-[70%] ml-[0%]  md:ml-[10%] justify-evenly  sm:w-[100%] sm:justify-start'>
+        <div className={`${isWhatsapp?"bg-red-700 text-white":"bg-white text-black"} cursor-pointer my-[5px] w-[70px] h-[30px] sm:h-[50px] rounded text-center`}
             onClick={()=>{setIswhatsapp(true)}}
-            > تعم </div>
-            <div className={`${isWhatsapp?"bg-white text-black":"bg-red-600 text-white"}  cursor-pointer my-[5px] w-[70px] h-[50px] rounded text-center`}
+            > نعم </div>
+            <div className={`${isWhatsapp?"bg-white text-black":"bg-red-600 text-white"}  cursor-pointer my-[5px] w-[70px] h-[30px] sm:h-[50px] rounded text-center`}
             onClick={()=>{setIswhatsapp(false)}}
             > لا</div></div>
+</div>
+</div>
             <div className={Style.songleelement}>
         <label>اللغة</label>
-        <div className={`${lang=="arabic"?"bg-red-700 text-white":"bg-white text-black"} cursor-pointer my-[5px] w-[70px] h-[50px] rounded text-center`}
+        <div className='flex w-[80%] justify-end '>
+        <div className='flex w-[70%] justify-evenly  sm:w-[100%] sm:justify-end'>
+        <div className={`${lang=="arabic"?"bg-red-700 text-white":"bg-white text-black"} cursor-pointer my-[5px] w-[70px] h-[30px] sm:h-[50px] rounded text-center`}
             onClick={()=>{setLang("arabic")}}
             > عربي </div>
-            <div className={`${lang=="english"?"bg-red-600 text-white":"bg-white text-black"}  cursor-pointer my-[5px] w-[70px] h-[50px] rounded text-center`}
+            <div className={`${lang=="english"?"bg-red-600 text-white":"bg-white text-black"}  cursor-pointer my-[5px] w-[70px] h-[30px] sm:h-[50px] rounded text-center`}
             onClick={()=>{setLang("english")}}
             > English</div></div>
+            </div>
+            </div>
         </div>
         <button className={Style.send}
         disabled={(!event||!name||!email||!secTitle||!position||!orgnization||!category)}

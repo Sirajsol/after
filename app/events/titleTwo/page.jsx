@@ -8,6 +8,7 @@ import { MdModeEditOutline } from "react-icons/md";
 import { useRouter } from "next/navigation"
 import {useCntxt} from '../../context/context'
 import Container from "../../components/Contaner";
+import Load from "@/app/components/load";
 
 const TitleTwo = () => {
 
@@ -136,8 +137,11 @@ const deleteit=async()=>{
      text-red-600 text-[30px] px-[40px] shadow-black shadow-md rounded">ممم حدث خطأ ما . تأكد من جودة الاتصال بالانترنت</div>
 </div>
         )} 
-        {(wt||wait)&&(<div className="flex justify-center items-center absolute top-[150px] bg-blue-900 w-[400px] h-[80px] left-[500px] text-white
-      text-[30px] px-[40px] shadow-black shadow-md rounded">الرجاء الإنتظار</div>)}
+        {(wt||wait)&&(
+            <Load/>
+    //     <div className="flex justify-center items-center absolute top-[150px] bg-blue-900 w-[400px] h-[80px] left-[500px] text-white
+    //   text-[30px] px-[40px] shadow-black shadow-md rounded">الرجاء الإنتظار</div>
+      )}
          {!connectionError &&auth&& ( <div className='flex  w-screen h-screen flex-col  items-end relative mb-[70px]  '
 
     >

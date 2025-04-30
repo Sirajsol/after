@@ -27,44 +27,48 @@ else{
 
     return <div className="flex justify-center items-start
     w-full h-full bg-slate-500 ">
-        <div className="flex justify-center items-start top-[0px] left-[0px]
+        <div className="flex justify-center items-start top-[0px] left-[0px] z-20
     w-full h-screen bg-black opacity-35 absolute border-[2px] "
     onClick={()=>{setShow(false)}}
     ></div>
-    <div className=" flex w-[40%] mx-auto flex-col top-[40px] border-[1px] left-[450px]
+    <div className=" flex w-[80%] mx-auto flex-col top-[40px] border-[1px] left-[10%]
      bg-blue-950 border-yellow-500 p-[40px] rounded shadow-white shadow-lg 
      absolute z-40">
-<div className="flex justify-between my-[30px]">
+<div className="flex  justify-between my-[30px]">
    
     <input type="text" id="name"
     value={name}
     onChange={(e)=>{setName(e.target.value)}}
-    className="flex outline-none border-b-[1px] border-yellow-500 text-[20px] text-white rounded-sm bg-transparent text-right px-[5px] "
+    className="flex w-[60%] outline-none border-b-[1px] border-yellow-500 text-[20px]
+     text-white rounded-sm bg-transparent text-right px-[5px] "
     />
     <label 
     htmlFor="name"
-    className=" text-right text-[20px] border-b-[1px] w-[170px] border-yellow-500 text-white ">اسم المستخدم</label>
+    className=" text-right w-[30%] text-[10px] sm:text-[15px] md:text-[20px] border-b-[1px] md:w-[170px] border-yellow-100 text-white ">اسم المستخدم</label>
 </div>
 
 <div className="flex justify-between my-[30px]">
     
     <input type="text" id="pass"
-        className="flex outline-none border-b-[1px] border-yellow-500 text-[20px] text-white rounded-sm bg-transparent text-right px-[5px] "
+        // className="flex outline-none border-b-[1px] border-yellow-500 text-[20px] text-white rounded-sm bg-transparent text-right px-[5px] "
         value={password}
         onChange={(e)=>{setPassword(e.target.value)}}
     
-    />
-   <label 
-   htmlFor="pass"
-   className=" text-right text-[20px] w-[170px] border-b-[1px] border-yellow-500 text-white ">كلمة المرور</label>
+        className="flex w-[60%] outline-none border-b-[1px] border-yellow-500 text-[20px]
+        text-white rounded-sm bg-transparent text-right px-[5px] "
+       />
+       <label 
+       htmlFor="name"
+       className=" text-right w-[30%] text-[10px] sm:text-[15px] md:text-[20px] border-b-[1px] md:w-[170px] border-yellow-100 text-white ">كلمة المرور</label>
 </div>
 <div className="flex justify-between my-[30px] flex-row-reverse focus:shadow-sm focus:shadow-white">
 <label 
 htmlFor="conf"
-className=" text-right text-[20px]  w-[170px] border-b-[1px] border-yellow-500 text-white ">تأكيد كلمة المرور</label>
+className=" text-right w-[30%] text-[10px] sm:text-[15px] md:text-[20px] border-b-[1px] md:w-[170px] border-yellow-100 text-white ">تأكيد كلمة المرور</label>
     <input type="text"  id="conf"
-        className="flex outline-none border-b-[1px] border-yellow-500 text-[20px] text-white rounded-sm bg-transparent text-right px-[5px]  "
-
+        // className="flex outline-none border-b-[1px] border-yellow-500 text-[20px] text-white rounded-sm bg-transparent text-right px-[5px]  "
+        className="flex w-[60%] outline-none border-b-[1px] border-yellow-500 text-[20px]
+        text-white rounded-sm bg-transparent text-right px-[5px] "
         value={confirmPassword}
         onChange={(e)=>{setConfirmPassword(e.target.value)}}
     
@@ -73,10 +77,11 @@ className=" text-right text-[20px]  w-[170px] border-b-[1px] border-yellow-500 t
 <div className="flex justify-between my-[30px] flex-row-reverse focus:shadow-sm focus:shadow-white">
 <label 
 htmlFor="conf"
-className=" text-right text-[20px] border-b-[1px] border-yellow-500 text-white w-[170px] ">التفويض</label>
+className=" text-right w-[30%] text-[10px] sm:text-[15px] md:text-[20px] border-b-[1px] md:w-[170px] border-yellow-100 text-white ">التفويض</label>
     <select type="text"  id="conf"
-        className="flex outline-none  border-b-[1px] border-yellow-500 text-[20px] w-[52%] text-white rounded-sm bg-blue-950 text-right px-[5px]  "
-
+        // className="flex outline-none  border-b-[1px] border-yellow-500 text-[20px] w-[52%] text-white rounded-sm bg-blue-950 text-right px-[5px]  "
+        className="flex w-[60%]  outline-none border-b-[1px] border-yellow-500 text-[10px] sm:text-[15px] md:text-[20px]
+        text-white rounded-sm bg-blue-950 text-right px-[5px] "
         value={role}
         onChange={(e)=>{setRole(e.target.value)}}
     
@@ -86,7 +91,8 @@ className=" text-right text-[20px] border-b-[1px] border-yellow-500 text-white w
         <option value="موظف">موظف</option>
         </select>
 </div>
-<div className=" flex justify-end "><button className=" flex w-[100px] py-[10px] rounded-sm disabled:cursor-not-allowed cursor-pointer
+<div className=" flex justify-end ">
+    <button className=" flex w-[100px] py-[10px] text-[10px] sm:text-[15px]  rounded-sm disabled:cursor-not-allowed cursor-pointer
 shadow-sm shadow-white hover:shadow-md hover:shadow-white text-white bg-orange-600 justify-center items-center"
 onClick={()=>{addUser()}}
 disabled={(!password || !confirmPassword ||!name || !role ||(password!=confirmPassword))}

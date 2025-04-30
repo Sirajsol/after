@@ -15,6 +15,7 @@ import Container from "../components/Contaner"
 
 
 
+
 export const ys=()=>{
     alert("yse")
 }
@@ -83,13 +84,21 @@ const pls=async()=>{
     console.log("search term is ",searchTerm)
     console.log("fetch from ",`/api/event${searchTerm}`)
     setEmptyResult(false)
-    const {events:ps,count}=await fetch(`api/event${searchTerm}`).then(res=>res.json())
+    const {events:ps,count}=await fetch(`api/event${searchTerm}`).then(res=>{
+        if(res.ok) return res.json()
+    else {
+        // alert('errr')
+throw error
+}
+    })
     .catch((error)=>{
         setConnectionError(true)
+        setWt(false)
         toast.error("خطأ")})
     if(ps){setEvents(ps)
     setMCount(count)
     }
+    
     if(ps&& ps.length==0){ setEmptyResult(true)}
     console.log("length is ",ps?.length)
     setWt(false)
@@ -130,13 +139,18 @@ const search=()=>{
 // }  
     return <Container>
         {/* <div> */}
-    
+        {connectionError && auth&&(
+<div className=" flex w-screen h-screen justify-center items-center absolute ">
+    <div className="flex justify-center items-center absolute top-[150px] bg-blue-900
+     text-yellow-500 py-[5px] text-[10px] sm:text-[20px] md:text-[30px] px-[40px] shadow-black shadow-md rounded">ممم حدث خطأ ما . تأكد من جودة الاتصال بالانترنت</div>
+</div>
+)}  
 
 {/* {wt &&(<div className='flex justify-center text-center items-center text-white border-[1px]
         border-yellow-400 shadow-md shadow-white bg-blue-800 z-20 w-[400px] h-[100px]  text-[35px] 
         absolute top-[150px] left-[600px]'>الرجاء الانتظار</div>)} */}
         {wt &&(<Load/>)}
-   {auth &&(   <div className='flex flex-col w-screen h-screen items-end relative mb-[70px]  '
+   {auth &&(   <div className='flex flex-col w-screen h-screen items-end relative mb-[70px] mt-[250px] '
     // onClick={()=>{if(!onButton)setShow(false)}}
     >
 
