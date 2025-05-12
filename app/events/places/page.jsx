@@ -8,31 +8,61 @@ import PlaceTableRow from "../../components/PlaceTableRow";
 import Container from "../../components/Contaner";
 import Load from "@/app/components/load";
 import BadConnection from "@/app/components/badConnection";
+import { useRouter } from 'next/navigation';
 const Places = () => {
     const toggle=(s)=>{
         return !s
     }
+    const router=useRouter()
+    // const {user,setUser,loaded}=useCntxt()
     const[wait,setWait]=useState(false)
 const[places,setPlaces]=useState(null)
 const[eShow,setEShow]=useState(false)
 const[place,setPlace]=useState(null)
 const[mutate,setMutate]=useState(false)
-    useEffect(()=>{
-        setWait(true)
-        const pls=async()=>{
+    // useEffect(()=>{
+       
+    //     const pls=async()=>{
+    //         console.log('the response is --------------------------------')
+       
+    //         const {plss}= fetch('/api/place/').then(res=>{res.json()
+                
+    //             })
+    //             .catch((error)=>{toast.error("خطأ")})
             
-            const {plss}=await fetch('/api/place').then(res=>res.json())// differ from   const {plss}=await...
-            .catch((error)=>{toast.error("خطأ")})
-            if(plss){
-                alert("ps is",plss)
-                setPlaces(plss)
-            console.log("ps is",plss)
-            }
-            setWait(false)
+            
+    //         if(plss){
+               
+    //             alert("ps is",plss)
+    //             setPlaces(plss)
+    //         console.log("ps is",plss)
+    //         }
+    //         setWait(false)
+    //     }
+    //     pls()
+    // },[])
+    
+
+    useEffect(()=>{
+        // setWait(true)
+        const pls=async()=>{
+            console.log('the response isss --------------------------------')
+           const e=await fetch('/api/place')
+           if(e)
+          {
+            const jj=await e.json()
+            if(jj)setPlaces(jj.plss)
+            console.log('eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',jj.plss)
+          } 
+          else {
+            console.log('noooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo')
+    
+          }
         }
         pls()
     },[])
-    
+
+
     const[show,setShow]=useState(false)
     return <Container>
 

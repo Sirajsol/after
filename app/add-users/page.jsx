@@ -80,6 +80,29 @@ const[selectedUser,setSelectedUser]=useState(null)
     pls()
 },[searchTerm,mutate])
 
+
+
+useEffect(()=>{
+    // setWait(true)
+    const pls=async()=>{
+        console.log('the response isss --------------------------------')
+       const e=await fetch('/api/place')
+       if(e)
+      {
+        const jj=await e.json()
+        console.log('eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',jj)
+      } 
+      else {
+        console.log('noooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo')
+
+      }
+    }
+    pls()
+},[])
+
+
+
+
 useEffect(()=>{
     search()
 },[page])

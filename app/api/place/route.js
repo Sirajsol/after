@@ -11,11 +11,13 @@ export const GET=async(req)=>{
         })
         if(plss){
             console.log("inside place api plass is ",plss)
-            return new NextResponse(JSON.stringify(plss),{status:'200'})}
+            return new NextResponse(JSON.stringify({plss}),{status:'200'})}
+          
+            // return new NextResponse(JSON.stringify(plss),{status:'200'})} does it work without {} surrounding plass??
         // return new NextResponse("hi")
     }
     catch(error){
-        console.log("inside place api plass not fuckin found ")
+        console.log("inside place api plass not fuckin found "+error)
         return new NextResponse(JSON.stringify(error,{status:400}))
         // return new NextResponse(null)
     }
