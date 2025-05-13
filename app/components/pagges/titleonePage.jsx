@@ -8,10 +8,11 @@ import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation"
 import {useCntxt} from '../../context/context'
 import Container from "../Contaner";
+import Load from "../load";
 
 const TitleOnePagr = () => {
     const router=useRouter()
-    const {user,setUser,loaded}=useCntxt()
+    const {user,setUser,loaded,wait,setWait}=useCntxt()
      const[auth,setAuth]=useState(false)
      const[title,setTitle]=useState('')
    const[emptyResult,setEmptyResult]=useState(true)
@@ -59,6 +60,7 @@ const[connectionError,setConnectionError]=useState(false)
             if(ps&& ps.length==0){ setEmptyResult(true)}
             setWt(false)
             setMutate(false)
+            setWait(false)
             // setChairId('')
         }
         pls()
@@ -96,10 +98,10 @@ const[connectionError,setConnectionError]=useState(false)
      text-red-400 text-[15px] md:text-[30px] px-[40px] shadow-black shadow-md rounded">ممم حدث خطأ ما . تأكد من جودة الاتصال بالانترنت</div>
 </div>
         )} 
-
+{/* 
         {wt&&(<div className="flex justify-center items-center absolute top-[150px] bg-blue-900 w-[400px] h-[80px] left-[500px] text-white
-      text-[30px] px-[40px] shadow-black shadow-md rounded">الرجاء الإنتظار</div>)}
-
+      text-[30px] px-[40px] shadow-black shadow-md rounded">الرجاء الإنتظار</div>)} */}
+{(wt||wait)&&(<Load/>)}
              {/* {!connectionError &&auth&&(  */}
            {(  <div className='flex flex-col w-full h-full  items-end relative mb-[70px]  '
     // onClick={()=>{if(!onButton)setShow(false)}}

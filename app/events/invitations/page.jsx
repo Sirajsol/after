@@ -15,7 +15,7 @@ const InvitationSent = () => {
     const[total,setTotal]=useState(10)
     // import {useCntxt} from '../../context/context'
     const router=useRouter()
-const {user,setUser,loaded}=useCntxt()
+const {user,setUser,loaded,wait,setWait}=useCntxt()
  const[auth,setAuth]=useState(false)
 const[connectionError,setConnectionError]=useState(false)
  useEffect(()=>{
@@ -61,7 +61,7 @@ const[name,setName]=useState('')
     const[eShow,setEShow]=useState(false)
     const[onButton,setOnButton]=useState(false)
     const[invetations,setInvetations]=useState([])
-    const[wait,setWait]=useState(false)
+    // const[wait,setWait]=useState(false)
     const[wt,setWt]=useState(true)
     const[invId,setInvId]=useState('')
     const[mutate,setMutate]=useState(false)

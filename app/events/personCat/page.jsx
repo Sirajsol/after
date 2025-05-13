@@ -17,7 +17,7 @@ const PersonCat = () => {
     const router=useRouter()
     const[connectionError,setConnectionError]=useState()
 // import {useCntxt} from '../../context/context'
-const {user,setUser,loaded}=useCntxt()
+const {user,setUser,loaded,wait,setWait}=useCntxt()
 
 const[auth,setAuth]=useState(false)
 console.log('the user is ',user)
@@ -33,6 +33,7 @@ useEffect(()=>{
         else if(ps && ps.length==0){setEmpty(true)}
        setMutate(false) 
        setWt(false)
+       setWait(false)
     }
     pls()
 },[mutate])
@@ -62,7 +63,7 @@ if(loaded){
         )} 
         {/* {wt&&(<div className="flex justify-center items-center absolute top-[150px] bg-blue-900 w-[400px] h-[80px] left-[500px] text-white
       text-[30px] px-[40px] shadow-black shadow-md rounded">الرجاء الإنتظار</div>)} */}
- {wt&&(<Load/>)}
+ {(wt||wait)&&(<Load/>)}
 
   {!wt && empty && invetations.length==0 && (
     <div className="flex absolute top-[300px] justify-center items-center w-full h-[40px]

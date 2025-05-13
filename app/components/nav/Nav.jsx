@@ -47,7 +47,8 @@ const NavBar = ({children}) => {
 
         </div>)}
         </div>
-        <div div className="flex mr-[30px] flex-col relative ml-[50px] cursor-pointer font-[800] text-[15px] sm:text-[25px] text-blue-950 pb-[10px] sm:mr-[150px] z-10"
+        <div div className="flex mr-[30px] flex-col relative ml-[50px] cursor-pointer font-[800] text-[15px] 
+        sm:text-[25px] text-blue-950 pb-[10px] sm:mr-[150px] z-30"
          onMouseEnter={()=>{setOnEvent(true)}} onMouseLeave={()=>{setOnEvent(false)}}>الفعاليات
         {onevent &&( <div className="bg-yellow-600 w-[140px] h-[2px] absolute left-[-25px] top-[35px]"></div>)}
         {onevent &&(<div className="flex flex-col absolute   bg-gray-900  w-[120px] sm:w-[200px] h-[300px] mt-[40px] ml-[-20px] justify-between rounded shadow-black shadow-md z-20">

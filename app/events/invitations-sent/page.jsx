@@ -22,7 +22,7 @@ const[total,setTotal]=useState(10)
 
 // import {useCntxt} from '../../context/context'
 const router=useRouter()
-const {user,setUser,loaded}=useCntxt()
+const {user,setUser,loaded,wait,setWait}=useCntxt()
  const[auth,setAuth]=useState(false)
 const[connectionError,setConnectionError]=useState(false)
  useEffect(()=>{
@@ -43,7 +43,7 @@ if(!user ||!user?.name){
     const[eshow,setEShow]=useState(false)
     const[iEShow,setIEShow]=useState(false)
     const[onButton,setOnButton]=useState(false)
-    const [wait,setWait]=useState(false)
+    // const [wait,setWait]=useState(false)
     const[mutate,setMutate]=useState(false)
     const[expand,setExpand]=useState(false)
     const[name,setName]=useState('')
@@ -144,7 +144,7 @@ const[empty,setEmpty]=useState(false)
         {/* {wt&&(<div className="flex justify-center items-center absolute top-[150px] bg-blue-900 w-[400px] h-[80px] left-[500px] text-white
       text-[30px] px-[40px] shadow-black shadow-md rounded">الرجاء الإنتظار</div>)} */}
 
-{wt&&(<Load/>)}
+{(wt||wait)&&(<Load/>)}
 
            {!connectionError &&auth&&(  <div className='flex flex-col h-screen w-screen items-end relative mb-[70px]  '
     // onClick={()=>{if(!onButton)setShow(false)}}

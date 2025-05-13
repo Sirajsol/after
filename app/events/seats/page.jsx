@@ -12,13 +12,14 @@ import { Checkbox } from "@mui/material"
 import {useCntxt} from '../../context/context'
 import EditChair from '../../components/EditChair'
 import { toast } from "react-hot-toast";
+import Load from "@/app/components/load"
 
 const Seats = () => {
 const[entriesPerPage,setEntriesPerPage]=useState(5)
 const[page,setPage]=useState(1)
 const[total,setTotal]=useState(10)
 // import {useCntxt} from '../../context/context'
-const {user,setUser,loaded}=useCntxt()
+const {user,setUser,loaded,wait,setWait}=useCntxt()
 console.log('the user is ',user)
     
   
@@ -71,6 +72,7 @@ const[chairId,setChairId]=useState('')
             }
             if(ps&& ps.length==0){ setEmptyResult(true)}
             setWt(false)
+            setWait(false)
             setMutate(false)
             setChairId('')
         }
@@ -306,9 +308,12 @@ search()
 
     <th className="border-[1px]  flex-1">المعرف</th>
     </thead>
-
+{/* 
     {wt &&(<div className="flex absolute w-[500px] h-[100px] left-[500px] top-[100px] justify-center items-center 
-text-[25px] text-white bg-blue-800 shadow-black rounded-md shadow-md">الرجاء الإنتظار</div>)}{/* {invetations.length>0 && invetations.map(inv=>{
+text-[25px] text-white bg-blue-800 shadow-black rounded-md shadow-md">الرجاء الإنتظار</div>)} */}
+
+{(wt||wait)&&(<Load)}
+{/* {invetations.length>0 && invetations.map(inv=>{
     return <tr className="flex justify-evenly w-full h-[40px] border-[1px]">
          <td td className="border-[1px]  text-right flex-1 overflow-scroll"><button onClick={()=>{setInvId(inv.id)
         setEShow(true)

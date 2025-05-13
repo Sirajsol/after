@@ -18,7 +18,7 @@ const InvitationsDay = () => {
     const[total,setTotal]=useState(10)
 // import {useCntxt} from '../../context/context'
 const router=useRouter()
-const {user,setUser,loaded}=useCntxt()
+const {user,setUser,loaded,wait,setWait}=useCntxt()
  const[auth,setAuth]=useState(false)
 const[connectionError,setConnectionError]=useState(false)
  useEffect(()=>{
@@ -75,6 +75,7 @@ const[whatsapp,setWhatsapp]=useState('')
             }
             if(ps.length==0){ setEmpty(true)}
             setWt(false)
+            setWait(false)
             setMutate(false)
         }
         pls()
@@ -174,7 +175,7 @@ const search=()=>{
         {/* {wt&&(<div className="flex justify-center items-center absolute top-[150px] bg-blue-900 w-[400px] h-[80px] left-[500px] text-white
       text-[30px] px-[40px] shadow-black shadow-md rounded">الرجاء الإنتظار</div>)} */}
 
-{wt&&(<Load/>)}
+{wt||wait&&(<Load/>)}
 
           {!wt && empty && invetations.length==0 && (
     <div className="flex absolute top-[300px] justify-center items-center w-full h-[40px]
@@ -186,7 +187,7 @@ const search=()=>{
         <label htmlFor="" className='flex  text-blue-800 font-[900] text-[25px] mr-[100px]'>لوحة التحكم /إرسال الدعوات</label>
         <div className='flex h-[100px] mb-[30px]'>
         <button className='flex bg-orange-600 w-[80px] py-[5px] items-center justify-center rounded-md
-         shadow-black shadow-sm hover:shadow-md hover:shadow-black hover:text-blue-400 text-white z-10
+         shadow-black shadow-sm hover:shadow-md hover:shadow-black hover:text-blue-400 text-white 
          font-[700] text-[20px] mr-[100px] mt-[60px]'
          onClick={()=>{setShow((prev=>{return !prev}))}}
         onMouseEnter={()=>{setOnButton(true)}}

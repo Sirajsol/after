@@ -7,6 +7,7 @@ import EditChairCategory from '../../components/EditChairCategory'
 import ChairCategoryRow from '../../components/ChairCategoryRow'
 import Container from '../../components/Contaner';
 import { toast } from 'react-hot-toast';
+import Load from '@/app/components/load';
 const ChairCategories = () => {
 
     // import{useCntxt} from '../../context/context'
@@ -72,11 +73,12 @@ const ChairCategories = () => {
     }  
     return   <div className="  h-screen w-screen">
         <Container>
-        {(wait||wt)&&(<div className="flex absolute z-10">
+        {/* {(wait||wt)&&(<div className="flex absolute z-10">
         <div className=" flex w-screen h-screen bg-black opacity-30"></div>
         <div className="flex w-[500px] h-[100px] justify-center items-center left-[550px] top-[150px]
          bg-blue-950 text-white absolute rounded-md shadow-md shadow-white">الرجاء الانتظار , جاري تحميل البيانات</div>
-    </div>)}
+    </div>)} */}
+    {(wait||wt)&&(<Load/>)}
         {/* {!connectionError && auth &&( */}
       {(  <div className=" flex flex-col  w-screen h-screen items-end relative mt-[150px]">
     <label htmlFor="" className='flex mr-[50px] text-blue-800 font-[900] text-[25px]'>الفعاليات/فئات الكراسي </label>

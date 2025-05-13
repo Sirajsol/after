@@ -7,6 +7,7 @@ import EditPlace from "../../components/EditPlace";
 import PlaceTableRow from "../../components/PlaceTableRow";
 import Container from "../../components/Contaner";
 import Load from "@/app/components/load";
+import { useCntxt } from "@/app/context/context";
 import BadConnection from "@/app/components/badConnection";
 import { useRouter } from 'next/navigation';
 const Places = () => {
@@ -14,8 +15,8 @@ const Places = () => {
         return !s
     }
     const router=useRouter()
-    // const {user,setUser,loaded}=useCntxt()
-    const[wait,setWait]=useState(false)
+    const {user,setUser,loaded,wait,setWait}=useCntxt()
+    const[wt,setWt]=useState(true)
 const[places,setPlaces]=useState(null)
 const[eShow,setEShow]=useState(false)
 const[place,setPlace]=useState(null)
@@ -44,7 +45,8 @@ const[mutate,setMutate]=useState(false)
     
 
     useEffect(()=>{
-        // setWait(true)
+        setWait(true)
+        
         const pls=async()=>{
             console.log('the response isss --------------------------------')
            const e=await fetch('/api/place')
@@ -58,6 +60,8 @@ const[mutate,setMutate]=useState(false)
             console.log('noooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo')
     
           }
+          setWait(false)
+          setWt(false)
         }
         pls()
     },[])
@@ -69,7 +73,7 @@ const[mutate,setMutate]=useState(false)
         
         
     <div className=" flex w-full flex-col h-full items-end relative">
-    {!wait &&(!places|| (places==null)|| places.length==0)&&(  <div className='flex text-[10px] w-[60%] mr-[20%] bg-blue-900 h-[80px]
+    {(!wait&&!wt) &&(!places|| (places==null)|| places.length==0)&&(  <div className='flex text-[10px] w-[60%] mr-[20%] bg-blue-900 h-[80px]
          rounded-[15px] text-center
           text-blue-300 justify-center items-center sm:text-[25px] shadow-black shadow-lg '>
            {places} ممممم يبدو انا هنالك مشكلة بالاتصال</div>)}
