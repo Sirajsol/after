@@ -68,14 +68,16 @@ const[whatsapp,setWhatsapp]=useState('')
             .catch((error)=>{
                 setConnectionError(true)
                 setWt(false)
-                
+                setWait(false)
                 toast.error("خطأ")})
             if(ps){setInvetations(ps)
             setTotal(count)
+            setWait(false)
+            setWt(false)
             }
             if(ps.length==0){ setEmpty(true)}
-            setWt(false)
-            setWait(false)
+            // setWt(false)
+            // setWait(false)
             setMutate(false)
         }
         pls()

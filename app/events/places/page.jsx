@@ -16,56 +16,65 @@ const Places = () => {
     }
     const router=useRouter()
     const {user,setUser,loaded,wait,setWait}=useCntxt()
-    const[wt,setWt]=useState(true)
+    const[wt,setWt]=useState(false)
 const[places,setPlaces]=useState(null)
 const[eShow,setEShow]=useState(false)
 const[place,setPlace]=useState(null)
 const[mutate,setMutate]=useState(false)
 const[badConnection,setBadConnection]=useState(false)
-    // useEffect(()=>{
-       
-    //     const pls=async()=>{
-    //         console.log('the response is --------------------------------')
-       
-    //         const {plss}= fetch('/api/place/').then(res=>{res.json()
-                
-    //             })
-    //             .catch((error)=>{toast.error("خطأ")})
-            
-            
-    //         if(plss){
-               
-    //             alert("ps is",plss)
-    //             setPlaces(plss)
-    //         console.log("ps is",plss)
-    //         }
-    //         setWait(false)
-    //     }
-    //     pls()
-    // },[])
-    
-
     useEffect(()=>{
-        setWait(true)
-        
+       
         const pls=async()=>{
-            console.log('the response isss --------------------------------')
-           const e=await fetch('/api/place')
-           if(e)
-          {
-            const jj=await e.json()
-            if(jj)setPlaces(jj.plss)
-            console.log('eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',jj.plss)
-          } 
-          else {
-            console.log('noooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo')
-    setBadConnection(true)
-          }
-          setWait(false)
-          setWt(false)
+            setWt(true)
+            console.log('the response is --------------------------------')
+                                                     //.then(res=>{ res.json() is fuckin wrong without return 
+                                                     //or delete the fuckin {} while it is only 1 fuckin line
+            const {plss}= await fetch('/api/place/').then(res=>{return res.json()
+                
+                })
+                .catch((error)=>{toast.error("خطأ")
+            setBadConnection(true)
+            setWait(false)
+            setWt(false)
+            })
+            
+            
+            if(plss){
+               
+                // alert("ps is",plss)
+                setPlaces(plss)
+            console.log("ps is",plss)
+            setWait(false)
+            setWt(false)
+            }
+
+            // setWait(false)
         }
         pls()
     },[])
+    
+
+    // useEffect(()=>{
+    //     setWait(true)
+        
+    //     const pls=async()=>{
+    //         console.log('the response isss --------------------------------')
+    //        const e=await fetch('/api/place')
+    //        if(e)
+    //       {
+    //         const jj=await e.json()
+    //         if(jj)setPlaces(jj.plss)
+    //         console.log('eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',jj.plss)
+    //       } 
+    //       else {
+    //         console.log('noooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo')
+    // setBadConnection(true)
+    //       }
+    //       setWait(false)
+    //       setWt(false)
+    //     }
+    //     pls()
+    // },[])
 
 
     const[show,setShow]=useState(false)
@@ -74,7 +83,11 @@ const[badConnection,setBadConnection]=useState(false)
         
         
     <div className=" flex w-full flex-col h-full items-end relative">
-    {(!wait&&!wt) &&(!places|| (places==null)|| places.length==0)&&badConnection&&(  <div className='flex text-[10px] w-[60%] mr-[20%] bg-blue-900 h-[80px]
+    {/* {(!wait&&!wt) &&(!places|| (places==null)|| places.length==0)&&badConnection&&(  <div className='flex text-[10px] w-[60%] mr-[20%] bg-blue-900 h-[80px]
+         rounded-[15px] text-center
+          text-blue-300 justify-center items-center sm:text-[25px] shadow-black shadow-lg '>
+           {places} ممممم يبدو انا هنالك مشكلة بالاتصال</div>)} */}
+           {badConnection&&(  <div className='flex text-[10px] w-[60%] mr-[20%] bg-blue-900 h-[80px]
          rounded-[15px] text-center
           text-blue-300 justify-center items-center sm:text-[25px] shadow-black shadow-lg '>
            {places} ممممم يبدو انا هنالك مشكلة بالاتصال</div>)}
@@ -93,7 +106,7 @@ const[badConnection,setBadConnection]=useState(false)
         {/* {wait&&(<div className="flex justify-center items-center absolute top-[150px] bg-blue-900 w-[400px] h-[80px] left-[500px] text-white
       text-[30px] px-[40px] shadow-black shadow-md rounded">الرجاء الإنتظار</div>)} */}
 
-{wait&&(<Load/>)}
+{(wait ||wt)&&(<Load/>)}
 
 
         {eShow &&(<EditPlace setEShow={setEShow} place={place} setMutate={setMutate}/>)}
