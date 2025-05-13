@@ -46,7 +46,7 @@ useEffect(()=>{
     w-full h-screen bg-black opacity-35 absolute border-[2px] "
     onClick={()=>{setShow(false)}}
     ></div>
-    <div className=" flex w-[40%] mx-auto flex-col top-[40px] border-[1px] left-[450px]
+    <div className=" flex w-[80%] left-[10%] sm:w-[40%] mx-auto flex-col top-[40px] border-[1px]  md:left-[450px]
      bg-blue-950 border-yellow-500 p-[40px] rounded shadow-white shadow-lg 
      absolute z-20">
 <div className="flex justify-between my-[30px]">

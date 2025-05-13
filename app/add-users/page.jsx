@@ -151,7 +151,7 @@ if(loaded){
 {deleting&&(<div className=" flex w-[60%] left-[20%] sm:w-[400px] h-[80px] absolute z-20 sm:left-[550px] top-[100px] bg-blue-950  shadow-black shadow-sm rounded-md text-white justify-center items-center
 ">...جاري الحذف</div>)}
 
-{showDelete&&(<div className="flex justify-center flex-col absolute left-[600px] rounded-md p-[30px]sm:top-[200px]  bg-blue-950 z-20 ">
+{showDelete&&(<div className="flex justify-center flex-col absolute md:left-[600px] rounded-md p-[30px]sm:top-[200px]  bg-blue-950 z-20 ">
   <div className=" flex text-white text-[25px] mb-[30px] justify-center items-center">هل أنت متأكد انك تريد الحذف؟</div>
   <div className="flex justify-between items-center">
       <button className="flex w-[70px] bg-red-700 text-white rounded-sm m-[10px] justify-center items-center  hover:shadow-white hover:shadow-md"
