@@ -32,7 +32,7 @@ const TR = ({cols,name,id,setEShow,setEvtId,setEvvt,evt}) => {
 // }
 //     }
     return    <div className="flex flex-col w-full  ">
-            {showDelete&&(<div className="flex justify-center flex-col absolute left-[600px] rounded-md p-[30px] top-[200px] bg-blue-950 ">
+            {showDelete&&(<div className="flex justify-center flex-col absolute md:left-[600px] rounded-md p-[30px] top-[200px] bg-blue-950 ">
             <div className=" flex text-white text-[25px] mb-[30px] justify-center items-center">هل أنت متأكد انك تريد الحذف؟</div>
             <div className="flex justify-between items-center">
                 <button className="flex w-[70px] bg-red-700 text-white rounded-sm m-[10px] justify-center items-center  hover:shadow-white hover:shadow-md"

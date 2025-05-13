@@ -216,13 +216,13 @@ setTimeTerm(startTime+"-"+endTime)
     </select>
         {/* <label htmlFor="" className='text-black'>المكان</label> */}
         
-        <label htmlFor="">المكان</label>
+        < label htmlFor="" className={Style.llb}>المكان</label>
     </div>
 
     <div className={Style.element}>
         
         <input type='text' value={name}  onChange={(e)=>{setName(e.target.value)}} className={Style.innput}/>
-        <label htmlFor="">الاسم</label>
+        <label htmlFor="" className={Style.llb}>الاسم</label>
     </div>
     </div>
 
@@ -244,7 +244,7 @@ setTimeTerm(startTime+"-"+endTime)
        
     </div>
  
-        <label htmlFor="date">التاريخ</label>
+        <label htmlFor="date" className={Style.llb}>التاريخ</label>
     </div>
 
     <div className={`${Style.element} `}>
@@ -319,7 +319,7 @@ setTimeTerm(startTime+"-"+endTime)
     {/* <label htmlFor="">من</label> */}
     </div>
     
-        <label htmlFor="">الوقت</label>
+        <label htmlFor="" className={Style.llb}>الوقت</label>
     </div>
     </div>
     <div className={Style.deualElement}>
@@ -329,7 +329,7 @@ setTimeTerm(startTime+"-"+endTime)
         onChange={(e)=>{setDescription(e.target.value)}}
         className='flex bg-blue-950 text-white text-[20px]
             rounded w-[200px] text-right'/>
-        <label htmlFor="pic" className='flex ml-[100px]'>وصف</label>
+        <label htmlFor="pic"className={Style.llb}>وصف</label>
         </div>
     <input type='file' 
      onChange={(e)=>{setImg(e.target.files[0])}}
@@ -339,9 +339,11 @@ setTimeTerm(startTime+"-"+endTime)
     
         
         <div className={Style.fl}>       
-         <label htmlFor="pic" className='flex bg-blue-950 text-white w-[200px] justify-center rounded border-b-[2px] border-yellow-400 cursor-pointer h-[30px]' >اختر صورة</label>
+         <label htmlFor="pic"
+         
+         className='flex bg-blue-950 text-white w-[200px] justify-center rounded border-b-[2px] border-yellow-400 cursor-pointer h-[30px]' >اختر صورة</label>
 </div>
-        <label htmlFor="pic" >صورة</label>
+        <label htmlFor="pic" className={Style.llb} >صورة</label>
     </div>
     </div>
 
@@ -357,7 +359,7 @@ setTimeTerm(startTime+"-"+endTime)
 
     </textarea>
         {/* <label htmlFor="" className='text-black'>المكان</label> */}
-        <label htmlFor="">الرسالة الإنكليزية</label>
+        <label htmlFor="" className={Style.llb}>الرسالة الإنكليزية</label>
         
     </div>
 
@@ -369,7 +371,7 @@ setTimeTerm(startTime+"-"+endTime)
     className='flex bg-blue-950 text-white text-right rounded-sm w-[200px] px-[5px] ml-[10px]'>
 
 </textarea>
-<label htmlFor="">الرسالة العربية</label>
+<label htmlFor="" className={Style.llb}>الرسالة العربية</label>
     </div>
     </div>
 
