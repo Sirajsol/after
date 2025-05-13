@@ -21,6 +21,7 @@ const[places,setPlaces]=useState(null)
 const[eShow,setEShow]=useState(false)
 const[place,setPlace]=useState(null)
 const[mutate,setMutate]=useState(false)
+const[badConnection,setBadConnection]=useState(false)
     // useEffect(()=>{
        
     //     const pls=async()=>{
@@ -58,7 +59,7 @@ const[mutate,setMutate]=useState(false)
           } 
           else {
             console.log('noooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo')
-    
+    setBadConnection(true)
           }
           setWait(false)
           setWt(false)
@@ -73,7 +74,7 @@ const[mutate,setMutate]=useState(false)
         
         
     <div className=" flex w-full flex-col h-full items-end relative">
-    {(!wait&&!wt) &&(!places|| (places==null)|| places.length==0)&&(  <div className='flex text-[10px] w-[60%] mr-[20%] bg-blue-900 h-[80px]
+    {(!wait&&!wt) &&(!places|| (places==null)|| places.length==0)&&badConnection&&(  <div className='flex text-[10px] w-[60%] mr-[20%] bg-blue-900 h-[80px]
          rounded-[15px] text-center
           text-blue-300 justify-center items-center sm:text-[25px] shadow-black shadow-lg '>
            {places} ممممم يبدو انا هنالك مشكلة بالاتصال</div>)}
