@@ -38,11 +38,40 @@ const SerchChair = ({setSearchTerm,count}) => {
 
     useEffect(()=>{
         const pls=async()=>{
-            const plss=await fetch('/api/place').then(res=>res.json())
+//WARNING : const plss=await .... is wrong cause there is no {} around plss
+            const {plss}=await fetch('/api/place').then(res=>res.json())
             if(plss){setPlaces(plss)}
         }
         pls()
     },[])
+//WARNING : the following is wrong cause there is no {} around plss
+    // useEffect(()=>{
+    //     const pls=async()=>{
+    //         const plss=await fetch('/api/place').then(res=>res.json())
+    //         if(plss){setPlaces(plss)}
+    //     }
+    //     pls()
+    // },[])
+
+    // useEffect(()=>{
+    //     // setWait(true)
+    //     const pls=async()=>{
+    //         console.log('inside chairSearch the response isss --------------------------------')
+    //        const e=await fetch('/api/place')
+    //        if(e)
+    //       {
+    //         const jj=await e.json()
+    //         if(jj)setPlaces(jj.plss)
+    //         console.log('eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',jj.plss)
+    //       } 
+    //       else {
+    //         console.log('noooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo')
+    
+    //       }
+    //     }
+    //     pls()
+    // },[])
+
     return   <div className="flex flex-col   w-full justify-start border-b-[1px]">
     <div className="flex flex-col md:flex-row my-[10px] justify-evenly border-b-[1px] sm:border-none
      bg-blue-950 mx-auto w-[90%] px-[10px] border-[1px] border-orange-500 shadow-md shadow-white rounded-md">

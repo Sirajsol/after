@@ -18,7 +18,7 @@ const ChairGenerate = ({setShow}) => {
     
 useEffect(()=>{
     const pls=async()=>{
-        const plss=await fetch('/api/place').then(res=>res.json())
+        const {plss}=await fetch('/api/place').then(res=>res.json())
         if(plss){setPlaces(plss)}
     }
     pls()
