@@ -43,7 +43,7 @@ const[badConnection,setBadConnection]=useState(false)
                
                 // alert("ps is",plss)
                 setPlaces(plss)
-            console.log("ps is",plss)
+            console.log("in place page ps is ",plss)
             setWait(false)
             setWt(false)
             }
