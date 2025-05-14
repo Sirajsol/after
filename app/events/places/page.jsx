@@ -26,6 +26,7 @@ const[badConnection,setBadConnection]=useState(false)
        
         const pls=async()=>{
             setWt(true)
+            setBadConnection(false)
             console.log('the response is --------------------------------')
                                                      //.then(res=>{ res.json() is fuckin wrong without return 
                                                      //or delete the fuckin {} while it is only 1 fuckin line
@@ -33,7 +34,7 @@ const[badConnection,setBadConnection]=useState(false)
                 
                 })
                 .catch((error)=>{toast.error("خطأ")
-            // setBadConnection(true)
+            setBadConnection(true)
             setWait(false)
             setWt(false)
             })
