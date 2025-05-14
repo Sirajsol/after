@@ -1,26 +1,42 @@
 
+
+
+
 "use client"
 import {useState} from 'react'
 import { toast } from 'react-hot-toast';
 import { MdModeEditOutline } from "react-icons/md";
 import { TiDelete } from "react-icons/ti";
+import { eventdel } from '../actions/eventactions';
+import { revalidatePath } from 'next/cache';
 
-const TR = ({cols,name,id,setEShow,setEvtId,setEvvt,evt}) => {
+
+const TR = ({cols,name,id,setEShow,setEvtId,setEvvt,evt,setIsDeleteing,setMutate}) => {
 
     const[confirm,setConfirm]=useState(false)
     const[showDelete,setShowDelete]=useState(false)
-        const del=async()=>{
-            console.log("statrt deeting")
-            const s=await fetch(`/api/event/?id=${inv.id}`,{
-                method:'DELETE'
-            }).then(res=>{
-                if (res.status=='200'){
-                    toast.success('تم الحذف')
-                    setMutate(true)
-                }
-            })
+   
+        // const del=async()=>{
+        //     console.log("statrt deeting")
+        //     const s=await fetch(`/api/event/id=${evt.id}`,{
+        //         method:'DELETE'
+        //     }).then(res=>{
+        //         if (res.status=='200'){
+        //             toast.success('تم الحذف')
+        //             setMutate(true)
+        //         }
+        //     }).catch(error=>console.log('error in TR i is ',error))
+        // }
+       
+        const delet=async(id)=>{
+            setIsDeleteing(true)
+           const r=await eventdel(id)
+        //    alert(r)
+        setIsDeleteing(false)
+      
+           toast.success('تم الحذف')
+           setMutate(true)
         }
-
 
     const[expand,setExpand]=useState(false)
 //     const delet=async()=>{
@@ -38,12 +54,15 @@ const TR = ({cols,name,id,setEShow,setEvtId,setEvvt,evt}) => {
                 <button className="flex w-[70px] bg-red-700 text-white rounded-sm m-[10px] justify-center items-center  hover:shadow-white hover:shadow-md"
                 onClick={()=>{
                     setShowDelete(false)
-                    del()}}
+                    // eventdel(evt.id)
+                delet(evt.id)
+                }}
                 >نعم</button>
                 <button className="flex w-[70px] bg-green-600 text-white rounded-sm m-[10px] justify-center items-center  hover:shadow-white hover:shadow-md"
                 onClick={()=>{setShowDelete(false)}}
                 >لا</button>
             </div>
+
         </div>)}
 
     <div className=" flex w-full  justify-between h-[80px] border-b-[1px] mb-[2px] bg-blue-500 overflow-hidden">

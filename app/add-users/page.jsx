@@ -12,7 +12,7 @@ import EditUser from "../components/EditUser"
 import {toast} from 'react-hot-toast'
 import NavBar from "../components/nav/Nav";
 import Load from "../components/load";
-
+import { userdel } from "../actions/eventactions";
 const AddUsers = () => {
 
     const[wt,setWt]=useState(false)
@@ -34,6 +34,7 @@ const[selectedUser,setSelectedUser]=useState(null)
   const[showDelete,setShowDelete]=useState(false)
   const[idDelete,setIdDelete]=useState('')
   const[deleting,setDeleting]=useState(false)
+  const[isDeleteing,setIsDeleteing]=useState(false)
       const del=async()=>{
         setDeleting(true)
           console.log("statrt deeting")
@@ -48,6 +49,18 @@ const[selectedUser,setSelectedUser]=useState(null)
               }
           })
       }
+
+
+
+      const delet=async(id)=>{
+        setIsDeleteing(true)
+       const r=await userdel(id)
+    //    alert(r)
+    setIsDeleteing(false)
+  
+       toast.success('تم الحذف')
+       setMutate(true)
+    }
 
    useEffect(()=>{
     setWt(true)
@@ -148,8 +161,8 @@ if(loaded){
     return <div>
 <Container>
    
-{deleting&&(<div className=" flex w-[60%] left-[20%] sm:w-[400px] h-[80px] absolute z-20 sm:left-[550px] top-[100px] bg-blue-950  shadow-black shadow-sm rounded-md text-white justify-center items-center
-">...جاري الحذف</div>)}
+{isDeleteing&&(<div className='flex w-[80%] left-[10%] md:w-[400px] h-[100px]  bg-blue-950 text-white shadow-md shadow-white rounded-md
+ md:left-[600px] top-[100px] justify-center items-center absolute z-30' >جاري الحذف</div>)}
 
 {showDelete&&(<div className="flex justify-center flex-col absolute md:left-[600px] rounded-md p-[30px]sm:top-[200px]  bg-blue-950 z-20 ">
   <div className=" flex text-white text-[25px] mb-[30px] justify-center items-center">هل أنت متأكد انك تريد الحذف؟</div>
@@ -157,7 +170,9 @@ if(loaded){
       <button className="flex w-[70px] bg-red-700 text-white rounded-sm m-[10px] justify-center items-center  hover:shadow-white hover:shadow-md"
       onClick={()=>{
           setShowDelete(false)
-          del()}}
+        //   del()
+        delet(idDelete)
+        }}
       >نعم</button>
       <button className="flex w-[70px] bg-green-600 text-white rounded-sm m-[10px] justify-center items-center  hover:shadow-white hover:shadow-md"
       onClick={()=>{setShowDelete(false)}}

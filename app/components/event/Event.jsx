@@ -149,8 +149,8 @@ switch(snapshot.state){
 
     return <div className={`${Style.container} `}
     >
-         {wait &&(<div className='flex w-[400px] h-[100px]  bg-blue-950 text-white shadow-md shadow-white rounded-md
- left-[600px] top-[100px] justify-center items-center absolute z-30' >جاري إنشاء فعالية</div>)}
+         {wait &&(<div className='flex w-[80%] left-[10%] md:w-[400px] h-[100px]  bg-blue-950 text-white shadow-md shadow-white rounded-md
+ md:left-[600px] top-[100px] justify-center items-center absolute z-30' >جاري إنشاء فعالية</div>)}
     
     {/* { !evt&&(<div className="flex bg-blue-950 text-white text-[30px] py-[10px] border-1[px] shadow-white shadow-md absolute left-[400px]
     top-[200px] w-[600px] rounded-sm justify-center items-center

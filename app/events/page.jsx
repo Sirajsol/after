@@ -29,7 +29,8 @@ const Events = () => {
     const router=useRouter()
     const {user,setUser,loaded}=useCntxt()
      const[auth,setAuth]=useState(false)
-   
+     const[isDeleteing,setIsDeleteing]=useState(false)
+     
      useEffect(()=>{
  if(loaded){
    if(!user ||!user?.name){
@@ -165,6 +166,9 @@ const search=()=>{
         onMouseEnter={()=>{setOnButton(true)}}
         onMouseLeave={()=>{setOnButton(false)}}
         >إضافة</button></div>
+        {isDeleteing&&(<div className='flex w-[80%] left-[10%] md:w-[400px] h-[100px]  bg-blue-950 text-white shadow-md shadow-white rounded-md
+ md:left-[600px] top-[100px] justify-center items-center absolute z-30' >جاري الحذف</div>)}
+
         <div className='flex w-full justify-between  border-b-[1px] border-yellow-500 mt-[20px] py-[20px] ' >
 
         <div className='flex ml-[70px] py-[10px]  shadow-black shadow-md px-[20px] w-[25%]'>
@@ -238,7 +242,8 @@ const search=()=>{
     ,(evt.invetations && evt.invetations.length>0&& evt.invetations.filter((inn) => inn.itype=="خارجي").length || 0),
    , evt.time,evt.date
     
-    ]} name={evt.title} id={evt.id} setEShow={setEShow} setEvtId={setEvtId} setEvvt={setEvvt} evt={evt}/>
+    ]} name={evt.title} id={evt.id} setEShow={setEShow} setEvtId={setEvtId} setEvvt={setEvvt} evt={evt} 
+    setIsDeleteing={setIsDeleteing} setMutate={setMutate}/>
     
 })}
 
