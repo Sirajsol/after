@@ -33,7 +33,7 @@ const[badConnection,setBadConnection]=useState(false)
                 
                 })
                 .catch((error)=>{toast.error("خطأ")
-            setBadConnection(true)
+            // setBadConnection(true)
             setWait(false)
             setWt(false)
             })

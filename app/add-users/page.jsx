@@ -161,8 +161,14 @@ if(loaded){
     return <div>
 <Container>
    
-{isDeleteing&&(<div className='flex w-[80%] left-[10%] md:w-[400px] h-[100px]  bg-blue-950 text-white shadow-md shadow-white rounded-md
- md:left-[600px] top-[100px] justify-center items-center absolute z-30' >جاري الحذف</div>)}
+
+  {isDeleteing&&(<div className="flex w-full h-screen absolute">
+        
+        <div className="flex w-full h-screen absolute bg-black opacity-30 left-0 top-[-20px]"></div>
+        <div className='flex w-[80%] left-[10%] md:w-[400px] h-[100px]  bg-blue-950 text-white shadow-md shadow-white rounded-md
+ md:left-[600px] top-[100px] justify-center items-center absolute z-30' >جاري الحذف</div>
+ </div>
+ )}
 
 {showDelete&&(<div className="flex justify-center flex-col absolute md:left-[600px] rounded-md p-[30px]sm:top-[200px]  bg-blue-950 z-20 ">
   <div className=" flex text-white text-[25px] mb-[30px] justify-center items-center">هل أنت متأكد انك تريد الحذف؟</div>

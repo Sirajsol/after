@@ -166,8 +166,13 @@ const search=()=>{
         onMouseEnter={()=>{setOnButton(true)}}
         onMouseLeave={()=>{setOnButton(false)}}
         >إضافة</button></div>
-        {isDeleteing&&(<div className='flex w-[80%] left-[10%] md:w-[400px] h-[100px]  bg-blue-950 text-white shadow-md shadow-white rounded-md
- md:left-[600px] top-[100px] justify-center items-center absolute z-30' >جاري الحذف</div>)}
+        {isDeleteing&&(<div className="flex w-full h-screen absolute">
+        
+        <div className="flex w-full h-screen absolute bg-black opacity-20 left-0 top-[-20px]"></div>
+        <div className='flex w-[80%] left-[10%] md:w-[400px] h-[100px]  bg-blue-950 text-white shadow-md shadow-white rounded-md
+ md:left-[600px] top-[100px] justify-center items-center absolute z-30' >جاري الحذف</div>
+ </div>
+ )}
 
         <div className='flex w-full justify-between  border-b-[1px] border-yellow-500 mt-[20px] py-[20px] ' >
 
