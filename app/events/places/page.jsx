@@ -21,6 +21,8 @@ const[places,setPlaces]=useState(null)
 const[eShow,setEShow]=useState(false)
 const[place,setPlace]=useState(null)
 const[mutate,setMutate]=useState(false)
+const[isDeleteing,setIsDeleteing]=useState(false)
+const[showDelete,setShowDelete]=useState(false)
 const[badConnection,setBadConnection]=useState(false)
     useEffect(()=>{
        
@@ -37,6 +39,7 @@ const[badConnection,setBadConnection]=useState(false)
             setBadConnection(true)
             setWait(false)
             setWt(false)
+            setMutate(false)
             })
             
             
@@ -47,12 +50,13 @@ const[badConnection,setBadConnection]=useState(false)
             console.log("in place page ps is ",plss)
             setWait(false)
             setWt(false)
+            setMutate(false)
             }
 
             // setWait(false)
         }
         pls()
-    },[])
+    },[mutate])
     
 
     // useEffect(()=>{
@@ -81,7 +85,30 @@ const[badConnection,setBadConnection]=useState(false)
     const[show,setShow]=useState(false)
     return <Container>
 
+{isDeleteing&&(<div className="flex w-full h-screen absolute">
         
+        <div className="flex w-full h-screen absolute bg-black opacity-30 left-0 top-[-20px]"></div>
+        <div className='flex w-[80%] left-[10%] md:w-[400px] h-[100px]  bg-blue-950 text-white shadow-md shadow-white rounded-md
+ md:left-[600px] top-[100px] justify-center items-center absolute z-30' >جاري الحذف</div>
+ </div>
+ )}
+
+
+{showDelete&&(<div className="flex justify-center flex-col absolute md:left-[600px] rounded-md p-[30px]sm:top-[200px]  bg-blue-950 z-20 ">
+  <div className=" flex text-white text-[25px] mb-[30px] justify-center items-center">هل أنت متأكد انك تريد الحذف؟</div>
+  <div className="flex justify-between items-center">
+      <button className="flex w-[70px] bg-red-700 text-white rounded-sm m-[10px] justify-center items-center  hover:shadow-white hover:shadow-md"
+      onClick={()=>{
+          setShowDelete(false)
+        //   del()
+        delet(idDelete)
+        }}
+      >نعم</button>
+      <button className="flex w-[70px] bg-green-600 text-white rounded-sm m-[10px] justify-center items-center  hover:shadow-white hover:shadow-md"
+      onClick={()=>{setShowDelete(false)}}
+      >لا</button>
+  </div>
+</div>)}
         
     <div className=" flex w-full flex-col h-full items-end relative">
     {/* {(!wait&&!wt) &&(!places|| (places==null)|| places.length==0)&&badConnection&&(  <div className='flex text-[10px] w-[60%] mr-[20%] bg-blue-900 h-[80px]
@@ -102,7 +129,7 @@ const[badConnection,setBadConnection]=useState(false)
         
         >إضافة</button>
 
-        <div className={`${show?"flex":"hidden"} w-full h-screen absolute`}> <AddPlace setShow={setShow}/></div>
+        <div className={`${show?"flex":"hidden"} w-full h-screen absolute`}> <AddPlace setShow={setShow} setMutate={setMutate} setWt={setWt} /></div>
 
         {/* {wait&&(<div className="flex justify-center items-center absolute top-[150px] bg-blue-900 w-[400px] h-[80px] left-[500px] text-white
       text-[30px] px-[40px] shadow-black shadow-md rounded">الرجاء الإنتظار</div>)} */}
@@ -139,7 +166,7 @@ const[badConnection,setBadConnection]=useState(false)
 </thead>
 {!wait && places&& places.length>0&& places.map(pls=>{
     return     (<tr key={pls.id}>
-<PlaceTableRow place={pls} setEShow={setEShow} setPlace={setPlace} setMutate={setMutate}/>
+<PlaceTableRow place={pls} setEShow={setEShow} setPlace={setPlace} setMutate={setMutate} setIsDeleting={setIsDeleteing}/>
 {/* <TableRow id={1} name={"data"} date={"12-2-2023"} time={"10:34"} sentNumer={5} generalNumber={8} /> */}
     </tr>)
 

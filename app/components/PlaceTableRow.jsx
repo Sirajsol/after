@@ -3,36 +3,54 @@ import { useState } from "react"
 
 import { MdModeEditOutline } from "react-icons/md";
 import { TiDelete } from "react-icons/ti";
+import {placedel} from '../actions/eventactions'
+import {toast} from 'react-hot-toast'
 
 
-
-import { toast } from "react-hot-toast";
-const PlaceTableRow = ({place,setPlace,setEShow,setMutate}) => {
+const PlaceTableRow = ({place,setPlace,setEShow,setMutate,setIsDeleting}) => {
 
     const[confirm,setConfirm]=useState(false)
     const[showDelete,setShowDelete]=useState(false)
     const[deleting,setDeleting]=useState(false)
-        const del=async()=>{
-          setDeleting(true)
-            console.log("statrt deeting")
-            const s=await fetch(`/api/place/?id=${place.id}`,{
-                method:'DELETE'
-            }).then(res=>{
-                if (res.status=='200'){
-                  setDeleting(false)
-                    toast.success('تم الحذف')
-                    // setExpand(false)
-                    setMutate(true)
-                }
-            })
+
+        // const del=async()=>{
+        //   setDeleting(true)
+        //     console.log("statrt deeting")
+        //     const s=await fetch(`/api/place/?id=${place.id}`,{
+        //         method:'DELETE'
+        //     }).then(res=>{
+        //         if (res.status=='200'){
+        //           setDeleting(false)
+        //             toast.success('تم الحذف')
+        //             // setExpand(false)
+        //             setMutate(true)
+        //         }
+        //     })
+        // }
+
+
+        const del=async(id)=>{
+          // setDeleting(true)
+          setIsDeleting(true)
+          const r=await placedel(id)
+toast.success('تم الحذف')
+// setDeleting(false)
+setIsDeleting(false)
+
+setMutate(true)
         }
 
     const[expand,setExpand]=useState(false)
   return  <div className={`flex flex-col justify-between bg-yellow-300`}>
-{deleting&&(<div className=" flex w-[400px] h-[80px] absolute z-20 left-[550px] top-[100px] bg-blue-950  shadow-black shadow-sm rounded-md text-white justify-center items-center
-">...جاري الحذف</div>)}
 
 
+{/* {deleting&&(<div className="flex w-full h-screen absolute">
+        
+        <div className="flex w-full h-screen absolute bg-black opacity-30 left-0 top-[-20px]"></div>
+        <div className='flex w-[80%] left-[10%] md:w-[400px] h-[100px]  bg-blue-950 text-white shadow-md shadow-white rounded-md
+ md:left-[600px] top-[100px] justify-center items-center absolute z-30' >جاري الحذف</div>
+ </div>
+ )} */}
 
 
 { (<div className={`flex flex-col justify-between bg-red-700 `}>
@@ -43,7 +61,7 @@ const PlaceTableRow = ({place,setPlace,setEShow,setMutate}) => {
       <button className="flex w-[70px] bg-red-700 text-white rounded-sm m-[10px] justify-center items-center  hover:shadow-white hover:shadow-md"
       onClick={()=>{
           setShowDelete(false)
-          del()}}
+          del(place.id)}}
       >نعم</button>
       <button className="flex w-[70px] bg-green-600 text-white rounded-sm m-[10px] justify-center items-center  hover:shadow-white hover:shadow-md"
       onClick={()=>{setShowDelete(false)}}

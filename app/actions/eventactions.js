@@ -12,8 +12,8 @@ export const eventdel=async(eid)=>{
 export const placedel=async(eid)=>{
     console.log("statrt deeting")
     const s=await prisma.place.delete({where:{id:eid}}).then(res=>{
-     
-    }).catch(error=>console.log('error in TR i is ',error))
+        return "1"}).catch(error=>console.log('error in TR i is ',error))
+       console.log('deleted')
 }
 
 export const userdel=async(eid)=>{

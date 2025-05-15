@@ -6,7 +6,7 @@ import{getDownloadURL, getStorage, ref, uploadBytesResumable} from "firebase/sto
 import { initializeApp } from "firebase/app";
 // import firebaseApp from '../../../utils/fireBase'
 
-const AddPlace = ({setShow}) => {
+const AddPlace = ({setShow,setMutate,setWt}) => {
 
     const firebaseConfig = {
         apiKey: "AIzaSyDYkMNoQJm0L_AbLzz6h5qklpXuJ7oQRd0",
@@ -38,14 +38,24 @@ const AddPlace = ({setShow}) => {
   }
   
   const postit=async()=>{
-    const dat= await fetch('/api/place',{
+    setShow(false)
+    setWt(true)
+    const {placce}= await fetch('/api/place',{
       method:'POST',
       body:JSON.stringify({name,enName,seatPlan,imgData})
-    }).then(rs =>console.log("yes")).catch(error=>console.log(error))
+    }).then(rs =>{
+      
+      console.log("yes")
+      toast.success('تمت إضافة مكان')
+    return rs.json()
+    }).catch(error=>console.log(error))
     // if(dat.ok){console.log("it is ok from inside add place")}
-    if(dat){
+    if(placce){
+     
       return dat.json()
     }
+    setMutate(true)
+    
   }
   //     useEffect(()=>{
   

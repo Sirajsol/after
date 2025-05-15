@@ -38,6 +38,7 @@ const placce= await prisma.place.create({
 if(placce){
     console.log("place------------------------------------------")
     return new NextResponse(JSON.stringify(placce,{status:'200'}))
+
 }
     }
 catch(error){

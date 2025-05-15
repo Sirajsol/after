@@ -46,7 +46,7 @@ const getm=async()=>{
     }
     //const {events:d,count}=await fetch('http://localhost:3000/api/event',{
       
-         await fetch(`${BASE_API_URL}/api/event`,{
+       events=  await fetch(`${BASE_API_URL}/api/event`,{
         headers:{
             'Content-Type'  : 'application/json'
         },
@@ -60,15 +60,19 @@ const getm=async()=>{
            
         }
         if(res.ok){console.log('result is ok')
-        events=res.json()
+        
+      
+       
         badconnection=false
+        return res.json()
     // return res.json()
     }
     //    return res.json()
     }).catch(error=>{
             console.log('fuck catch'+error)
         })
-
+        console.log('and result is ',events.events)
+// if(events){}
 }
 
 
@@ -133,18 +137,19 @@ export default async function Home() {
   //   </main>
   // )
 
-
-//   const data=await getm()
-
+  await getm()
+  // const data=await getm()
+  const data=events.events
   if(!BASE_API_URL){
     return null
 }
   return <Container>
     <Welcome/>
+    
       {/* <Login /> */}
   <div className=" flex justify-center items-center flex-wrap w-[80%] left-[10%] mx-auto ">
       
-      {events?.length>0&&(
+      {data?.length>0&&(
           data.map(d=>{
               return <Link href={`/all-events/${d.id}`} key={d.id}>
               <EventCard ev={d} />

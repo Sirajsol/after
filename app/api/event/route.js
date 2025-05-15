@@ -37,7 +37,7 @@ export  const GET=async(req)=>{
         //         invetations:true
         //     }
         // })
-        console.log("events is",events)
+        console.log("inside event api get ,events is",events)
         if(events&& count)
     return new NextResponse(JSON.stringify({events,count},{status:'200'}))
     throw error
